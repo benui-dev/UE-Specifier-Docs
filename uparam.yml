@@ -1,0 +1,66 @@
+
+- name: DisplayName
+  group: Blueprint Logic
+  type: string
+  position: main
+  comment: |
+    Allows renaming parameters in `UFUNCTION` functions.
+  sample: |
+    UFUNCTION(BlueprintCallable)
+    void MakeDog(
+      UPARAM(DisplayName = "Years (dog years)") float Years,
+      UPARAM(DisplayName = "Fur Color") FLinearColor Color);
+
+- name: ref
+  group: Blueprint Logic
+  type: flag
+  position: main
+  comment: |
+    If a `UFUNCTION` parameter is a non-const reference, it is displayed as an
+    output pin by default. It's assumed that the struct will be filled.
+
+    I would think hard about what the purpose is of your function when choosing
+    if you need to use `UPARAM()`. Looking at the example code below:
+
+    * `FillDogInfo` takes an empty data structure that is provided to it, and fills it out. In Blueprints it is shown as an output pin.
+    * `UseAndFillDogInfo` takes a **reference** to a data structure as input. That means it can change the values within the data structure. If you do not need to change the values of the data structure, then see `UseDogInfo`.
+    * `UseDogInfo` takes a `const` reference data structure. It cannot change the values of the data.
+  images: [ /assets/unreal/uparam/uparam-ref.jpg ]
+  sample: |
+    // Fill an empty data structure
+    UFUNCTION(BlueprintCallable)
+    void FillDogInfo(FDogInfo& OutResult);
+
+    // Use existing data, add some more
+    UFUNCTION(BlueprintCallable)
+    void UseAndFillDogInfo(
+        UPARAM(ref) FDogInfo& SearchParams);
+
+    // Just use existing data and don't change it
+    UFUNCTION(BlueprintCallable)
+    void UseDogInfo(const FDogInfo& SearchParams);
+
+- name: AllowAbstract
+  group: Blueprint Logic
+  type: bool
+  position: meta
+  comment: |
+    Works exclusively with `TSubclassOf`. By default, `TSubclassOf<T>` will allow abstract choosing classes.
+  sample: |
+    UFUNCTION(BlueprintCallable, Category = "Composure", meta = (DeterminesOutputType = "OutputType"))
+    UCompositingElementOutput* FindOutputPass(UPARAM(meta = (AllowAbstract = "false"))TSubclassOf<UCompositingElementOutput> OutputType, FName OptionalPassName = NAME_None);
+
+- name: Categories
+  group: Blueprint Logic
+  type: string (comma-separated list of gameplay tags)
+  position: meta
+  comment: |
+    Limits the Gameplay Tags that are selectable on the `UFUNCTION`. Works in the same way as the `UPROPERTY` `Categories` meta flag.
+  samples:
+    - |
+      UFUNCTION(BlueprintCallable)
+      void SellItems(UPARAM(meta=(Categories="Inventory.Item"))FGameplayTag Itemtag, int32 Count);
+    - |
+      UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = GameplayEffects)
+      virtual void UpdateActiveGameplayEffectSetByCallerMagnitude(FActiveGameplayEffectHandle ActiveHandle, UPARAM(meta=(Categories = "SetByCaller"))FGameplayTag SetByCallerTag, float NewValue);
+

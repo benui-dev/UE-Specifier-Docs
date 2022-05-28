@@ -1,0 +1,54 @@
+###############################################################################
+# UMETA
+
+- name: DisplayName
+  group: Display
+  position: main
+  type: string
+  sample: |
+    UENUM(BlueprintType)
+    enum class UMetaExample : uint8
+    {
+      Cat UMETA(DisplayName="Kitty"),
+      Dog,
+      Rooster,
+    };
+  documentation:
+    text: This value's name will be the text provided here, rather than the code-generated name.
+    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
+
+- name: Hidden
+  group: Display
+  position: main
+  type: flag
+  sample: |
+    UENUM(BlueprintType)
+    enum class UMetaExample : uint8
+    {
+      Cat,
+      Dog,
+      Rooster,
+      Count UMETA(Hidden),
+    };
+  comment:
+    This can be used in conjunction with `ENUM_RANGE_BY_COUNT` to allow [iteration over `UENUM`](/unreal/iterate-over-enum-tenumrange)
+  documentation:
+    text: This value will not appear in the Editor.
+    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
+
+- name: ToolTip
+  group: Display
+  position: main
+  type: string
+  sample: |
+    UENUM(BlueprintType)
+    enum class UMetaExample : uint8
+    {
+      Cat,
+      Dog,
+      Rooster UMETA(ToolTip="It's like a chicken"),
+      Count,
+    };
+  documentation:
+    text: Overrides the automatically generated tooltip from code comments.
+    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
