@@ -11,9 +11,10 @@
     Properties marked with `VisibleAnywhere` are visible in the both Details Panel of Blueprint assets and the Details Panel of Blueprint instances within maps.
     
     Note that this refers to being visible in the *Details Panel*, not visible in the *Blueprint Graph*. For that you need to use `BlueprintReadOnly`.
-  sample: |
-    UPROPERTY(VisibleAnywhere)
-    int32 VisibleAnywhereNumber;
+  samples:
+    - |
+      UPROPERTY(VisibleAnywhere)
+      int32 VisibleAnywhereNumber;
   documentation:
     text: Indicates that this property is visible in all property windows, but cannot be edited. This Specifier is incompatible with the "Edit" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -30,9 +31,10 @@
     You might want to make a property VisibleDefaultsOnly if it is defined and used in C++, but Blueprint users may want to see the value of it when editing the Blueprint asset itself. It is effectively a way of making a property visible but read-only.
 
     Note that this refers to being visible in the __Details__ panel, not visible through the Blueprint Graph. For that you need to use `BlueprintReadOnly`.
-  sample: |
-    UPROPERTY(VisibleAnywhere)
-    int32 VisibleAnywhereNumber;
+  samples:
+    - |
+      UPROPERTY(VisibleAnywhere)
+      int32 VisibleAnywhereNumber;
   documentation:
     text: Indicates that this property is only visible in property windows for archetypes, and cannot be edited. This Specifier is incompatible with any of the "Edit" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -49,9 +51,10 @@
     This is a more rarely-used visibility specifier, but you could maybe use it for showing Blueprint users the values of properties that are defined in C++ or are calculated based on other properties.
 
     Note that this refers to being visible in the __Details__ panel, not visible through the Blueprint Graph. For that you need to use `BlueprintReadOnly`.
-  sample: |
-    UPROPERTY(VisibleInstanceOnly)
-    int32 VisibleInstanceOnlyNumber;
+  samples:
+    - |
+      UPROPERTY(VisibleInstanceOnly)
+      int32 VisibleInstanceOnlyNumber;
   documentation:
     text: Indicates that this property is only visible in property windows for instances, not for archetypes, and cannot be edited. This Specifier is incompatible with any of the "Edit" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -67,9 +70,10 @@
     The value of `EditAnywhere` properties can be changed in both the Details Panel of Blueprint assets and the Details Panel of Blueprint instances.
 
     Note that this refers to being editable in the __Details__ panel, not visible through the Blueprint Graph. For that you need to use `BlueprintReadWrite`.
-  sample: |
-    UPROPERTY(EditAnywhere)
-    int32 EditAnywhereNumber;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere)
+      int32 EditAnywhereNumber;
   documentation:
     text: Indicates that this property can be edited by property windows, on archetypes and instances. This Specifier is incompatible with any of the the "Visible" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -83,9 +87,10 @@
     You might want to make a property `EditInstanceOnly` if it does not make sense to have a default value in the Blueprint asset. For example a `ATrigger` actor could point to `ADoor` instances within a map and tell them to open when the trigger is activated. In this example it would not make sense to have `TArray<ADoor*>` be editable within the Blueprint asset, so you could use `EditInstanceOnly`.
 
     Note that this refers to being editable in the __Details__ panel, not visible through the Blueprint Graph. For that you need to use `BlueprintReadWrite`.
-  sample: |
-    UPROPERTY(EditInstanceOnly)
-    int32 EditInstanceOnlyNumber;
+  samples:
+    - |
+      UPROPERTY(EditInstanceOnly)
+      int32 EditInstanceOnlyNumber;
   documentation:
     text: Indicates that this property can be edited by property windows, but only on instances, not on archetypes. This Specifier is incompatible with any of the "Visible" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -97,9 +102,10 @@
   type: flag
   incompatible: [ EditAnywhere, VisibleAnywhere, VisibleDefaultsOnly, VisibleInstanceOnly ]
   related: [ EditAnywhere ]
-  sample: |
-    UPROPERTY(EditDefaultsOnly)
-    int32 EditDefaultsOnlyNumber;
+  samples:
+    - |
+      UPROPERTY(EditDefaultsOnly)
+      int32 EditDefaultsOnlyNumber;
   documentation:
     text: Indicates that this property can be edited by property windows, but only on archetypes. This Specifier is incompatible with any of the "Visible" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -124,23 +130,24 @@
     text: Used by struct properties. Indicates that the inner properties will not be shown inside an expandable struct, but promoted up a level.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
   images: [ /assets/unreal/uproperty/show-only-inner-properties.jpg ]
-  sample: |
-    USTRUCT()
-    struct FCat
-    {
-        GENERATED_BODY()
-        UPROPERTY(EditDefaultsOnly)
-        FString Name;
-        UPROPERTY(EditDefaultsOnly)
-        int32 Age;
-        UPROPERTY(EditDefaultsOnly)
-        FLinearColor Color;
-    };
-    // ...
-    UPROPERTY(EditAnywhere, Category="Cat Without ShowOnlyInnerProperties")
-    FCat Cat;
-    UPROPERTY(EditAnywhere, Category="Cat With ShowOnlyInnerProperties", meta=(ShowOnlyInnerProperties))
-    FCat Cat;
+  samples:
+    - |
+      USTRUCT()
+      struct FCat
+      {
+          GENERATED_BODY()
+          UPROPERTY(EditDefaultsOnly)
+          FString Name;
+          UPROPERTY(EditDefaultsOnly)
+          int32 Age;
+          UPROPERTY(EditDefaultsOnly)
+          FLinearColor Color;
+      };
+      // ...
+      UPROPERTY(EditAnywhere, Category="Cat Without ShowOnlyInnerProperties")
+      FCat Cat;
+      UPROPERTY(EditAnywhere, Category="Cat With ShowOnlyInnerProperties", meta=(ShowOnlyInnerProperties))
+      FCat Cat;
    
 
 
@@ -179,9 +186,10 @@
     Changes the text label used with the property. This is used both in the Details panel and for 
 
     Useful when there are internal programmer-only technical terms that do not need to be shown to the user.
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(DisplayName="Display Font"))
-    FSoftObjectPath DisplayFontPath;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(DisplayName="Display Font"))
+      FSoftObjectPath DisplayFontPath;
   images: [ /assets/unreal/uproperty/displayname.jpg, /assets/unreal/uproperty/displayname-blueprint-graph.jpg ]
 - name: ToolTip
   group: Editor
@@ -189,9 +197,10 @@
   position: meta
   type: string
   comment: Show a tooltip with this text when mousing over the property.
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(ToolTip="Something that's shown when hovering."))
-    int32 Legs;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(ToolTip="Something that's shown when hovering."))
+      int32 Legs;
 - name: AdvancedDisplay
   group: Editor
   subgroup: Display
@@ -203,13 +212,14 @@
     Any properties with `AdvancedDisplay` are hidden under a section that is opened with a dropdown arrow.
 
     Useful for separating properties that are rarely used or only useful to advanced users.
-  sample: |
-    UPROPERTY(EditAnywhere, Category="Toy")
-    FString Name;
-    UPROPERTY(EditAnywhere, Category="Toy")
-    int32 HappyPhraseCount;
-    UPROPERTY(EditAnywhere, Category="Toy", AdvancedDisplay)
-    bool bEnableEvilMode;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, Category="Toy")
+      FString Name;
+      UPROPERTY(EditAnywhere, Category="Toy")
+      int32 HappyPhraseCount;
+      UPROPERTY(EditAnywhere, Category="Toy", AdvancedDisplay)
+      bool bEnableEvilMode;
   documentation:
     text: The property will be placed in the advanced (dropdown) section of any panel where it appears.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -231,9 +241,10 @@
   type: flag
   source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
   position: meta
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(EditInline))
-    UDog* Dog;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(EditInline))
+      UDog* Dog;
   documentation:
     text: Allows the user to edit the properties of the Object referenced by this property within Unreal Editor's property inspector (only useful for Object references, including arrays of Object reference).
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -301,25 +312,26 @@
   comment:
     By default, `EditCondition` changes properties to be read-only when the condition evaluates to false. With `EditConditionHides`, the property is hidden.
     I find this useful for hiding larger groups of properties.
-  sample: |
-    UENUM()
-    enum class EPlantType
-    {
-      Flower,
-      Food,
-      Poison
-    };
-    UPROPERTY(EditDefaultsOnly)
-    EPlantType PlantType = EPlantType::Flower;
+  samples:
+    - |
+      UENUM()
+      enum class EPlantType
+      {
+        Flower,
+        Food,
+        Poison
+      };
+      UPROPERTY(EditDefaultsOnly)
+      EPlantType PlantType = EPlantType::Flower;
 
-    UPROPERTY(EditDefaultsOnly, meta=(EditCondition="PlantType==EPlantType::Flower", EditConditionHides))
-    FLinearColor FlowerColor = FLinearColor::White;
+      UPROPERTY(EditDefaultsOnly, meta=(EditCondition="PlantType==EPlantType::Flower", EditConditionHides))
+      FLinearColor FlowerColor = FLinearColor::White;
 
-    UPROPERTY(EditDefaultsOnly, Category="Food", meta=(EditCondition="PlantType==EPlantType::Food", EditConditionHides))
-    int32 FoodAmount = 1;
+      UPROPERTY(EditDefaultsOnly, Category="Food", meta=(EditCondition="PlantType==EPlantType::Food", EditConditionHides))
+      int32 FoodAmount = 1;
 
-    UPROPERTY(EditDefaultsOnly, meta=(EditCondition="PlantType==EPlantType::Poison", EditConditionHides))
-    float PoisonDamagePerSecond = 0.25f;
+      UPROPERTY(EditDefaultsOnly, meta=(EditCondition="PlantType==EPlantType::Poison", EditConditionHides))
+      float PoisonDamagePerSecond = 0.25f;
 
 - name: InlineEditConditionToggle
   group: Editor
@@ -335,12 +347,13 @@
   comment: Instead of showing the `bool` property separately, it is instead displayed inline, to the left of the property that it is controlling.
   
     Note that this meta flag should be put on the `bool` property, not the property with the `EditCondition`
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(InlineEditConditionToggle))
-    bool bCanFly;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(InlineEditConditionToggle))
+      bool bCanFly;
 
-    UPROPERTY(EditAnywhere, meta=(EditCondition="bCanFly", Units="s"))
-    float FlapPeriodSeconds;
+      UPROPERTY(EditAnywhere, meta=(EditCondition="bCanFly", Units="s"))
+      float FlapPeriodSeconds;
   images: [ /assets/unreal/uproperty/inline-edit-condition-toggle.gif ]
   documentation:
     text: Signifies that the bool property is only displayed inline as an edit condition toggle in other properties, and should not be shown on its own row.
@@ -366,15 +379,16 @@
   documentation:
     text: Indicates that the property should be displayed immediately after the property named in the metadata.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(DisplayAfter="ShowFirst"))
-    int32 ShowAfterFirst1;
-    UPROPERTY(EditAnywhere, meta=(DisplayAfter="ShowFirst"))
-    int32 ShowAfterFirst2;
-    UPROPERTY(EditAnywhere)
-    int32 ShowFirst;
-    UPROPERTY(EditAnywhere)
-    int32 ShowNext;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(DisplayAfter="ShowFirst"))
+      int32 ShowAfterFirst1;
+      UPROPERTY(EditAnywhere, meta=(DisplayAfter="ShowFirst"))
+      int32 ShowAfterFirst2;
+      UPROPERTY(EditAnywhere)
+      int32 ShowFirst;
+      UPROPERTY(EditAnywhere)
+      int32 ShowNext;
   images: [ /assets/unreal/uproperty/displayafter.jpg ]
 - name: DisplayPriority
   group: Editor
@@ -393,17 +407,18 @@
   documentation:
     text: The relative order within its category that the property should be displayed in where lower values are sorted first.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(DisplayPriority=3))
-    int32 Priority3;
-    UPROPERTY(EditAnywhere, meta=(DisplayPriority=2))
-    int32 Priority2
-    UPROPERTY(EditAnywhere, meta=(DisplayPriority=0))
-    int32 Priority0;
-    UPROPERTY(EditAnywhere)
-    int32 NoPriority;
-    UPROPERTY(EditAnywhere, meta=(DisplayPriority=-1)
-    int32 PriorityNegative1;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(DisplayPriority=3))
+      int32 Priority3;
+      UPROPERTY(EditAnywhere, meta=(DisplayPriority=2))
+      int32 Priority2
+      UPROPERTY(EditAnywhere, meta=(DisplayPriority=0))
+      int32 Priority0;
+      UPROPERTY(EditAnywhere)
+      int32 NoPriority;
+      UPROPERTY(EditAnywhere, meta=(DisplayPriority=-1)
+      int32 PriorityNegative1;
   images: [ /assets/unreal/uproperty/displaypriority.jpg ]
 - name: DisplayThumbnail
   group: Editor
@@ -451,24 +466,25 @@
   documentation:
     text: Object (`UCLASS`) properties only. When an instance of this class is created, it will be given a unique copy of the Object assigned to this property in defaults. Used for instancing subobjects defined in class default properties. Implies `EditInline` and `Export`.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  sample: |
-    UCLASS(EditInlineNew, DefaultToInstanced, CollapseCategories)
-    class UBeamInstanceSettings : public UObject 
-    {
-      GENERATED_BODY()
-    public:
-      UPROPERTY(EditAnywhere)
-      int32 MyOption;
-    };
-    
-    UCLASS()
-    class ABeamTrackEmitter : public AActor 
-    {
-      GENERATED_BODY()
-    public:
-      UPROPERTY(BlueprintReadOnly, Instanced)
-      UInstanceSettings* Settings;
-    };
+  samples:
+    - |
+      UCLASS(EditInlineNew, DefaultToInstanced, CollapseCategories)
+      class UBeamInstanceSettings : public UObject 
+      {
+        GENERATED_BODY()
+      public:
+        UPROPERTY(EditAnywhere)
+        int32 MyOption;
+      };
+      
+      UCLASS()
+      class ABeamTrackEmitter : public AActor 
+      {
+        GENERATED_BODY()
+      public:
+        UPROPERTY(BlueprintReadOnly, Instanced)
+        UInstanceSettings* Settings;
+      };
 
 ###############################################################################
 
@@ -488,11 +504,12 @@
 
     This can be especially useful for large structs or arrays, where you would want to avoid people being able to accidentally wipe the entire contents.
   images: [ /assets/unreal/uproperty/noresettodefault.jpg ]
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(NoResetToDefault))
-    int32 NoResetToDefault = 1;
-    UPROPERTY(EditAnywhere)
-    int32 HasResetToDefault = 1;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(NoResetToDefault))
+      int32 NoResetToDefault = 1;
+      UPROPERTY(EditAnywhere)
+      int32 HasResetToDefault = 1;
   documentation:
     text: Property wont have a 'reset to default' button when displayed in property windows
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -512,9 +529,10 @@
   documentation:
     text: Used for float and integer properties. Specifies the minimum value that may be entered for the property.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(ClampMin=1))
-    int32 MaxHP;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(ClampMin=1))
+      int32 MaxHP;
 - name: ClampMax
   group: Data Decorators
   subgroup: Numeric
@@ -531,9 +549,10 @@
   documentation:
     text: Used for float and integer properties. Specifies the maximum value that may be entered for the property.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(ClampMin=0, ClampMax=100))
-    int32 RestoreHealthPercent;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(ClampMin=0, ClampMax=100))
+      int32 RestoreHealthPercent;
 - name: UIMin
   group: Data Decorators
   subgroup: Numeric
@@ -545,9 +564,10 @@
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
   type: number
   type-comment: float, int
-  sample: |
-    UPROPERTY(meta=(UIMin=0, UIMax=100))
-    int32 PercentScore;
+  samples:
+    - |
+      UPROPERTY(meta=(UIMin=0, UIMax=100))
+      int32 PercentScore;
   related: [ClampMin, UIMax]
   keywords: [number, editor]
   examples: [ Engine/Source/Runtime/Engine/Classes/Components/SkyAtmosphereComponent.h#L58 ]
@@ -563,9 +583,10 @@
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
   keywords: [number, editor]
   related: [ClampMax, UIMin]
-  sample: |
-    UPROPERTY(meta=(UIMin=0, UIMax=100))
-    int32 PercentScore;
+  samples:
+    - |
+      UPROPERTY(meta=(UIMin=0, UIMax=100))
+      int32 PercentScore;
 - name: NoSpinbox
   group: Data Decorators
   subgroup: Numeric
@@ -588,9 +609,10 @@
   type: number
   type-comment: float, int
   keywords: [number, editor]
-  sample: |
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GeometrySettings", AdvancedDisplay, meta = (ClampMin = "0.0001", UIMin = "0.001", UIMax = "2.0", SliderExponent = 6))
-    float HairTipScale;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GeometrySettings", AdvancedDisplay, meta = (ClampMin = "0.0001", UIMin = "0.001", UIMax = "2.0", SliderExponent = 6))
+      float HairTipScale;
   examples: [ Plugins/Runtime/HairStrands/Source/HairStrandsCore/Public/GroomAssetRendering.h ]
   documentation:
     text: Used by numeric properties. Indicates how rapidly the value will grow when moving an unbounded slider.
@@ -606,10 +628,11 @@
   keywords: [number, editor]
   relate: [ Multiple ]
   images: [ /assets/unreal/uproperty/delta.gif ]
-  sample: |
-    // Dragging this will make it step up in increments of 12
-    UPROPERTY(meta=(Delta=12))
-    int32 TotalEggs;
+  samples:
+    - |
+      // Dragging this will make it step up in increments of 12
+      UPROPERTY(meta=(Delta=12))
+      int32 TotalEggs;
 - name: Multiple
   group: Data Decorators
   subgroup: Numeric
@@ -620,9 +643,10 @@
   documentation:
     text: Used for numeric properties. Stipulates that the value must be a multiple of the metadata value.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(meta=(Multiple=12, Delta=12))
-    int32 TotalEggs;
+  samples:
+    - |
+      UPROPERTY(meta=(Multiple=12, Delta=12))
+      int32 TotalEggs;
 - name: Units
   group: Data Decorators
   subgroup: Numeric
@@ -634,17 +658,18 @@
   type: string
   keywords: [ number, editor ]
   examples: [ Engine/Source/Editor/DetailCustomizations/Private/LocalLightComponentDetails.cpp#L42 ]
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(Units="Celsius"))
-    float CookingTemperature;
-    UPROPERTY(EditAnywhere, meta=(Units="Kilograms"))
-    float TigerWeight;
-    UPROPERTY(EditAnywhere, meta=(Units="GB"))
-    float DiskSpace;
-    UPROPERTY(EditAnywhere, meta=(Units="Percent"))
-    float Happiness;
-    UPROPERTY(EditAnywhere, meta=(Units="times"))
-    float Deliciousness;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(Units="Celsius"))
+      float CookingTemperature;
+      UPROPERTY(EditAnywhere, meta=(Units="Kilograms"))
+      float TigerWeight;
+      UPROPERTY(EditAnywhere, meta=(Units="GB"))
+      float DiskSpace;
+      UPROPERTY(EditAnywhere, meta=(Units="Percent"))
+      float Happiness;
+      UPROPERTY(EditAnywhere, meta=(Units="times"))
+      float Deliciousness;
 - name: ForceUnits
   group: Data Decorators
   subgroup: Numeric
@@ -662,12 +687,13 @@
   type: string
   comment: Clamps an integer to be within the range of the specified `TArray`.
   examples: [Engine/Source/Runtime/Engine/Classes/Engine/SkeletalMesh.h#L96, Plugins/Experimental/MeshModelingToolset/Source/MeshModelingTools/Public/MeshAttributePaintTool.h#L129 ]
-  sample: |
-    UPROPERTY(EditAnywhere)
-    TArray<FName> Attributes;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere)
+      TArray<FName> Attributes;
 
-    UPROPERTY(EditAnywhere, meta=(ArrayClamp="Attributes"))
-    int32 SelectedAttributeIndex = 0;
+      UPROPERTY(EditAnywhere, meta=(ArrayClamp="Attributes"))
+      int32 SelectedAttributeIndex = 0;
   documentation:
     text: Used for integer properties. Clamps the valid values that can be entered in the UI to be between 0 and the length of the array specified.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -726,9 +752,10 @@
 
     Note that this is *not* a flag property but a *bool* property. `meta=(MultiLine)` won't do anything. It has to be `meta=(MultiLine=true)`
   images: [ /assets/unreal/uproperty/multiline.jpg ]
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(MultiLine=true))
-    FText SomeLongText;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(MultiLine=true))
+      FText SomeLongText;
   documentation:
     text: Used for FString and FText properties. Indicates that the edit field should be multi-line, allowing entry of newlines.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -739,9 +766,10 @@
   images: [ /assets/unreal/uproperty/passwordfield.jpg ]
   type: bool
   comment: Note that this is *not* a flag property but a *bool* property. `meta=(PasswordField)` won't do anything. It has to be `meta=(PasswordField=true)`
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(PasswordField=true))
-    FString ShhSecret;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(PasswordField=true))
+      FString ShhSecret;
   documentation:
     text: Used for FString and FText properties. Indicates that the edit field is a secret field (e.g a password) and entered text will be replaced with dots. Do not use this as your only security measure. The property data is still stored as plain text.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -757,20 +785,21 @@
   type: flag
   position: meta
   comment: Replaces the indices on statically-created arrays with those from a `UENUM()`. Note that the "add element" button is hidden. Works with `UMETA(Hidden)`.
-  sample: |
-    UENUM()
-    enum class EArmorSlots
-    {
-        Head,
-        LeftArm,
-        RightArm,
-        Tummy UMETA(Hidden),
-        LeftLeg,
-        RightLeg,
-        Num UMETA(Hidden)
-    };
-    UPROPERTY(EditAnywhere, meta=(ArraySizeEnum="EArmorSlots"))
-    FColor ColorForSlot[EArmorSlots::Num];
+  samples:
+    - |
+      UENUM()
+      enum class EArmorSlots
+      {
+          Head,
+          LeftArm,
+          RightArm,
+          Tummy UMETA(Hidden),
+          LeftLeg,
+          RightLeg,
+          Num UMETA(Hidden)
+      };
+      UPROPERTY(EditAnywhere, meta=(ArraySizeEnum="EArmorSlots"))
+      FColor ColorForSlot[EArmorSlots::Num];
   images: [ /assets/unreal/uproperty/arraysizeenum.jpg ]
 - name: EditFixedSize
   group: Data Decorators
@@ -779,12 +808,13 @@
   type: flag
   related: [ EditFixedOrder ]
   images: [ /assets/unreal/uproperty/editfixedsize.jpg ]
-  sample: |
-    UMyObject() {
-      FixedSize = { "Hello", "World" };
-    }
-    UPROPERTY(EditAnywhere, meta=(EditFixedSize))
-    TArray<FString> FixedSize;
+  samples:
+    - |
+      UMyObject() {
+        FixedSize = { "Hello", "World" };
+      }
+      UPROPERTY(EditAnywhere, meta=(EditFixedSize))
+      TArray<FString> FixedSize;
   comment: |
     Not sure the best place to initialize the contents of a EditFixedSize-marked `TArray` but it seems to work in the constructor.
   documentation:
@@ -798,9 +828,10 @@
   position: meta
   related: [ EditFixedSize ]
   images: [ /assets/unreal/uproperty/editfixedorder.jpg ]
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(EditFixedOrder))
-    TArray<FString> FixedOrderNames;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(EditFixedOrder))
+      TArray<FString> FixedOrderNames;
   documentation:
     text: Keeps the elements of an array from being reordered by dragging.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -858,9 +889,10 @@
 
     Definitely does not work with simple data types like integers and strings.
 
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(NoElementDuplicate))
-    TArray<TObjectPtr<class AActor>> NoDuplicatedActors;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(NoElementDuplicate))
+      TArray<TObjectPtr<class AActor>> NoDuplicatedActors;
   documentation:
     text: Used for array properties. Indicates that the duplicate icon should not be shown for entries of this array in the property panel.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -887,11 +919,12 @@
   subgroup: Object
   position: main
   type: flag
-  sample: |
-    UPROPERTY(EditAnywhere)
-    TSubclassOf<UObject> ObjectWithClear;
-    UPROPERTY(EditAnywhere, NoClear)
-    TSubclassOf<UObject> ObjectNoClear;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere)
+      TSubclassOf<UObject> ObjectWithClear;
+      UPROPERTY(EditAnywhere, NoClear)
+      TSubclassOf<UObject> ObjectNoClear;
   documentation:
     text: Prevents this Object reference from being set to none from the editor. Hides clear (and browse) button in the editor.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -907,19 +940,20 @@
   position: meta
   related: [ BitmaskEnum ]
   comment: Shows a dropdown box containing all bitmask options. Clicking on them enables or disables that flag.
-  sample: |
-    UENUM(meta = (Bitflags, UseEnumValuesAsMaskValuesInEditor = "true"))
-    enum class EAnimalFlags : uint8
-    {
-        CanFly     = 1 << 0,
-        CanSwim    = 1 << 1,
-        CanLayEggs = 1 << 2,
-    };
-    ENUM_CLASS_FLAGS(EAnimalFlags)
-    
-    // Data type can be flag or int32
-    UPROPERTY(EditDefaultsOnly, meta = (Bitmask, BitmaskEnum = EAnimalFlags))
-    int32 AnimalFlags;
+  samples:
+    - |
+      UENUM(meta = (Bitflags, UseEnumValuesAsMaskValuesInEditor = "true"))
+      enum class EAnimalFlags : uint8
+      {
+          CanFly     = 1 << 0,
+          CanSwim    = 1 << 1,
+          CanLayEggs = 1 << 2,
+      };
+      ENUM_CLASS_FLAGS(EAnimalFlags)
+      
+      // Data type can be flag or int32
+      UPROPERTY(EditDefaultsOnly, meta = (Bitmask, BitmaskEnum = EAnimalFlags))
+      int32 AnimalFlags;
   examples: [ c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Experimental/VirtualProductionUtilities/Source/VPUtilities/Public/VPViewportTickableActorBase.h#L11 ]
   images: [ /assets/unreal/uproperty/bitmask.jpg ]
 - name: BitmaskEnum
@@ -938,9 +972,10 @@
     Shows a preserve ratio lock to the right of the property input boxes. Clicking the lock will enable/disable ratio lock. As far as I can tell it only works with vector types: `FIntPoint`, `FVector`, `FVector2D`, `FVector4`.
 
     Probably most useful for vector properties that are used for scaling.
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(AllowPreserveRatio))
-    FVector CustomScale;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(AllowPreserveRatio))
+      FVector CustomScale;
   images: [ /assets/unreal/uproperty/allowpreserveratio.jpg ]
   documentation:
     text: Used for `FVector` properties. It causes a ratio lock to be added when displaying this property in details panels.
@@ -950,9 +985,10 @@
   subgroup: Vector
   position: meta
   type: flag
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(MakeEditWidget))
-    FVector SomePosition;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(MakeEditWidget))
+      FVector SomePosition;
   comment: |
     This shows a kind of janky-looking wireframe diamond in-world at an offset relative to the parent actor. It also shows some debug text. See the screenshot.
     A lot of examples seem to treat this like a boolean, but it's a flag; it just checks for `HasMetaData`.
@@ -976,9 +1012,10 @@
   comment: Variables marked with `SaveGame` will be serialized by a `USaveGame` object
   links:
     - [ "Tutorial", "https://www.tomlooman.com/save-system-unreal-engine-tutorial/" ]
-  sample: |
-    UPROPERTY(SaveGame)
-    TArray<FString> FriendNames;
+  samples:
+    - |
+      UPROPERTY(SaveGame)
+      TArray<FString> FriendNames;
 - name: SerializeText
   group: Serialization
   position: main
@@ -1071,15 +1108,16 @@
     Make sure your property and functions do not have clashing names. You cannot call your property `bIsPasswordEnabled` and the getter function `bool IsPasswordEnabled() const`
 
 
-  sample: |
-    UPROPERTY(EditAnywhere, BlueprintGetter = IsPassEnabled, BlueprintSetter = SetPassEnabled )
-    bool bEnabled = true;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, BlueprintGetter = IsPassEnabled, BlueprintSetter = SetPassEnabled )
+      bool bEnabled = true;
 
-    UFUNCTION(BlueprintGetter)
-    bool IsPassEnabled() const;
+      UFUNCTION(BlueprintGetter)
+      bool IsPassEnabled() const;
 
-    UFUNCTION(BlueprintSetter)
-    void SetPassEnabled(bool bSetEnabledTo = true);
+      UFUNCTION(BlueprintSetter)
+      void SetPassEnabled(bool bSetEnabledTo = true);
   documentation:
     text: This property specifies a custom accessor function. If this property isn't also tagged with `BlueprintSetter` or `BlueprintReadWrite`, then it is implicitly `BlueprintReadOnly`.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -1089,15 +1127,16 @@
   position: main
   related: [ BlueprintGetter ]
   comment: I haven't used these but I guess this is an alternative to using `BlueprintReadWrite`. Allowing BP to set the value of the variable through a function allows for validation and breakpoints.
-  sample: |
-    UPROPERTY(EditAnywhere, BlueprintGetter = IsPassEnabled, BlueprintSetter = SetPassEnabled )
-    bool bEnabled = true;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, BlueprintGetter = IsPassEnabled, BlueprintSetter = SetPassEnabled )
+      bool bEnabled = true;
 
-    UFUNCTION(BlueprintGetter)
-    bool IsPassEnabled() const;
+      UFUNCTION(BlueprintGetter)
+      bool IsPassEnabled() const;
 
-    UFUNCTION(BlueprintSetter)
-    void SetPassEnabled(bool bSetEnabledTo = true);
+      UFUNCTION(BlueprintSetter)
+      void SetPassEnabled(bool bSetEnabledTo = true);
   documentation:
     text: This property has a custom mutator function, and is implicitly tagged with BlueprintReadWrite. Note that the mutator function must be named and part of the same class.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -1108,13 +1147,14 @@
   documentation:
     text: Indicates that a private member marked as BluperintReadOnly or BlueprintReadWrite should be accessible from blueprints
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    private:
-      UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess=true))
-      int32 PrivateReadOnlyInt;
+  samples:
+    - |
+      private:
+        UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess=true))
+        int32 PrivateReadOnlyInt;
 
-      UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
-      int32 PrivateReadWriteInt;
+        UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+        int32 PrivateReadWriteInt;
 - name: BlueprintAssignable
   group: Blueprint Logic
   subgroup: Events
@@ -1188,9 +1228,10 @@
   position: meta
   type: string
   comment: There's only one example of this in the codebase, inside `NoExportTypes.h`. Not sure how this is different from just doing a C11-style `FVector Scale3D = FVector(1,1,1)`.
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(MakeStructureDefaultValue = "1,1,1"))
-    FVector Scale3D;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(MakeStructureDefaultValue = "1,1,1"))
+      FVector Scale3D;
   documentation:
     text: For properties in a structure indicates the default value of the property in a blueprint make structure node.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -1209,11 +1250,12 @@
 
     Some editor code that uses this meta flag checks for non-null string, some checks for `\"true\"` for truthiness. Some examples in the codebase use it like a flag, others like a bool. I would recommend to treat it like a bool.
   images: [ /assets/unreal/uproperty/exposeonspawn.jpg ]
-  sample: |
-    UPROPERTY(BlueprintReadOnly, meta=(ExposeOnSpawn=true))
-    int32 StartingHealth = 200;
-    UPROPERTY(BlueprintReadWrite, meta=(ExposeOnSpawn=true))
-    int32 StartingCash = 200;
+  samples:
+    - |
+      UPROPERTY(BlueprintReadOnly, meta=(ExposeOnSpawn=true))
+      int32 StartingHealth = 200;
+      UPROPERTY(BlueprintReadWrite, meta=(ExposeOnSpawn=true))
+      int32 StartingCash = 200;
   documentation:
     text: Specifies whether the property should be exposed on a Spawn Actor for the class type.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -1267,26 +1309,27 @@
   documentation:
     text: Skip replication. This only applies to struct members and parameters in service request functions.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  sample: |
-    USTRUCT()
-    struct FMyStruct
-    {
-      GENERATED_BODY()
+  samples:
+    - |
+      USTRUCT()
+      struct FMyStruct
+      {
+        GENERATED_BODY()
 
-      UPROPERTY() 
-      int32 WillReplicate;
+        UPROPERTY() 
+        int32 WillReplicate;
 
-      UPROPERTY(NotReplicated) 
-      int32 DoNotReplicateMe;
-    }
-    UCLASS()
-    class UMyReplicatedThing
-    {
-      GENERATED_BODY()
-    protected:
-      UPROPERTY(Replicated)
-      FMyStruct SomeData;
-    };
+        UPROPERTY(NotReplicated) 
+        int32 DoNotReplicateMe;
+      }
+      UCLASS()
+      class UMyReplicatedThing
+      {
+        GENERATED_BODY()
+      protected:
+        UPROPERTY(Replicated)
+        FMyStruct SomeData;
+      };
 
 - name: ReplicatedUsing
   group: Network
@@ -1335,9 +1378,10 @@
   type: flag
   related: [ BindWidgetOptional ]
   keywords: [umg]
-  sample: |
-    UPROPERTY(meta=(BindWidget))
-    UImage* CharacterPortrait;
+  samples:
+    - |
+      UPROPERTY(meta=(BindWidget))
+      UImage* CharacterPortrait;
 - name: BindWidgetOptional
   group: UMG
   source: Engine/Source/Editor/UMGEditor/Private/WidgetBlueprintEditorUtils.cpp
@@ -1347,9 +1391,10 @@
   synonyms: [ OptionalWidget ]
   related: [ BindWidget ]
   keywords: [ umg ]
-  sample: |
-    UPROPERTY(meta=(BindWidgetOptional))
-    UImage* CharacterPortrait;
+  samples:
+    - |
+      UPROPERTY(meta=(BindWidgetOptional))
+      UImage* CharacterPortrait;
   links:
     - [ "Tutorial", "https://benui.ca/unreal/ui-bindwidget/" ]
 - name: BindWidgetAnim
@@ -1363,9 +1408,10 @@
   type: flag
   related: [ BindWidgetAnimOptional ]
   keywords: [umg]
-  sample: |
-    UPROPERTY(meta=(BindWidgetAnim))
-    UWidgetAnimation* RevealWindow;
+  samples:
+    - |
+      UPROPERTY(meta=(BindWidgetAnim))
+      UWidgetAnimation* RevealWindow;
   links:
     - [ "Tutorial", "https://benui.ca/unreal/ui-animations-from-cpp/" ]
 - name: BindWidgetAnimOptional
@@ -1376,9 +1422,10 @@
   type: flag
   related: [ BindWidgetAnim ]
   keywords: [umg]
-  sample: |
-    UPROPERTY(meta=(BindWidgetAnimOptional))
-    UWidgetAnimation* RevealWindow;
+  samples:
+    - |
+      UPROPERTY(meta=(BindWidgetAnimOptional))
+      UWidgetAnimation* RevealWindow;
   links: [ "https://benui.ca/unreal/ui-animations-from-cpp/" ]
 
 
@@ -1393,18 +1440,20 @@
   type: string
   position: meta
   comment: Only shows data table assets with the specified row structure class.
-  sample: |
-    UPROPERTY(EditDefaultsOnly, meta=(RequiredAssetDataTags="RowStructure=ImageRow"))
-    class UDataTable* ImageSetTable;
+  samples:
+    - |
+      UPROPERTY(EditDefaultsOnly, meta=(RequiredAssetDataTags="RowStructure=ImageRow"))
+      class UDataTable* ImageSetTable;
 
 - name: RowType
   group: Data Table
   type: string
   position: meta
   comment: Only allows selecting a data table row with a specific type.
-  sample: |
-    UPROPERTY(EditDefaultsOnly, meta=(RowType="ImageRow"))
-    class UDataTable* ImageSetTable;
+  samples:
+    - |
+      UPROPERTY(EditDefaultsOnly, meta=(RowType="ImageRow"))
+      class UDataTable* ImageSetTable;
 
 - name: ConsoleVariable
   position: meta
@@ -1414,9 +1463,10 @@
     Exposes a variable to the developer console (accessible through the tilde key `~`).
 
     Heavily used in developer settings.
-  sample: |
-    UPROPERTY(config, EditAnywhere, meta=(ConsoleVariable="r.Shadow.Funky"))
-    bool bEnableFunkyShadows = true;
+  samples:
+    - |
+      UPROPERTY(config, EditAnywhere, meta=(ConsoleVariable="r.Shadow.Funky"))
+      bool bEnableFunkyShadows = true;
   examples: [ Engine/Source/Runtime/Engine/Classes/Engine/RendererSettings.h#L214 ]
 - name: BlueprintCompilerGeneratedDefaults
   group: Blueprint
@@ -1473,9 +1523,10 @@
     text: Used for Subclass and SoftClass properties. Indicates whether abstract class types should be shown in the class picker.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
   related: [ MetaClass ]
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(AllowAbstract=true))
-    TSubclassOf<UUserWidget> ParentClass;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(AllowAbstract=true))
+      TSubclassOf<UUserWidget> ParentClass;
 - name: MustImplement
   group: Pickers
   subgroup: Class
@@ -1485,9 +1536,10 @@
   documentation:
     text: Used for Subclass and SoftClass properties. Indicates the selected class must implement a specific interface
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(MustImplement="InteractibleInterface"))
-    TSubclassOf<AActor> InteractibleActor;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(MustImplement="InteractibleInterface"))
+      TSubclassOf<AActor> InteractibleActor;
 - name: ShowTreeView
   group: Pickers
   subgroup: Class
@@ -1502,7 +1554,8 @@
   position: meta
   related: [ AllowAbstract ]
   type: flag
-  sample: |
+  samples:
+    - |
       UPROPERTY(EditAnywhere, meta=(BlueprintBaseOnly, AllowAbstract))
       TSubclassOf<class UObject> ParentClass;
   documentation:
@@ -1523,9 +1576,10 @@
   subgroup: Class
   position: meta
   type: flag
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(OnlyPlaceable))
-    TSubclassOf<AActor> ActorToSpawn;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(OnlyPlaceable))
+      TSubclassOf<AActor> ActorToSpawn;
   documentation:
     text: Used for Subclass properties. Indicates whether only placeable classes should be shown in the class picker.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -1538,9 +1592,10 @@
   documentation:
     text: Used for ComponentReference properties. Indicates whether other actor that are not in the property outer hierarchy should be shown in the component picker. 
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  sample: |
-    UPROPERTY(EditAnywhere, meta = (UseComponentPicker, AllowAnyActor))
-    FComponentReference ComponentRef;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta = (UseComponentPicker, AllowAnyActor))
+      FComponentReference ComponentRef;
 - name: UseComponentPicker
   group: Pickers
   subgroup: Component
@@ -1548,9 +1603,10 @@
   type: flag
   comment: You can pick components with `FComponentReference`? Only seems to be used once or twice in the codebase.
   related: [ AllowAnyActor ]
-  sample: |
-    UPROPERTY(EditAnywhere, meta = (UseComponentPicker, AllowAnyActor))
-    FComponentReference ComponentRef;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta = (UseComponentPicker, AllowAnyActor))
+      FComponentReference ComponentRef;
 - name: Categories
   group: Pickers
   subgroup: Gameplay Tags
@@ -1750,9 +1806,10 @@
     For a more detailed example [check out this tutorial](https://benui.ca/unreal/ui-animation/#exposing-new-properties-to-animation).
   links:
     - [ "Tutorial", "https://benui.ca/unreal/ui-animation/#exposing-new-properties-to-animation" ]
-  sample: |
-    UPROPERTY(EditAnywhere, Interp)
-    float Radius;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, Interp)
+      float Radius;
   documentation:
     text: Indicates that the value can be driven over time by a Track in Sequencer.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -1764,9 +1821,10 @@
   documentation:
     text: The property is always exposed as a data pin. Applicable only to properties that will be displayed in Persona and UMG.
     source: https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h
-  sample: |
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Settings, meta=(AlwaysAsPin))
-    EHand Hand = EHand::VR_LeftHand;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Settings, meta=(AlwaysAsPin))
+      EHand Hand = EHand::VR_LeftHand;
 - name: NeverAsPin
   group: Animation
   position: meta
@@ -1808,19 +1866,20 @@
   documentation:
     text: Used for float properties in MaterialExpression classes. If the specified FMaterialExpression pin is not connected, this value is used instead.
     source: https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h
-  sample: |
-    UCLASS(MinimalAPI)
-    class UMaterialExpressionAdd : public UMaterialExpression
-    {
-      GENERATED_BODY()
+  samples:
+    - |
+      UCLASS(MinimalAPI)
+      class UMaterialExpressionAdd : public UMaterialExpression
+      {
+        GENERATED_BODY()
 
-      UPROPERTY(meta = (RequiredInput = "false", ToolTip = "Defaults to 'ConstA' if not specified"))
-      FExpressionInput A;
+        UPROPERTY(meta = (RequiredInput = "false", ToolTip = "Defaults to 'ConstA' if not specified"))
+        FExpressionInput A;
 
-      // Only used if A is not hooked up
-      UPROPERTY(EditAnywhere, meta=(OverridingInputProperty="A"))
-      float ConstA;
-    };
+        // Only used if A is not hooked up
+        UPROPERTY(EditAnywhere, meta=(OverridingInputProperty="A"))
+        float ConstA;
+      };
 - name: RequiredInput
   group: Materials
   position: meta
@@ -1828,15 +1887,16 @@
   documentation:
     text: Used for FMaterialExpression properties in MaterialExpression classes. If specified the pin need not be connected and the value of the property marked as OverridingInputProperty will be used instead.
     source: https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h
-  sample: |
-    UCLASS(MinimalAPI, collapsecategories, hidecategories=Object)
-    class UMaterialExpressionFresnel : public UMaterialExpression
-    {
-      GENERATED_BODY()
+  samples:
+    - |
+      UCLASS(MinimalAPI, collapsecategories, hidecategories=Object)
+      class UMaterialExpressionFresnel : public UMaterialExpression
+      {
+        GENERATED_BODY()
 
-      UPROPERTY(meta = (RequiredInput = "false", ToolTip = "Defaults to 'BaseReflectFraction' if not specified"))
-      FExpressionInput BaseReflectFractionIn;
-    };
+        UPROPERTY(meta = (RequiredInput = "false", ToolTip = "Defaults to 'BaseReflectFraction' if not specified"))
+        FExpressionInput BaseReflectFractionIn;
+      };
 
 ###############################################################################
 # C++
@@ -1955,18 +2015,20 @@
   type: string
   comment: Set the label on the X axis in curves.
   related: [ YAxisName ]
-  sample: |
-    UPROPERTY(EditAnywhere, Config, meta=(XAxisName="Distance", YAxisName="Value"))
-    FRuntimeFloatCurve DistanceCurve;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, Config, meta=(XAxisName="Distance", YAxisName="Value"))
+      FRuntimeFloatCurve DistanceCurve;
 - name: YAxisName
   group: Todo
   position: meta
   type: string
   related: [ XAxisName ]
   comment: Set the label on the Y axis in curves.
-  sample: |
-    UPROPERTY(EditAnywhere, Config, meta=(XAxisName="Distance", YAxisName="Value"))
-    FRuntimeFloatCurve DistanceCurve;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, Config, meta=(XAxisName="Distance", YAxisName="Value"))
+      FRuntimeFloatCurve DistanceCurve;
 
 - name: ReadOnlyKeys
   group: Data Decorators
@@ -1980,9 +2042,10 @@
   subgroup: TMap
   position: meta
   type: flag
-  sample: |
-    UPROPERTY(EditAnywhere, meta=(ForceInlineRow))
-    TMap<FGameplayTag, FMyStruct> Prop;
+  samples:
+    - |
+      UPROPERTY(EditAnywhere, meta=(ForceInlineRow))
+      TMap<FGameplayTag, FMyStruct> Prop;
 
 
 

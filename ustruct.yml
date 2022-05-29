@@ -162,14 +162,15 @@
   documentation:
     text: Indicates that node pins of this struct type cannot be split
     source: "https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h"
-  sample: |
-    USTRUCT(meta=(DisableSplitPin))
-    struct FGameplayTag
-    {
-        GENERATED_BODY()
-        UPROPERTY(VisibleAnywhere, Category = GameplayTags)
-        FName TagName;
-    };
+  samples:
+    - |
+      USTRUCT(meta=(DisableSplitPin))
+      struct FGameplayTag
+      {
+          GENERATED_BODY()
+          UPROPERTY(VisibleAnywhere, Category = GameplayTags)
+          FName TagName;
+      };
   images: [ /assets/unreal/ustruct/disablesplitpin.jpg ]
 
 
@@ -186,33 +187,34 @@
     `HasNativeBreak` lets you specify a static `UFUNCTION()` to use instead of the default behavior when a user chooses "Break (Struct)"
 
     By default all properties marked as `BlueprintReadOnly` or `BlueprintReadWrite` would be present in the node. Defining a native break function can let you customize what is present in that node.
-  sample: |
-    USTRUCT(BlueprintType, meta = (HasNativeBreak = "ExampleProject.CatHelperLibrary.BreakCatStruct"))
-    struct FCat
-    {
-    	GENERATED_BODY()
-    public:
-    	UPROPERTY()
-    	FString Name;
-    	UPROPERTY()
-    	FLinearColor CoatColor;
-    	UPROPERTY()
-    	FString SecretPetName;
-    };
+  samples:
+    - |
+      USTRUCT(BlueprintType, meta = (HasNativeBreak = "ExampleProject.CatHelperLibrary.BreakCatStruct"))
+      struct FCat
+      {
+    	  GENERATED_BODY()
+      public:
+    	  UPROPERTY()
+    	  FString Name;
+    	  UPROPERTY()
+    	  FLinearColor CoatColor;
+    	  UPROPERTY()
+    	  FString SecretPetName;
+      };
     
-    UCLASS()
-    class UCatHelperLibrary : public UBlueprintFunctionLibrary
-    {
-    	GENERATED_BODY()
-    public:
-    	UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
-    	static void BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor);
-    };
-    void UCatHelperLibrary::BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor)
-    {
-    	OutName = Cat.Name;
-    	OutCoatColor = Cat.CoatColor;
-    }
+      UCLASS()
+      class UCatHelperLibrary : public UBlueprintFunctionLibrary
+      {
+    	  GENERATED_BODY()
+      public:
+    	  UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
+    	  static void BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor);
+      };
+      void UCatHelperLibrary::BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor)
+      {
+    	  OutName = Cat.Name;
+    	  OutCoatColor = Cat.CoatColor;
+      }
   images: [ /assets/unreal/ustruct/hasnativebreak.jpg ]
 
 
@@ -229,36 +231,37 @@
   documentation:
     text: Indicates that the struct has a custom make node (and what the path to the BlueprintCallable UFunction is) that should be used instead of the default MakeStruct node.  
     source: "https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h"
-  sample: |
-    USTRUCT(BlueprintType, meta = (HasNativeMake = "ExampleProject.CatHelperLibrary.MakeCatStruct"))
-    struct FCat
-    {
-    	GENERATED_BODY()
-    public:
-    	UPROPERTY()
-    	FString Name;
-    	UPROPERTY()
-    	FLinearColor CoatColor;
-    	UPROPERTY()
-    	FString SecretPetName;
-    };
-    
-    UCLASS()
-    class UCatHelperLibrary : public UBlueprintFunctionLibrary
-    {
-    	GENERATED_BODY()
-    public:
-    	UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
-    	static FCat MakeCatStruct(FString Name, FLinearColor CoatColor);
-    };
+  samples:
+    - |
+      USTRUCT(BlueprintType, meta = (HasNativeMake = "ExampleProject.CatHelperLibrary.MakeCatStruct"))
+      struct FCat
+      {
+      	GENERATED_BODY()
+      public:
+      	UPROPERTY()
+      	FString Name;
+      	UPROPERTY()
+      	FLinearColor CoatColor;
+      	UPROPERTY()
+      	FString SecretPetName;
+      };
+      
+      UCLASS()
+      class UCatHelperLibrary : public UBlueprintFunctionLibrary
+      {
+      	GENERATED_BODY()
+      public:
+      	UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
+      	static FCat MakeCatStruct(FString Name, FLinearColor CoatColor);
+      };
 
-    FCat UCatHelperLibrary::MakeCatStruct(FString Name, FLinearColor CoatColor)
-    {
-    	FCat Cat;
-    	Cat.Name = Name;
-    	Cat.CoatColor = CoatColor;
-    	return Cat;
-    }
+      FCat UCatHelperLibrary::MakeCatStruct(FString Name, FLinearColor CoatColor)
+      {
+      	FCat Cat;
+      	Cat.Name = Name;
+      	Cat.CoatColor = CoatColor;
+      	return Cat;
+      }
 
 
 

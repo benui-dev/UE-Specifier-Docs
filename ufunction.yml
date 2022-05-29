@@ -96,6 +96,18 @@
   group: Console
   position: main
   type: flag
+  comment: |
+    UWorld
+    UPlayerInput
+    APlayerController
+    APawn
+    AHUD
+    AGameModeBase
+    ACheatManager
+    AGameStateBase
+    APlayerCameraManager
+    
+    const bool bWorldNeedsExec = GEngine == nullptr || Cast<ULocalPlayer>(this) == nullptr || static_cast<ULocalPlayer*>(this)->ViewportClient == nullptr;
   documentation:
     text: The function can be executed from the in-game console. Exec commands only function when declared within certain Classes.
     source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
@@ -144,11 +156,12 @@
     When a blueprint is compiled where those parameters are not supplied with a value, an error like this will be shown \"The current value of the \'Color\' pin is invalid\: \'Color\' in action \'Some Color Without Ref\' must have an input wired into it (\"by ref\" params expect a valid input to operate on).\"
 
     Note that it's possible to set multiple ref parameters by using a comma-separated list.
-  sample: |
-    UFUNCTION(BlueprintCallable)
-    void SomeColorWithoutRef(const FLinearColor& Color) {}
-    UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm="Color"))
-    void SomeColorWithRef(const FLinearColor& Color) {}
+  samples:
+    - |
+      UFUNCTION(BlueprintCallable)
+      void SomeColorWithoutRef(const FLinearColor& Color) {}
+      UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm="Color"))
+      void SomeColorWithRef(const FLinearColor& Color) {}
   images: [ /assets/unreal/ufunction/autocreaterefterm.jpg ]
   documentation:
     text: The listed parameters, although passed by reference, will have an automatically created default if their pins are left disconnected. This is a convenience feature for Blueprints, often used on array pins.
@@ -196,12 +209,13 @@
   type: string
   position: meta
   images: [ /assets/unreal/ufunction/compactnodetitle.jpg ]
-  sample: |
-    UFUNCTION(BlueprintPure)
-    FString WithoutCompactTitle(bool InBool);
+  samples:
+    - |
+      UFUNCTION(BlueprintPure)
+      FString WithoutCompactTitle(bool InBool);
 
-    UFUNCTION(BlueprintPure, meta=(CompactNodeTitle = ":)"))
-    FString WithCompactTitle(bool InBool);
+      UFUNCTION(BlueprintPure, meta=(CompactNodeTitle = ":)"))
+      FString WithCompactTitle(bool InBool);
   documentation:
     text: Indicates that a BlueprintCallable function should display in the compact display mode, and provides the name to display in that mode.
     source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
@@ -240,9 +254,10 @@
   type: string
   position: meta
   related: [ DynamicOutputParam ]
-  sample: |
-    UFUNCTION(BlueprintCallable, Category="Utilities", meta=(WorldContext="WorldContextObject", DeterminesOutputType="ActorClass", DynamicOutputParam="OutActors"))
-    static void GetAllActorsOfClass(const UObject* WorldContextObject, TSubclassOf<AActor> ActorClass, TArray<AActor*>& OutActors);
+  samples:
+    - |
+      UFUNCTION(BlueprintCallable, Category="Utilities", meta=(WorldContext="WorldContextObject", DeterminesOutputType="ActorClass", DynamicOutputParam="OutActors"))
+      static void GetAllActorsOfClass(const UObject* WorldContextObject, TSubclassOf<AActor> ActorClass, TArray<AActor*>& OutActors);
   documentation:
     text: "The return type of the function will dynamically change to match the input that is connected to the named parameter pin. The parameter should be a templated type like TSubClassOf<X> or TSoftObjectPtr<X>, where the function's original return type is X* or a container with X* as the value type, such as TArray<X*>."
     source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
@@ -265,17 +280,18 @@
   type: string
   type-comment: name of enum parameter
   position: meta
-  sample: |
-    UENUM()
-    enum class EAnimalType : uint8
-    {
-      Cat,
-      Dog,
-      Rooster
-    };
+  samples:
+    - |
+      UENUM()
+      enum class EAnimalType : uint8
+      {
+        Cat,
+        Dog,
+        Rooster
+      };
 
-    UFUNCTION(BlueprintCallable, meta=(ExpandBoolAsExec="DidSucceed"))
-    static void SwitchAnimalByName(FString Name, EAnimalType& Animal);
+      UFUNCTION(BlueprintCallable, meta=(ExpandBoolAsExec="DidSucceed"))
+      static void SwitchAnimalByName(FString Name, EAnimalType& Animal);
   images: [ /assets/unreal/ufunction/expandenumsasexecs.jpg ]
   documentation:
     text: For BlueprintCallable functions, this indicates that one input execution pin should be created for each entry in the enum used by the parameter. The parameter must be of an enumerated type that has the UENUM tag.
@@ -468,9 +484,10 @@
   type-comment: Parameter name
   group: Blueprint Logic
   related: [ DeterminesOutputType ]
-  sample: |
-    UFUNCTION(BlueprintCallable, Category="Utilities", meta=(WorldContext="WorldContextObject", DeterminesOutputType="ActorClass", DynamicOutputParam="OutActors"))
-    static void GetAllActorsOfClass(const UObject* WorldContextObject, TSubclassOf<AActor> ActorClass, TArray<AActor*>& OutActors);
+  samples:
+    - |
+      UFUNCTION(BlueprintCallable, Category="Utilities", meta=(WorldContext="WorldContextObject", DeterminesOutputType="ActorClass", DynamicOutputParam="OutActors"))
+      static void GetAllActorsOfClass(const UObject* WorldContextObject, TSubclassOf<AActor> ActorClass, TArray<AActor*>& OutActors);
 - name: AllowPrivateAccess 
   position: meta
   type: bool
