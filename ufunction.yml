@@ -30,7 +30,7 @@
   comment: |
     A `BlueprintPure` function is shown as a node with no execution pin. By
     default functions marked `const` will be exposed as pure functions. To make a const function not a pure function, use `BlueprintPure=false`.
-  images: [ /assets/unreal/ufunction/blueprintpure.jpg ]
+  images: [ /ufunction/blueprintpure.jpg ]
   samples:
   - |
     UFUNCTION(BlueprintPure)
@@ -75,7 +75,7 @@
   documentation:
     text: This function can be called in the editor on selected instances via a button in the Details panel.
     source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
-  images: [ /assets/unreal/ufunction/callineditor.jpg ]
+  images: [ /ufunction/callineditor.jpg ]
 - name: Category
   group: General
   type: flag
@@ -162,7 +162,7 @@
       void SomeColorWithoutRef(const FLinearColor& Color) {}
       UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm="Color"))
       void SomeColorWithRef(const FLinearColor& Color) {}
-  images: [ /assets/unreal/ufunction/autocreaterefterm.jpg ]
+  images: [ /ufunction/autocreaterefterm.jpg ]
   documentation:
     text: The listed parameters, although passed by reference, will have an automatically created default if their pins are left disconnected. This is a convenience feature for Blueprints, often used on array pins.
     source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
@@ -208,7 +208,7 @@
   group: Appearance
   type: string
   position: meta
-  images: [ /assets/unreal/ufunction/compactnodetitle.jpg ]
+  images: [ /ufunction/compactnodetitle.jpg ]
   samples:
     - |
       UFUNCTION(BlueprintPure)
@@ -292,7 +292,7 @@
 
       UFUNCTION(BlueprintCallable, meta=(ExpandBoolAsExec="DidSucceed"))
       static void SwitchAnimalByName(FString Name, EAnimalType& Animal);
-  images: [ /assets/unreal/ufunction/expandenumsasexecs.jpg ]
+  images: [ /ufunction/expandenumsasexecs.jpg ]
   documentation:
     text: For BlueprintCallable functions, this indicates that one input execution pin should be created for each entry in the enum used by the parameter. The parameter must be of an enumerated type that has the UENUM tag.
     source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
@@ -518,9 +518,9 @@
       UFUNCTION(BlueprintCallable, meta=(RectColor="(R=0,G=1,B=0,A=1)"))
       void DefaultStructValue(FLinearColor RectColor);
   images:
-    - /assets/unreal/ufunction/parametername.jpg
-    - /assets/unreal/ufunction/defaultstructvalue.jpg
-    - /assets/unreal/ufunction/defaulttsubclassofvalue.jpg
+    - /ufunction/parametername.jpg
+    - /ufunction/defaultstructvalue.jpg
+    - /ufunction/defaulttsubclassofvalue.jpg
 - name: DataTablePin
   position: meta
   type: string

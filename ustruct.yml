@@ -171,7 +171,7 @@
           UPROPERTY(VisibleAnywhere, Category = GameplayTags)
           FName TagName;
       };
-  images: [ /assets/unreal/ustruct/disablesplitpin.jpg ]
+  images: [ /ustruct/disablesplitpin.jpg ]
 
 
 - name: HasNativeBreak
@@ -215,7 +215,7 @@
     	  OutName = Cat.Name;
     	  OutCoatColor = Cat.CoatColor;
       }
-  images: [ /assets/unreal/ustruct/hasnativebreak.jpg ]
+  images: [ /ustruct/hasnativebreak.jpg ]
 
 
 - name: HasNativeMake
@@ -224,7 +224,7 @@
   type-comment: Function name
   related: [ HasNativeBreak, DisableSplitPin ]
   position: meta
-  images: [ /assets/unreal/ustruct/hasnativemake.jpg ]
+  images: [ /ustruct/hasnativemake.jpg ]
   comment: |
     Similar to `HasNativeBreak`, `HasNativeMake` allows you to specify a `static` `UFUNCTION()` to use to create and fill the values of a struct, without having to make the values within the struct `BlueprintReadWrite`.
 

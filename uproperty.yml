@@ -18,7 +18,7 @@
   documentation:
     text: Indicates that this property is visible in all property windows, but cannot be edited. This Specifier is incompatible with the "Edit" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/visibility-defaults-selected.png, /assets/unreal/uproperty/visibility-instance-selected.jpg ]
+  images: [ /uproperty/visibility-defaults-selected.png, /uproperty/visibility-instance-selected.jpg ]
 - name: VisibleDefaultsOnly
   group: Editor
   subgroup: Visibility
@@ -38,7 +38,7 @@
   documentation:
     text: Indicates that this property is only visible in property windows for archetypes, and cannot be edited. This Specifier is incompatible with any of the "Edit" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/visibility-defaults-selected.png ]
+  images: [ /uproperty/visibility-defaults-selected.png ]
 - name: VisibleInstanceOnly
   group: Editor
   subgroup: Visibility
@@ -58,7 +58,7 @@
   documentation:
     text: Indicates that this property is only visible in property windows for instances, not for archetypes, and cannot be edited. This Specifier is incompatible with any of the "Edit" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/visibility-instance-selected.jpg ]
+  images: [ /uproperty/visibility-instance-selected.jpg ]
 - name: EditAnywhere
   group: Editor
   subgroup: Visibility
@@ -77,7 +77,7 @@
   documentation:
     text: Indicates that this property can be edited by property windows, on archetypes and instances. This Specifier is incompatible with any of the the "Visible" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/visibility-defaults-selected.png, /assets/unreal/uproperty/visibility-instance-selected.jpg ]
+  images: [ /uproperty/visibility-defaults-selected.png, /uproperty/visibility-instance-selected.jpg ]
 - name: EditInstanceOnly
   group: Editor
   subgroup: Visibility
@@ -94,7 +94,7 @@
   documentation:
     text: Indicates that this property can be edited by property windows, but only on instances, not on archetypes. This Specifier is incompatible with any of the "Visible" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/visibility-instance-selected.jpg ]
+  images: [ /uproperty/visibility-instance-selected.jpg ]
 - name: EditDefaultsOnly
   group: Editor
   subgroup: Visibility
@@ -109,7 +109,7 @@
   documentation:
     text: Indicates that this property can be edited by property windows, but only on archetypes. This Specifier is incompatible with any of the "Visible" Specifiers.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/visibility-defaults-selected.png ]
+  images: [ /uproperty/visibility-defaults-selected.png ]
 - name: HideInDetailPanel
   group: Editor
   subgroup: Visibility
@@ -129,7 +129,7 @@
   documentation:
     text: Used by struct properties. Indicates that the inner properties will not be shown inside an expandable struct, but promoted up a level.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  images: [ /assets/unreal/uproperty/show-only-inner-properties.jpg ]
+  images: [ /uproperty/show-only-inner-properties.jpg ]
   samples:
     - |
       USTRUCT()
@@ -176,7 +176,7 @@
 
     UPROPERTY(EditAnywhere, Category="Animals|Birds")
     int32 FlyingSpeed = 99;
-  images: [ /assets/unreal/uproperty/category.jpg, /assets/unreal/uproperty/category-blueprint-graph.jpg ]
+  images: [ /uproperty/category.jpg, /uproperty/category-blueprint-graph.jpg ]
 - name: DisplayName
   group: Editor
   subgroup: Display
@@ -190,7 +190,7 @@
     - |
       UPROPERTY(EditAnywhere, meta=(DisplayName="Display Font"))
       FSoftObjectPath DisplayFontPath;
-  images: [ /assets/unreal/uproperty/displayname.jpg, /assets/unreal/uproperty/displayname-blueprint-graph.jpg ]
+  images: [ /uproperty/displayname.jpg, /uproperty/displayname-blueprint-graph.jpg ]
 - name: ToolTip
   group: Editor
   subgroup: Display
@@ -223,7 +223,7 @@
   documentation:
     text: The property will be placed in the advanced (dropdown) section of any panel where it appears.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/advanceddisplay.gif ]
+  images: [ /uproperty/advanceddisplay.gif ]
 - name: SimpleDisplay
   group: Editor
   subgroup: Display
@@ -354,7 +354,7 @@
 
       UPROPERTY(EditAnywhere, meta=(EditCondition="bCanFly", Units="s"))
       float FlapPeriodSeconds;
-  images: [ /assets/unreal/uproperty/inline-edit-condition-toggle.gif ]
+  images: [ /uproperty/inline-edit-condition-toggle.gif ]
   documentation:
     text: Signifies that the bool property is only displayed inline as an edit condition toggle in other properties, and should not be shown on its own row.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -389,7 +389,7 @@
       int32 ShowFirst;
       UPROPERTY(EditAnywhere)
       int32 ShowNext;
-  images: [ /assets/unreal/uproperty/displayafter.jpg ]
+  images: [ /uproperty/displayafter.jpg ]
 - name: DisplayPriority
   group: Editor
   subgroup: Display
@@ -419,7 +419,7 @@
       int32 NoPriority;
       UPROPERTY(EditAnywhere, meta=(DisplayPriority=-1)
       int32 PriorityNegative1;
-  images: [ /assets/unreal/uproperty/displaypriority.jpg ]
+  images: [ /uproperty/displaypriority.jpg ]
 - name: DisplayThumbnail
   group: Editor
   subgroup: Display
@@ -503,7 +503,7 @@
     This hides the little return arrow that is shown to reset a value back to the value defined in the parent Blueprint or C++ class.
 
     This can be especially useful for large structs or arrays, where you would want to avoid people being able to accidentally wipe the entire contents.
-  images: [ /assets/unreal/uproperty/noresettodefault.jpg ]
+  images: [ /uproperty/noresettodefault.jpg ]
   samples:
     - |
       UPROPERTY(EditAnywhere, meta=(NoResetToDefault))
@@ -627,7 +627,7 @@
   type-comment: float, int
   keywords: [number, editor]
   relate: [ Multiple ]
-  images: [ /assets/unreal/uproperty/delta.gif ]
+  images: [ /uproperty/delta.gif ]
   samples:
     - |
       // Dragging this will make it step up in increments of 12
@@ -653,7 +653,7 @@
   comment: Sets a unit to be shown after the number. For all possible values see the `TEXT` entries in `FParseCandidates` inside [`UnitConversion.cpp`](https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Private/Math/UnitConversion.cpp#L20). Using an unknown value will result in a compile error. Many units have mutliple aliases, for example "Kilometers" and "km" will result in the same unit being used. Units are case-insensitive.
     `Units` also allows users to input in related units. Entering `100f` into a field with `Units="Celsius"` results in `37.77779 °C`.
   source: /Engine/Source/Runtime/Core/Private/Math/UnitConversion.cpp
-  images: [ /assets/unreal/uproperty/units.jpg, /assets/unreal/uproperty/units-conversion.gif ]
+  images: [ /uproperty/units.jpg, /uproperty/units-conversion.gif ]
   position: meta
   type: string
   keywords: [ number, editor ]
@@ -741,7 +741,7 @@
           // Get skeletal mesh, populate list of socket names
           return SocketNames;
       }
-  images: [ /assets/unreal/uproperty/getoptions.jpg ]
+  images: [ /uproperty/getoptions.jpg ]
 - name: MultiLine
   group: Data Decorators
   subgroup: Text
@@ -751,7 +751,7 @@
     Shows a text box that will grow as the user adds multiple lines. Use `Shift+Enter` to enter a newline character.
 
     Note that this is *not* a flag property but a *bool* property. `meta=(MultiLine)` won't do anything. It has to be `meta=(MultiLine=true)`
-  images: [ /assets/unreal/uproperty/multiline.jpg ]
+  images: [ /uproperty/multiline.jpg ]
   samples:
     - |
       UPROPERTY(EditAnywhere, meta=(MultiLine=true))
@@ -763,7 +763,7 @@
   group: Data Decorators
   subgroup: Text
   position: meta
-  images: [ /assets/unreal/uproperty/passwordfield.jpg ]
+  images: [ /uproperty/passwordfield.jpg ]
   type: bool
   comment: Note that this is *not* a flag property but a *bool* property. `meta=(PasswordField)` won't do anything. It has to be `meta=(PasswordField=true)`
   samples:
@@ -800,14 +800,14 @@
       };
       UPROPERTY(EditAnywhere, meta=(ArraySizeEnum="EArmorSlots"))
       FColor ColorForSlot[EArmorSlots::Num];
-  images: [ /assets/unreal/uproperty/arraysizeenum.jpg ]
+  images: [ /uproperty/arraysizeenum.jpg ]
 - name: EditFixedSize
   group: Data Decorators
   subgroup: Array
   position: main
   type: flag
   related: [ EditFixedOrder ]
-  images: [ /assets/unreal/uproperty/editfixedsize.jpg ]
+  images: [ /uproperty/editfixedsize.jpg ]
   samples:
     - |
       UMyObject() {
@@ -827,7 +827,7 @@
   type: flag
   position: meta
   related: [ EditFixedSize ]
-  images: [ /assets/unreal/uproperty/editfixedorder.jpg ]
+  images: [ /uproperty/editfixedorder.jpg ]
   samples:
     - |
       UPROPERTY(EditAnywhere, meta=(EditFixedOrder))
@@ -848,7 +848,7 @@
   documentation:
     text: Used by arrays of structs. Indicates a single property inside of the struct that should be used as a title summary when the array entry is collapsed.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  images: [ /assets/unreal/uproperty/titleproperty.png, /assets/unreal/uproperty/titleproperty-format.jpg ]
+  images: [ /uproperty/titleproperty.png, /uproperty/titleproperty-format.jpg ]
   samples:
   - |
     USTRUCT()
@@ -906,7 +906,7 @@
   position: meta
   type: flag
   comment: Works for both `FColor` and `FLinearColor` properties. The alpha property is hidden both in the details panel and in the Color Picker window.
-  images: [ /assets/unreal/uproperty/hidealphachannel.jpg, /assets/unreal/uproperty/hidealphachannel-colorpicker.jpg ]
+  images: [ /uproperty/hidealphachannel.jpg, /uproperty/hidealphachannel-colorpicker.jpg ]
   documentation:
     text: Used for FColor and FLinearColor properties. Indicates that the Alpha property should be hidden when displaying the property widget in the details.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -928,7 +928,7 @@
   documentation:
     text: Prevents this Object reference from being set to none from the editor. Hides clear (and browse) button in the editor.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  images: [ /assets/unreal/uproperty/noclear.jpg ]
+  images: [ /uproperty/noclear.jpg ]
 
 ###############################################################################
 # Data Decorators - Bitmask
@@ -955,7 +955,7 @@
       UPROPERTY(EditDefaultsOnly, meta = (Bitmask, BitmaskEnum = EAnimalFlags))
       int32 AnimalFlags;
   examples: [ c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Experimental/VirtualProductionUtilities/Source/VPUtilities/Public/VPViewportTickableActorBase.h#L11 ]
-  images: [ /assets/unreal/uproperty/bitmask.jpg ]
+  images: [ /uproperty/bitmask.jpg ]
 - name: BitmaskEnum
   group: Data Decorators
   subgroup: Bitmask
@@ -976,7 +976,7 @@
     - |
       UPROPERTY(EditAnywhere, meta=(AllowPreserveRatio))
       FVector CustomScale;
-  images: [ /assets/unreal/uproperty/allowpreserveratio.jpg ]
+  images: [ /uproperty/allowpreserveratio.jpg ]
   documentation:
     text: Used for `FVector` properties. It causes a ratio lock to be added when displaying this property in details panels.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -993,8 +993,8 @@
     This shows a kind of janky-looking wireframe diamond in-world at an offset relative to the parent actor. It also shows some debug text. See the screenshot.
     A lot of examples seem to treat this like a boolean, but it's a flag; it just checks for `HasMetaData`.
   images: 
-    - /assets/unreal/uproperty/makeeditwidget-property.jpg
-    - /assets/unreal/uproperty/makeeditwidget-world.jpg
+    - /uproperty/makeeditwidget-property.jpg
+    - /uproperty/makeeditwidget-world.jpg
   documentation:
     text: Used for Transform/Rotator properties (also works on arrays of them). Indicates that the property should be exposed in the viewport as a movable widget.
     source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -1075,7 +1075,7 @@
   type: flag
   incompatible: [ BlueprintReadWrite, BlueprintSetter ]
   related: [ AllowPrivateAccess, BlueprintGetter ]
-  images: [ /assets/unreal/uproperty/blueprintvisibility.jpg ]
+  images: [ /uproperty/blueprintvisibility.jpg ]
   comment: |
     `BlueprintReadOnly` and its sibling `BlueprintReadWrite` Allow
 
@@ -1090,7 +1090,7 @@
   position: main
   type: flag
   incompatible: [ BlueprintReadOnly ]
-  images: [ /assets/unreal/uproperty/blueprintvisibility.jpg ]
+  images: [ /uproperty/blueprintvisibility.jpg ]
   documentation:
     text: This property can be read or written from a Blueprint. This Specifier is incompatible with the `BlueprintReadOnly` Specifier.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -1203,7 +1203,7 @@
       // Better
       UPROPERTY(BlueprintReadWrite, meta=(DisplayName="PlantName", DeprecatedProperty, DeprecationMessage="PlantName is deprecated, instead use PlantDisplayName."))
       FString DEPRECATED_PlantName;
-  images: [ /assets/unreal/uproperty/deprecatedproperty-simple.jpg, /assets/unreal/uproperty/deprecatedproperty-complex.jpg ]
+  images: [ /uproperty/deprecatedproperty-simple.jpg, /uproperty/deprecatedproperty-complex.jpg ]
   required: [ DeprecationMessage ]
   documentation:
     text: This property is deprecated, any blueprint references to it cause a compilation warning.
@@ -1249,7 +1249,7 @@
     You must mark `ExposeOnSpawn` properties as either `BlueprintReadOnly` or `BlueprintReadWrite`. It doesn't seem to matter which for the purposes of `ExposeOnSpawn`. If you add `ExposeOnSpawn` without `BlueprintReadOnly` or `BlueprintReadWrite`, the UBT shows an error mentioning `BlueprintVisible` but I guess this is a generic term for both `BlueprintReadOnly` and `BlueprintReadWrite`.
 
     Some editor code that uses this meta flag checks for non-null string, some checks for `\"true\"` for truthiness. Some examples in the codebase use it like a flag, others like a bool. I would recommend to treat it like a bool.
-  images: [ /assets/unreal/uproperty/exposeonspawn.jpg ]
+  images: [ /uproperty/exposeonspawn.jpg ]
   samples:
     - |
       UPROPERTY(BlueprintReadOnly, meta=(ExposeOnSpawn=true))

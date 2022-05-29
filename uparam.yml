@@ -26,7 +26,7 @@
     * `FillDogInfo` takes an empty data structure that is provided to it, and fills it out. In Blueprints it is shown as an output pin.
     * `UseAndFillDogInfo` takes a **reference** to a data structure as input. That means it can change the values within the data structure. If you do not need to change the values of the data structure, then see `UseDogInfo`.
     * `UseDogInfo` takes a `const` reference data structure. It cannot change the values of the data.
-  images: [ /assets/unreal/uparam/uparam-ref.jpg ]
+  images: [ /uparam/uparam-ref.jpg ]
   samples:
     - |
       // Fill an empty data structure

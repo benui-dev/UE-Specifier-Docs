@@ -25,7 +25,7 @@
     {
         GENERATED_BODY()
     };
-  images: [ /assets/unreal/uclass/classgroup.jpg ]
+  images: [ /uclass/classgroup.jpg ]
   documentation:
     text: Indicates that Unreal Editor's Actor Browser should include this class and any subclass of this class within the specified GroupName when Group View is enabled in the Actor Browser.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
