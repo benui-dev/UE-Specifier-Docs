@@ -5,11 +5,12 @@
   position: main
   comment: |
     Allows renaming parameters in `UFUNCTION` functions.
-  sample: |
-    UFUNCTION(BlueprintCallable)
-    void MakeDog(
-      UPARAM(DisplayName = "Years (dog years)") float Years,
-      UPARAM(DisplayName = "Fur Color") FLinearColor Color);
+  samples:
+    - |
+      UFUNCTION(BlueprintCallable)
+      void MakeDog(
+        UPARAM(DisplayName = "Years (dog years)") float Years,
+        UPARAM(DisplayName = "Fur Color") FLinearColor Color);
 
 - name: ref
   group: Blueprint Logic
@@ -26,19 +27,20 @@
     * `UseAndFillDogInfo` takes a **reference** to a data structure as input. That means it can change the values within the data structure. If you do not need to change the values of the data structure, then see `UseDogInfo`.
     * `UseDogInfo` takes a `const` reference data structure. It cannot change the values of the data.
   images: [ /assets/unreal/uparam/uparam-ref.jpg ]
-  sample: |
-    // Fill an empty data structure
-    UFUNCTION(BlueprintCallable)
-    void FillDogInfo(FDogInfo& OutResult);
+  samples:
+    - |
+      // Fill an empty data structure
+      UFUNCTION(BlueprintCallable)
+      void FillDogInfo(FDogInfo& OutResult);
 
-    // Use existing data, add some more
-    UFUNCTION(BlueprintCallable)
-    void UseAndFillDogInfo(
-        UPARAM(ref) FDogInfo& SearchParams);
+      // Use existing data, add some more
+      UFUNCTION(BlueprintCallable)
+      void UseAndFillDogInfo(
+          UPARAM(ref) FDogInfo& SearchParams);
 
-    // Just use existing data and don't change it
-    UFUNCTION(BlueprintCallable)
-    void UseDogInfo(const FDogInfo& SearchParams);
+      // Just use existing data and don't change it
+      UFUNCTION(BlueprintCallable)
+      void UseDogInfo(const FDogInfo& SearchParams);
 
 - name: AllowAbstract
   group: Blueprint Logic
@@ -46,9 +48,10 @@
   position: meta
   comment: |
     Works exclusively with `TSubclassOf`. By default, `TSubclassOf<T>` will allow abstract choosing classes.
-  sample: |
-    UFUNCTION(BlueprintCallable, Category = "Composure", meta = (DeterminesOutputType = "OutputType"))
-    UCompositingElementOutput* FindOutputPass(UPARAM(meta = (AllowAbstract = "false"))TSubclassOf<UCompositingElementOutput> OutputType, FName OptionalPassName = NAME_None);
+  samples:
+    - |
+      UFUNCTION(BlueprintCallable, Category = "Composure", meta = (DeterminesOutputType = "OutputType"))
+      UCompositingElementOutput* FindOutputPass(UPARAM(meta = (AllowAbstract = "false"))TSubclassOf<UCompositingElementOutput> OutputType, FName OptionalPassName = NAME_None);
 
 - name: Categories
   group: Blueprint Logic

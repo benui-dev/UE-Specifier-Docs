@@ -5,14 +5,15 @@
   group: Display
   position: main
   type: string
-  sample: |
-    UENUM(BlueprintType)
-    enum class UMetaExample : uint8
-    {
-      Cat UMETA(DisplayName="Kitty"),
-      Dog,
-      Rooster,
-    };
+  samples:
+    - |
+      UENUM(BlueprintType)
+      enum class UMetaExample : uint8
+      {
+        Cat UMETA(DisplayName="Kitty"),
+        Dog,
+        Rooster,
+      };
   documentation:
     text: This value's name will be the text provided here, rather than the code-generated name.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
@@ -21,15 +22,16 @@
   group: Display
   position: main
   type: flag
-  sample: |
-    UENUM(BlueprintType)
-    enum class UMetaExample : uint8
-    {
-      Cat,
-      Dog,
-      Rooster,
-      Count UMETA(Hidden),
-    };
+  samples:
+    - |
+      UENUM(BlueprintType)
+      enum class UMetaExample : uint8
+      {
+        Cat,
+        Dog,
+        Rooster,
+        Count UMETA(Hidden),
+      };
   comment:
     This can be used in conjunction with `ENUM_RANGE_BY_COUNT` to allow [iteration over `UENUM`](/unreal/iterate-over-enum-tenumrange)
   documentation:
@@ -40,15 +42,16 @@
   group: Display
   position: main
   type: string
-  sample: |
-    UENUM(BlueprintType)
-    enum class UMetaExample : uint8
-    {
-      Cat,
-      Dog,
-      Rooster UMETA(ToolTip="It's like a chicken"),
-      Count,
-    };
+  samples:
+    - |
+      UENUM(BlueprintType)
+      enum class UMetaExample : uint8
+      {
+        Cat,
+        Dog,
+        Rooster UMETA(ToolTip="It's like a chicken"),
+        Count,
+      };
   documentation:
     text: Overrides the automatically generated tooltip from code comments.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers

@@ -18,7 +18,8 @@
     Class Group must be something already registered, you can't put arbitrary strings in here.
 
     Seems to be only used for the Add Component button within an actor.
-  sample: |
+  samples:
+  - |
     UCLASS(ClassGroup="Animation")
     class UMyActorComponent : public UActorComponent
     {
@@ -96,15 +97,16 @@
   documentation:
     text: The Abstract Specifier declares the class as an "abstract base class", preventing the user from adding Actors of this class to Levels. This is useful for classes which are not meaningful on their own. For example, the ATriggerBase base class is abstract, while the ATriggerBox subclass is not abstract and can be placed in a Level.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  sample: |
-    // I am abstract, you can't instantiate me!
-    UCLASS(Abstract)
-    class UAnimalBase : public UObject
-    {
-      GENERATED_BODY()
-      public:
-        UAnimalBase(const FObjectInitializer& ObjectInitializer);
-    };
+  samples:
+    - |
+      // I am abstract, you can't instantiate me!
+      UCLASS(Abstract)
+      class UAnimalBase : public UObject
+      {
+        GENERATED_BODY()
+        public:
+          UAnimalBase(const FObjectInitializer& ObjectInitializer);
+      };
 
 
 - name: Blueprintable
@@ -139,9 +141,10 @@
   group: Blueprint
   type: flag
   position: main
-  sample: |
-    UCLASS(BlueprintType)
-    class UExampleObject : public UObject
+  samples:
+    - |
+      UCLASS(BlueprintType)
+      class UExampleObject : public UObject
   documentation:
     text: Exposes this class as a type that can be used for variables in Blueprints.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
@@ -383,9 +386,10 @@
   related: [ ShowCategories, HideCategories  ]
   comment:
     Only seems to be used in one place in the source, `UCommonTextBlock`. Seems to cause the specified categories to be shown first.
-  sample: |
-    UCLASS(Config = CommonUI, DefaultConfig, ClassGroup = UI, meta = (Category = "Common UI", DisplayName = "Common Text", PrioritizeCategories = "Content"))
-    class COMMONUI_API UCommonTextBlock : public UTextBlock
+  samples:
+    - |
+      UCLASS(Config = CommonUI, DefaultConfig, ClassGroup = UI, meta = (Category = "Common UI", DisplayName = "Common Text", PrioritizeCategories = "Content"))
+      class COMMONUI_API UCommonTextBlock : public UTextBlock
 
 
 - name: Transient
@@ -412,9 +416,10 @@
   type: string
   position: main
   comment: This is handy for making it clear that a class is designed to be owned by another. Maybe it uses `GetOuter` so it won't work when created within another class. Commonly used with `APlayerController`.
-  sample: |
-    UCLASS(Within=PlayerController)
-    class ENGINE_API UPlayerInput : public UObject
+  samples:
+    - |
+      UCLASS(Within=PlayerController)
+      class ENGINE_API UPlayerInput : public UObject
   documentation:
     text: Objects of this class cannot exist outside of an instance of an OuterClassName Object. This means that creating an Object of this class requires that an instance of OuterClassName is provided as its Outer Object.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
@@ -502,9 +507,10 @@
   type: bool
   position: meta
   comment: Only used in two places in the engine, on `UUserWidget` and `DragDropOperation`. TODO is it bool or flag?
-  sample: |
-    UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
-    class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
+  samples:
+    - |
+      UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
+      class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
   documentation:
     text: Do not spawn an Object of the class using Generic Create Object node in Blueprint Scripts; this specifier applies only to Blueprint-type classes that are neither Actors nor Actor Components.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
@@ -556,9 +562,10 @@
   group: Todo
   type: string
   position: meta
-  sample: |
-    UCLASS(meta=(RestrictedToClasses="BTNode"))
-    class AIMODULE_API UBTFunctionLibrary : public UBlueprintFunctionLibrary
+  samples:
+    - |
+      UCLASS(meta=(RestrictedToClasses="BTNode"))
+      class AIMODULE_API UBTFunctionLibrary : public UBlueprintFunctionLibrary
   documentation:
     text: Blueprint function library classes can use this to restrict usage to the classes named in the list.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
@@ -587,9 +594,10 @@
   position: meta
   related: [ ToolTip ]
   comment: TODO Look into how this is different to ToolTip
-  sample: |
-    UCLASS(meta=(ShortTooltip="A layout panel for automatically laying child widgets out vertically"))
-    class UMG_API UVerticalBox : public UPanelWidget
+  samples:
+    - |
+      UCLASS(meta=(ShortTooltip="A layout panel for automatically laying child widgets out vertically"))
+      class UMG_API UVerticalBox : public UPanelWidget
   documentation:
     text: A short tooltip that is used in some contexts where the full tooltip might be overwhelming, such as the Parent Class Picker dialog.
     source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
@@ -599,35 +607,38 @@
   type: flag
   position: meta
   comment: Only used in one place in the engine, on `UUserWidget`.
-  sample: |
-    UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
-    class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
+  samples:
+    - |
+      UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
+      class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
 - name: EntryInterface
   group: UI
   type: string
   type-comment: Interface name without leading `I`
   position: meta
   comment: Used to specify the interface that must be implemented by entries to be usable by this list. Only used on `UListViewBase` and `UListView`.
-  sample: |
-    /**
-     * A virtualized list that allows up to thousands of items to be displayed.
-     * 
-     * An important distinction to keep in mind here is "Item" vs. "Entry"
-     * The list itself is based on a list of n items, but only creates as many entry widgets as can fit on screen.
-     * For example, a scrolling ListView of 200 items with 5 currently visible will only have created 5 entry widgets.
-     *
-     * To make a widget usable as an entry in a ListView, it must inherit from the IUserObjectListEntry interface.
-     */
-    UCLASS(meta = (EntryInterface = UserObjectListEntry))
-    class UMG_API UListView : public UListViewBase, public ITypedUMGListView<UObject*>
+  samples:
+    - |
+      /**
+       * A virtualized list that allows up to thousands of items to be displayed.
+       * 
+       * An important distinction to keep in mind here is "Item" vs. "Entry"
+       * The list itself is based on a list of n items, but only creates as many entry widgets as can fit on screen.
+       * For example, a scrolling ListView of 200 items with 5 currently visible will only have created 5 entry widgets.
+       *
+       * To make a widget usable as an entry in a ListView, it must inherit from the IUserObjectListEntry interface.
+       */
+      UCLASS(meta = (EntryInterface = UserObjectListEntry))
+      class UMG_API UListView : public UListViewBase, public ITypedUMGListView<UObject*>
 - name: DisplayThumbnail
   group: Todo
   type: bool
   position: meta
   related: [ uproperty.displaythumbnail ]
-  sample: |
-    UCLASS(BlueprintType, meta = (DisplayThumbnail = "true"))
-    class PAPER2D_API UPaperFlipbook : public UObject
+  samples:
+    - |
+      UCLASS(BlueprintType, meta = (DisplayThumbnail = "true"))
+      class PAPER2D_API UPaperFlipbook : public UObject
 
 - name: Experimental
   group: Todo
@@ -644,17 +655,19 @@
   type: string
   type-comment: Class name without prefix
   position: meta
-  sample: |
-    UCLASS(Abstract, meta = (ExposedAsyncProxy = AsyncAction))
-    class GAMEPLAYABILITIES_API UAbilityAsync : public UBlueprintAsyncActionBase
+  samples:
+    - |
+      UCLASS(Abstract, meta = (ExposedAsyncProxy = AsyncAction))
+      class GAMEPLAYABILITIES_API UAbilityAsync : public UBlueprintAsyncActionBase
 
 - name: ScriptName
   group: Todo
   type: string
   position: main
-  sample: |
-    UCLASS(MinimalAPI, meta=(ScriptName="ComposureLibrary"))
-    class UComposureBlueprintLibrary : public UBlueprintFunctionLibrary
+  samples:
+    - |
+      UCLASS(MinimalAPI, meta=(ScriptName="ComposureLibrary"))
+      class UComposureBlueprintLibrary : public UBlueprintFunctionLibrary
 
 ###############################################################################
 #
