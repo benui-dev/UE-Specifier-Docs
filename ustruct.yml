@@ -192,28 +192,28 @@
       USTRUCT(BlueprintType, meta = (HasNativeBreak = "ExampleProject.CatHelperLibrary.BreakCatStruct"))
       struct FCat
       {
-    	  GENERATED_BODY()
+        GENERATED_BODY()
       public:
-    	  UPROPERTY()
-    	  FString Name;
-    	  UPROPERTY()
-    	  FLinearColor CoatColor;
-    	  UPROPERTY()
-    	  FString SecretPetName;
+        UPROPERTY()
+        FString Name;
+        UPROPERTY()
+        FLinearColor CoatColor;
+        UPROPERTY()
+        FString SecretPetName;
       };
     
       UCLASS()
       class UCatHelperLibrary : public UBlueprintFunctionLibrary
       {
-    	  GENERATED_BODY()
+        GENERATED_BODY()
       public:
-    	  UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
-    	  static void BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor);
+        UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
+        static void BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor);
       };
       void UCatHelperLibrary::BreakCatStruct(const FCat& Cat, FString& OutName, FLinearColor& OutCoatColor)
       {
-    	  OutName = Cat.Name;
-    	  OutCoatColor = Cat.CoatColor;
+        OutName = Cat.Name;
+        OutCoatColor = Cat.CoatColor;
       }
   images: [ /ustruct/hasnativebreak.jpg ]
 
@@ -236,31 +236,31 @@
       USTRUCT(BlueprintType, meta = (HasNativeMake = "ExampleProject.CatHelperLibrary.MakeCatStruct"))
       struct FCat
       {
-      	GENERATED_BODY()
+        GENERATED_BODY()
       public:
-      	UPROPERTY()
-      	FString Name;
-      	UPROPERTY()
-      	FLinearColor CoatColor;
-      	UPROPERTY()
-      	FString SecretPetName;
+        UPROPERTY()
+        FString Name;
+        UPROPERTY()
+        FLinearColor CoatColor;
+        UPROPERTY()
+        FString SecretPetName;
       };
       
       UCLASS()
       class UCatHelperLibrary : public UBlueprintFunctionLibrary
       {
-      	GENERATED_BODY()
+        GENERATED_BODY()
       public:
-      	UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
-      	static FCat MakeCatStruct(FString Name, FLinearColor CoatColor);
+        UFUNCTION(BlueprintPure, Category = "Cat", meta = (BlueprintThreadSafe))
+        static FCat MakeCatStruct(FString Name, FLinearColor CoatColor);
       };
 
       FCat UCatHelperLibrary::MakeCatStruct(FString Name, FLinearColor CoatColor)
       {
-      	FCat Cat;
-      	Cat.Name = Name;
-      	Cat.CoatColor = CoatColor;
-      	return Cat;
+        FCat Cat;
+        Cat.Name = Name;
+        Cat.CoatColor = CoatColor;
+        return Cat;
       }
 
 
