@@ -36,31 +36,33 @@ Example entry:
 ```
 ## Format Description
 
-* Most text fields like `comment` use Markdown formatting.
+* I try to keep the `comment` field less like strict documentation and more
+  tutorial-like; talking about why you'd want to use the specifier and
+  potential edge-cases. 
 
-| Property Name | Data Type | Required? | Example | Notes |
+| Property Name | Data Type | Required? | Notes |
 | --- | --- | --- | --- | --- |
-| `name` | string | Required | VisibleAnywhere | Plain text. I try to camelcase even though the name is technically case-insensitive. |
-| `group` | string |  | Editor | Arbitrary string I use to display related specifiers together. |
-| `subgroup` | string |  | Visibility | Optional further |
-| `position` | string | Required | main | Valid values are `main` or `meta`. |
-| `type` | string | Required | Visibility | Valid values are `flag`, `string`, `number`, `bool`. |
-| `comment` | string | | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
-| `samples` | string array | | | An array of code snippets that show how the specifier is used. |
-| `required` | string array | | | A list of specifiers that must be included for this specifier to be valid. |
-| `incompatible` | string array | | | A list of specifiers that are invalid when paired with this specifier. |
-| `antonyms` | string array | | | A list of specifiers that have the opposite effect to this specifier. |
-| `inherited` | boolean | | | UCLASS-specific. Whether a specifier on a parent means the child implicitly has that same specifier. |
-| `documentation` | struct | | | See below for the properties within this
-struct |
-| `documentation.text` | text | Required if `documentation` struct exists. | | Official Unreal Engine documentation that describes the specifier. Can be taken from web or source code. |
-| `documentation.source` | url | | | The URL from which the documentation is taken. In the case of files I include a link to the file on GitHub. |
-| `images` | string array | | `images: [ /uproperty/visibility-defaults-selected.png ]` | A |
+| `name` | string | Required | Plain text. I try to camelcase even though the name is technically case-insensitive. |
+| `group` | string | | Arbitrary string I use to display related specifiers together. |
+| `subgroup` | string | | A way of categorizing specifiers further within a group. |
+| `position` | string | Required | Valid values are `main` or `meta`. |
+| `type` | string | Required | Valid values are `flag`, `string`, `number`, `bool`. |
+| `comment` | string | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
+| `samples` | string array | | An array of code snippets that show how the specifier is used. |
+| `required` | specifier array | | A list of specifiers that must be included for this specifier to be valid. |
+| `related` | specifier array | | Other specifiers that are worth looking at related to this context. |
+| `incompatible` | specifier array | | A list of specifiers that are invalid when paired with this specifier. |
+| `synonyms` | specifier array | | A list of specifiers that have the **same effect** to this specifier. |
+| `antonyms` | specifier array | | A list of specifiers that have the **opposite effect** to this specifier. |
+| `inherited` | boolean | | UCLASS-specific. Whether a specifier on a parent means the child implicitly has that same specifier. |
+| `documentation` | struct | | See below for the properties within this struct. |
+| `documentation.text` | text | Required if `documentation` struct exists. | Official Unreal Engine documentation that describes the specifier. Can be taken from web or source code. |
+| `documentation.source` | url | | The URL from which the documentation is taken. In the case of files I include a link to the file on GitHub. |
+| `images` | string array | | I try to take screenshots with Unreal Engine 5.0 for consistency. |
 
 
 ## Known Issues
 
-* Images are not yet supplied.
 * Some specifiers are not yet categorized. They're listed under a `TODO` category.
 * Some specifiers have no code samples or comments.
 
