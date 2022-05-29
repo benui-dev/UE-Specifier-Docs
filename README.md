@@ -36,6 +36,8 @@ Example entry:
 ```
 ## Format Description
 
+* Most text fields like `comment` use Markdown formatting.
+
 | Property Name | Data Type | Required? | Example | Notes |
 | --- | --- | --- | --- | --- |
 | `name` | string | Required | VisibleAnywhere | Plain text. I try to camelcase even though the name is technically case-insensitive. |
@@ -43,25 +45,24 @@ Example entry:
 | `subgroup` | string |  | Visibility | Optional further |
 | `position` | string | Required | main | Valid values are `main` or `meta`. |
 | `type` | string | Required | Visibility | Valid values are `flag`, `string`, `number`, `bool`. |
-| `comment` | string |  | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
-| `samples` | string array |  |  | An array of code snippets that show how the specifier is used. |
-| `incompatible` | string array |  | Visibility | A list of specifiers that are invalid when paired with this specifier. |
-| `antonyms` | string array |  | Visibility | A list of specifiers that have the opposite effect to this specifier. |
-| `documentation` | struct  |  | Visibility | |
-| `documentation.text` | text  |  |  | Official Unreal Engine documentation that describes the specifier. Can be taken from web or source code. |
-| `documentation.source` | url  |  |  | The URL from which the documentation is taken. |
-| `images` | string array |  | /assets/unreal/uproperty/visibility-defaults-selected.png | Optional further |
+| `comment` | string | | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
+| `samples` | string array | | | An array of code snippets that show how the specifier is used. |
+| `required` | string array | | | A list of specifiers that must be included for this specifier to be valid. |
+| `incompatible` | string array | | | A list of specifiers that are invalid when paired with this specifier. |
+| `antonyms` | string array | | | A list of specifiers that have the opposite effect to this specifier. |
+| `inherited` | boolean | | | UCLASS-specific. Whether a specifier on a parent means the child implicitly has that same specifier. |
+| `documentation` | struct | | | See below for the properties within this
+struct |
+| `documentation.text` | text | Required if `documentation` struct exists. | | Official Unreal Engine documentation that describes the specifier. Can be taken from web or source code. |
+| `documentation.source` | url | | | The URL from which the documentation is taken. In the case of files I include a link to the file on GitHub. |
+| `images` | string array | | `images: [ /uproperty/visibility-defaults-selected.png ]` | A |
 
-## Notes on Format
-
-* Most text fields like `comment` use Markdown formatting.
 
 ## Known Issues
 
+* Images are not yet supplied.
 * Some specifiers are not yet categorized. They're listed under a `TODO` category.
 * Some specifiers have no code samples or comments.
-* Some text fields have hardcoded links to my site, I'll fix that soon.
-* Some fields are a mix of singular and plural (e.g. `sample` and `samples`). I just fixed my parser to allow both, but I'll fix the data to be all plural.
 
 ## License
 
