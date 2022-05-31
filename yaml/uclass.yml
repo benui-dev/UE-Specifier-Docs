@@ -1,725 +1,726 @@
-###############################################################################
-
-# Display
-
-- name: AdvancedClassDisplay
-  group: Display
-  type: flag
-  position: main
-  documentation:
-    text: The AdvancedClassDisplay Specifier forces all properties of the class to show only in the advanced sections of any details panel where they appear. To override this on an individual property, use the SimpleDisplay specifier on that property.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ClassGroup
-  group: Display
-  type: string
-  position: main
-  comment: |
-    Class Group must be something already registered, you can't put arbitrary strings in here.
-
-    Seems to be only used for the Add Component button within an actor.
-  samples:
-  - |
-    UCLASS(ClassGroup="Animation")
-    class UMyActorComponent : public UActorComponent
-    {
-        GENERATED_BODY()
-    };
-  images: [ /uclass/classgroup.jpg ]
-  documentation:
-    text: Indicates that Unreal Editor's Actor Browser should include this class and any subclass of this class within the specified GroupName when Group View is enabled in the Actor Browser.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: AutoCollapseCategories
-  group: Display
-  type: string
-  type-comment: Comma-separated list
-  position: main
-  antonyms: [ DontAutoCollapseCategories ]
-  incompatible: [ AutoExpandCategories ]
-  documentation:
-    text: The AutoCollapseCategories Specifier negates the effects, for the listed categories, of the AutoExpandCategories Specifier on a parent class.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: DontAutoCollapseCategories
-  group: Display
-  type: string
-  position: main
-  antonyms: [ AutoCollapseCategories ]
-  documentation:
-    text: Negates the AutoCollapseCategories Specifier for the listed categories inherited from a parent class.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: AutoExpandCategories
-  group: Display
-  type: string
-  type-comment: Comma-separated list
-  position: main
-  antonyms: [ AutoCollapseCategories ]
-  documentation:
-    text: Specifies one or more categories that should be automatically expanded in the Unreal Editor Property window for Objects of this class. To auto-expand variables declared with no category, use the name of the class which declares the variable.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: CollapseCategories
-  group: Display
-  type: flag
-  position: main
-  antonyms: [ DontCollapseCategories ]
-  inherited: true
-  documentation:
-    text: Indicates that properties of this class should not be grouped in categories in Unreal Editor Property windows. This Specifier is propagated to child classes, and can be overridden by the DontCollapseCategories Specifier.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: DontCollapseCategories
-  group: Display
-  type: flag
-  position: main
-  antonyms: [ CollapseCategories ]
-  documentation:
-    text: Negates a CollapseCatogories Specifier inherited from a base class.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: Hidden
-  group: Display
-  type: flag
-  position: main
-  documentation:
-    text: The UCLASS specifier now takes a Hidden flag. This maps directly to the ClassFlags Enum CLASS_Hidden flag. Adding this flag will hide the given class from any class browser in the editor.
-    source: https://docs.unrealengine.com/5.0/en-US/unreal-engine-5-0-release-notes/
-
-
-###############################################################################
-
-# Blueprint
-
-- name: Abstract
-  group: Blueprint
-  type: flag
-  position: main
-  documentation:
-    text: The Abstract Specifier declares the class as an "abstract base class", preventing the user from adding Actors of this class to Levels. This is useful for classes which are not meaningful on their own. For example, the ATriggerBase base class is abstract, while the ATriggerBox subclass is not abstract and can be placed in a Level.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  samples:
+  ###############################################################################
+  
+  # Display
+  
+specifiers:
+  - name: AdvancedClassDisplay
+    group: Display
+    type: flag
+    position: main
+    documentation:
+      text: The AdvancedClassDisplay Specifier forces all properties of the class to show only in the advanced sections of any details panel where they appear. To override this on an individual property, use the SimpleDisplay specifier on that property.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ClassGroup
+    group: Display
+    type: string
+    position: main
+    comment: |
+      Class Group must be something already registered, you can't put arbitrary strings in here.
+  
+      Seems to be only used for the Add Component button within an actor.
+    samples:
     - |
-      // I am abstract, you can't instantiate me!
-      UCLASS(Abstract)
-      class UAnimalBase : public UObject
+      UCLASS(ClassGroup="Animation")
+      class UMyActorComponent : public UActorComponent
       {
-        GENERATED_BODY()
-        public:
-          UAnimalBase(const FObjectInitializer& ObjectInitializer);
+          GENERATED_BODY()
       };
-
-
-- name: Blueprintable
-  group: Blueprint
-  type: flag
-  position: main
-  antonyms: [ NotBlueprintable ]
-  related: [ Abstract ]
-  documentation:
-    text: Exposes this class as an acceptable base class for creating Blueprints. The default is NotBlueprintable, unless inherited otherwise. This Specifier is inherited by subclasses.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: NotBlueprintable
-  group: Blueprint
-  type: flag
-  position: main
-  antonyms: [ Blueprintable ]
-  related: [ Abstract ]
-  documentation:
-    text: Specifies that this class is not an acceptable base class for creating Blueprints. This is the default and is inherited by subclasses.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: IsBlueprintBase
-  group: Blueprint
-  type: bool
-  position: meta
-  comment: Is much less frequently used than `Blueprintable` and `NotBlueprintable`. I would stick to those.
-  related: [ Blueprintable, NotBlueprintable ]
-  documentation:
-    text: States that this class is (or is not) an acceptable base class for creating Blueprints, similar to the Blueprintable or 'NotBlueprintable' Specifiers.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: BlueprintType
-  group: Blueprint
-  type: flag
-  position: main
-  samples:
-    - |
-      UCLASS(BlueprintType)
-      class UExampleObject : public UObject
-  documentation:
-    text: Exposes this class as a type that can be used for variables in Blueprints.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-
-###############################################################################
-
-# Config
-
-- name: Config
-  group: Config
-  type: string
-  position: main
-  documentation:
-    text: Indicates that this class is allowed to store data in a configuration file (.ini). If there are any class properties declared with the config or globalconfig Specifiers, this Specifier causes those properties to be stored in the named configuration file. This Specifier is propagated to all child classes and cannot be negated, but child classes can change the config file by re-declaring the config Specifier and providing a different ConfigName. Common ConfigName values are "Engine", "Editor", "Input", and "Game".
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: DefaultConfig
-  group: Config
-  type: flag
-  required: [ Config ]
-  inherited: true
-  position: main
-
-- name: PerObjectConfig
-  group: Config
-  type: flag
-  position: main
-  required: [ Config ]
-  inherited: true
-  documentation:
-    text: Configuration information for this class will be stored per Object, where each object has a section in the .ini file named after the Object in the format [ObjectName ClassName]. This Specifier is propagated to child classes.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ConfigDoNotCheckDefaults
-  group: Config
-  type: flag
-  position: main
-  required: [ Config ]
-  inherited: true
-
-- name: GlobalUserConfig
-  group: Config
-  type: flag
-  required: [ Config ]
-  inherited: true
-  position: main
-- name: ProjectUserConfig
-  group: Config
-  type: flag
-  required: [ Config ]
-  inherited: true
-  position: main
-
-
-- name: Const
-  group: Blueprint
-  type: flag
-  position: main
-  related: [ EditInlineNew ]
-  inherited: true
-  comment: Not entirely sure what difference this makes or when to use it.
-  documentation:
-    text: All properties and functions in this class are const and are exported as const. This Specifier is inherited by subclasses.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ConversionRoot
-  group: Todo
-  type: flag
-  position: main
-  related: [ ComponentWrapperClass ]
-  comment: | 
-    Not entirely sure what this does.
-    Seems to co-occur with `ComponentWrapperClass` pretty often.
-
-    As a odd aside, it seems that `IsConversionRoot=true` is metadata that is assigned by the engine when it finds the `ConversionRoot` non-meta flag.
-  documentation:
-    text: A root convert limits a subclass to only be able to convert to child classes of the first root class going up the hierarchy.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: CustomConstructor
-  group: C++
-  type: flag
-  position: main
-  documentation:
-    text: Prevents automatic generation of the constructor declaration.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: DependsOn
-  group: C++
-  type: string
-  type-comment: comma-separated
-  position: main
-  documentation:
-    text: All classes listed will be compiled before this class. The class names provided must indicate classes in the same (or a previous) package. Multiple dependency classes can be identified using a single DependsOn line delimited by commas, or can be specified using a separate DependsOn line for each class. This is important when a class uses a struct or enum declared in another class, as the compiler only knows what is in the classes it has already compiled.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: Deprecated
-  group: Todo
-  type: flag
-  position: main
-  inherited: true
-  documentation:
-    text: This class is deprecated and Objects of this class will not be saved when serializing. This Specifier is inherited by subclasses.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: EditInlineNew
-  group: Editor
-  type: flag
-  position: main
-  documentation:
-    text: Indicates that Objects of this class can be created from the Unreal Editor Property window, as opposed to being referenced from an existing Asset. The default behavior is that only references to existing Objects may be assigned through the Property window). This Specifier is propagated to all child classes; child classes can override this with the NotEditInlineNew Specifier.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: DefaultToInstanced
-  group: Editor
-  type: flag
-  position: main
-  inherited: true
-  documentation:
-    text: All instances of this class are considered "instanced". Instanced classes (components) are duplicated upon construction. This Specifier is inherited by subclasses.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-
-- name: HideDropdown
-  group: Display
-  type: flag
-  position: main
-  documentation:
-    text: Prevents this class from showing up in property window combo boxes.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ShowFunctions
-  group: Visibility
-  type: string
-  position: main
-  antonyms: [ HideFunctions ]
-  comment:
-    This makes more sense when you first understand `HideFunctions`. I think it works to re-expose functions that were previously hidden using `HideFunctions`.
-  documentation:
-    text: Shows all functions within the listed categories in a property viewer.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  documentation:
-    text: Shows the named function in a property viewer.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  samples:
-    - |
-      UCLASS(ShowFunctions=FunctionName)
-    - |
-      UCLASS(ShowFunctions=(Category1, Category2))
-- name: HideFunctions
-  group: Visibility
-  type: string
-  position: main
-  comment:
-    Say you have a class `UCameraComponent`, and within it you define a `BlueprintCallable` function `SetFieldOfView`. Next, imagine you are creating an orthographic camera class that is a subclass of `UCameraComponent`. `SetFieldOfView` no loner makes sense in this new child class, so to hide it you add `HideFunctions="SetFieldOfView"` to its `UCLASS()`.
-
-    According to the documentation you can specify either category names or individual functions.
-
-    There is only one example of this being used in the engine, interestingly. Ok maybe it's not that interesting.
-  samples:
-    - |
-      UCLASS()
-      class UCameraComponent : public USceneComponent
-      {
-          UFUNCTION(BlueprintCallable)
-          virtual void SetFieldOfView(float InFieldOfView);
-      };
-
-      UCLASS(HideFunctions=(SetFieldOfView))
-      class UOrthographicCameraComponent : public UCameraComponent
-      {
-          // ...
-      };
-  antonyms: [ ShowFunctions ]
-  documentation:
-    text: Hides all functions in the specified category from the user entirely.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  documentation:
-    text: Hides the named functions from the user entirely.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: MinimalAPI
-  group: C++
-  type: flag
-  position: main
-  documentation:
-    text: Causes only the class's type information to be exported for use by other modules. The class can be cast to, but the functions of the class cannot be called (with the exception of inline methods). This improves compile times by not exporting everything for classes that do not need all of their functions accessible in other modules.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-- name: Placeable
-  group: Actor
-  type: flag
-  position: main
-  inherited: true
-  comment: I'm pretty sure this is on all `AActor` subclasses by default. I guess you could specify its opposite `NotPlaceable` if you wanted a non-placeable actor. See `NotPlaceable` for use cases.
-  documentation:
-    text: Indicates that this class can be created in the Editor and placed into a level, UI scene, or Blueprint (depending on the class type). This flag is propagated to all child classes; child classes can override this flag using the NotPlaceable Specifier.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: NotPlaceable
-  group: Actor
-  type: flag
-  position: main
-  antonyms: [ Placeable ]
-  inherited: true
-  comment: |
-    "This is used in a lot of places in the engine: on test classes, debug actors, gizmos, actors that should only be spawned by other actors."
-  documentation:
-    text: Negates a Placeable Specifier inherited from a base class. Indicates that Objects of this class may not be placed into a Level, UI scene, or Blueprint in the Editor.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ShowCategories
-  group: Display
-  type: string
-  position: main
-  antonyms: [ HideCategories ]
-  related: [ PrioritizeCategories ]
-  documentation:
-    text: Negates a HideCategories Specifier (inherited from a base class) for the listed categories.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: HideCategories
-  group: Display
-  type: string
-  position: main
-  antonyms: [ ShowCategories ]
-  related: [ PrioritizeCategories ]
-  inherited: true
-  documentation:
-    text: Lists one or more categories that should be hidden from the user entirely. To hide properties declared with no category, use the name of the class which declares the variable. This Specifier is propagated to child classes.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: PrioritizeCategories
-  group: Display
-  type: string
-  type-comment: comma-separated category names
-  position: meta
-  related: [ ShowCategories, HideCategories  ]
-  comment:
-    Only seems to be used in one place in the source, `UCommonTextBlock`. Seems to cause the specified categories to be shown first.
-  samples:
-    - |
-      UCLASS(Config = CommonUI, DefaultConfig, ClassGroup = UI, meta = (Category = "Common UI", DisplayName = "Common Text", PrioritizeCategories = "Content"))
-      class COMMONUI_API UCommonTextBlock : public UTextBlock
-
-
-- name: Transient
-  group: Serialization
-  type: flag
-  position: main
-  inherited: true
-  antonyms: [ NonTransient ]
-  documentation:
-    text: Objects belonging to this class will never be saved to disk. This is useful in conjunction with certain kinds of native classes which are non-persistent by nature, such as players or windows. This Specifier is propagated to child classes, but can be overridden by the NonTransient Specifier.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-- name: NonTransient
-  group: Serialization
-  type: flag
-  position: main
-  antonyms: [ Transient ]
-  documentation:
-    text: Negates a Transient Specifier inherited from a base class.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-- name: Within
-  group: C++
-  type: string
-  position: main
-  comment: This is handy for making it clear that a class is designed to be owned by another. Maybe it uses `GetOuter` so it won't work when created within another class. Commonly used with `APlayerController`.
-  samples:
-    - |
-      UCLASS(Within=PlayerController)
-      class ENGINE_API UPlayerInput : public UObject
-  documentation:
-    text: Objects of this class cannot exist outside of an instance of an OuterClassName Object. This means that creating an Object of this class requires that an instance of OuterClassName is provided as its Outer Object.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- name: BlueprintSpawnableComponent
-  group: Blueprint
-  type: flag
-  position: meta
-  comment: Adding this means that the component will appear under the "Add" dropdown for adding components to an Actor.
-  documentation:
-    text: If present, the component Class can be spawned by a Blueprint.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: BlueprintThreadSafe
-  group: Blueprint
-  type: flag
-  position: meta
-  documentation:
-    text: Only valid on Blueprint function libraries. This specifier marks the functions in this class as callable on non-game threads in animation Blueprints.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ChildCanTick
-  group: Todo
-  type: flag
-  position: meta
-  antonyms: [ ChildCannotTick ]
-  documentation:
-    text: Used for Actor and Component classes. If the native class cannot tick, Blueprint-generated classes based this Actor or Component can have the bCanEverTick flag overridden, even if bCanBlueprintsTickByDefault is false.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ChildCannotTick
-  group: Todo
-  type: flag
-  antonyms: [ ChildCanTick ]
-  position: meta
-  documentation:
-    text: Used for Actor and Component classes. If the native class cannot tick, Blueprint-generated classes based this Actor or Component can never tick, even if bCanBlueprintsTickByDefault is true.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-- name: DeprecatedNode
-  group: Todo
-  type: flag
-  position: meta
-  documentation:
-    text: For behavior tree nodes, indicates that the class is deprecated and will display a warning when compiled.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: DeprecationMessage
-  group: Todo
-  type: string
-  position: meta
-  documentation:
-    text: Deprecated classes with this metadata will include this text with the standard deprecation warning that Blueprint Scripts generate during compilation.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: DisplayName
-  group: Todo
-  type: string
-  position: meta
-  documentation:
-    text: The name of this node in a Blueprint Script will be replaced with the value provided here, instead of the code-generated name.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: DontUseGenericSpawnObject
-  group: Todo
-  type: bool
-  position: meta
-  comment: Only used in two places in the engine, on `UUserWidget` and `DragDropOperation`. TODO is it bool or flag?
-  samples:
-    - |
-      UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
-      class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
-  documentation:
-    text: Do not spawn an Object of the class using Generic Create Object node in Blueprint Scripts; this specifier applies only to Blueprint-type classes that are neither Actors nor Actor Components.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ExposedAsyncProxy
-  group: Todo
-  type: flag
-  position: meta
-  documentation:
-    text: Expose a proxy Object of this class in Async Task nodes.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: IgnoreCategoryKeywordsInSubclasses
-  group: Display
-  type: flag
-  position: meta
-  related: [ComponentWrapperClass]
-  comment: |
-    A child that subclasses a class with this meta tag will ignore the following specifiers in the parent\: `ShowCategories`, `HideCategories`, `AutoExpandCategories`, `AutoCollapseCategories` and `PrioritizeCategories`.
-
-    Only used in one place in the codebase. `ComponentWrapperClass` is an odd alias for it.
-  documentation:
-    text: Used to make the first subclass of a class ignore all inherited ShowCategories and HideCategories Specifiers.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-- name: KismetHideOverrides
-  group: Todo
-  type: string
-  type-comment: Comma-separated list
-  position: meta
-  samples: |
-    UCLASS(meta=(KismetHideOverrides="ReceiveAnyDamage,ReceivePointDamage"))
-    class ENGINE_API ALevelScriptActor : public AActor
-  documentation:
-    text: List of Blueprint events that are not allowed to be overridden.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ProhibitedInterfaces
-  group: Todo
-  type: string
-  comment: Not found any examples of this being used in the engine.
-  position: meta
-  documentation:
-    text: Lists Interfaces that are not compatible with the class.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: RestrictedToClasses
-  group: Todo
-  type: string
-  position: meta
-  samples:
-    - |
-      UCLASS(meta=(RestrictedToClasses="BTNode"))
-      class AIMODULE_API UBTFunctionLibrary : public UBlueprintFunctionLibrary
-  documentation:
-    text: Blueprint function library classes can use this to restrict usage to the classes named in the list.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ShowWorldContextPin
-  group: Blueprint
-  type: flag
-  position: meta
-  documentation:
-    text: Indicates that Blueprint nodes placed in graphs owned by this class must show their World context pins, even if they are normally hidden, because Objects of this class cannot be used as World context.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ToolTip
-  group: Display
-  type: string
-  position: meta
-  related: [ ShortToolTip ]
-  comment: TODO Look into how this is different to ShortToolTip
-  documentation:
-    text: Overrides the automatically generated tooltip from code comments.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: ShortToolTip
-  group: Display
-  type: string
-  position: meta
-  related: [ ToolTip ]
-  comment: TODO Look into how this is different to ToolTip
-  samples:
-    - |
-      UCLASS(meta=(ShortTooltip="A layout panel for automatically laying child widgets out vertically"))
-      class UMG_API UVerticalBox : public UPanelWidget
-  documentation:
-    text: A short tooltip that is used in some contexts where the full tooltip might be overwhelming, such as the Parent Class Picker dialog.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: DisableNativeTick
-  group: UI
-  type: flag
-  position: meta
-  comment: Only used in one place in the engine, on `UUserWidget`.
-  samples:
-    - |
-      UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
-      class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
-- name: EntryInterface
-  group: UI
-  type: string
-  type-comment: Interface name without leading `I`
-  position: meta
-  comment: Used to specify the interface that must be implemented by entries to be usable by this list. Only used on `UListViewBase` and `UListView`.
-  samples:
-    - |
-      /**
-       * A virtualized list that allows up to thousands of items to be displayed.
-       * 
-       * An important distinction to keep in mind here is "Item" vs. "Entry"
-       * The list itself is based on a list of n items, but only creates as many entry widgets as can fit on screen.
-       * For example, a scrolling ListView of 200 items with 5 currently visible will only have created 5 entry widgets.
-       *
-       * To make a widget usable as an entry in a ListView, it must inherit from the IUserObjectListEntry interface.
-       */
-      UCLASS(meta = (EntryInterface = UserObjectListEntry))
-      class UMG_API UListView : public UListViewBase, public ITypedUMGListView<UObject*>
-- name: DisplayThumbnail
-  group: Todo
-  type: bool
-  position: meta
-  related: [ uproperty.displaythumbnail ]
-  samples:
-    - |
-      UCLASS(BlueprintType, meta = (DisplayThumbnail = "true"))
-      class PAPER2D_API UPaperFlipbook : public UObject
-
-- name: Experimental
-  group: Todo
-  type: flag
-  position: main
-
-- name: IgnoreClassThumbnail
-  group: Todo
-  type: flag
-  position: meta
-
-- name: ExposedAsyncProxy
-  group: Todo
-  type: string
-  type-comment: Class name without prefix
-  position: meta
-  samples:
-    - |
-      UCLASS(Abstract, meta = (ExposedAsyncProxy = AsyncAction))
-      class GAMEPLAYABILITIES_API UAbilityAsync : public UBlueprintAsyncActionBase
-
-- name: ScriptName
-  group: Todo
-  type: string
-  position: main
-  samples:
-    - |
-      UCLASS(MinimalAPI, meta=(ScriptName="ComposureLibrary"))
-      class UComposureBlueprintLibrary : public UBlueprintFunctionLibrary
-
-###############################################################################
-#
-# Todo
-
-- name: ComponentWrapperClass
-  group: Actor
-  type: flag
-  position: main
-  related: [ IgnoreCategoryKeywordsInSubclasses, ConversionRoot, ChildCanTick ]
-  comment: |
-    From what I can tell, this is effectively an alias for `IgnoreCategoryKeywordsInSubclasses=true`. A class with this specifier will cause the engine to add the `IgnoreCategoryKeywordsInSubclasses` metadata. This in turn causes all subclasses ignore `ShowCategories`, `HideCategories`, `AutoExpandCategories`, `AutoCollapseCategories` and `PrioritizeCategories`.
-
-    Seems to be used on minimal-ish Actors that wrap components. For example on `ALight` that wraps `ULightComponent`, `ASkeletalMeshActor` that wraps `USkeletalMeshComponent`.
-
-    Co-occurs with `ConversionRoot` and `ChildCanTick` a lot.
-
-- name: CommandLineID
-  group: Todo
-  type: string
-  position: meta
-
-
-
-
-###############################################################################
-#
-# Internal and Deprecated
-
-- name: Intrinsic
-  group: Internal and Deprecated
-  type: flag
-  position: main
-  documentation:
-    text: This indicates that the class was declared directly in C++, and has no boilerplate generated by Unreal Header Tool. Do not use this Specifier on new classes.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-- name: NoExport
-  group: Internal and Deprecated
-  type: flag
-  position: main
-  documentation:
-    text: Indicates that this class's declaration should not be included in the automatically-generated C++ header file by the header generator. The C++ class declaration must be defined manually in a separate header file. Only valid for native classes. Do not use this for new classes.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
-
-- name: UsesHierarchy
-  group: Internal and Deprecated
-  type: flag
-  position: meta
-  comment: The official documentation lists this for both `UCLASS` and `USTRUCT` but there are no instances of it being used in the codebase and **no code that seems to recognise it**. So I think it's maybe legacy or something someone forgot.
-  documentation:
-    text: Indicates the class uses hierarchical data. Used to instantiate hierarchical editing features in Details panels.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-
+    images: [ /uclass/classgroup.jpg ]
+    documentation:
+      text: Indicates that Unreal Editor's Actor Browser should include this class and any subclass of this class within the specified GroupName when Group View is enabled in the Actor Browser.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: AutoCollapseCategories
+    group: Display
+    type: string
+    type-comment: Comma-separated list
+    position: main
+    antonyms: [ DontAutoCollapseCategories ]
+    incompatible: [ AutoExpandCategories ]
+    documentation:
+      text: The AutoCollapseCategories Specifier negates the effects, for the listed categories, of the AutoExpandCategories Specifier on a parent class.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: DontAutoCollapseCategories
+    group: Display
+    type: string
+    position: main
+    antonyms: [ AutoCollapseCategories ]
+    documentation:
+      text: Negates the AutoCollapseCategories Specifier for the listed categories inherited from a parent class.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: AutoExpandCategories
+    group: Display
+    type: string
+    type-comment: Comma-separated list
+    position: main
+    antonyms: [ AutoCollapseCategories ]
+    documentation:
+      text: Specifies one or more categories that should be automatically expanded in the Unreal Editor Property window for Objects of this class. To auto-expand variables declared with no category, use the name of the class which declares the variable.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: CollapseCategories
+    group: Display
+    type: flag
+    position: main
+    antonyms: [ DontCollapseCategories ]
+    inherited: true
+    documentation:
+      text: Indicates that properties of this class should not be grouped in categories in Unreal Editor Property windows. This Specifier is propagated to child classes, and can be overridden by the DontCollapseCategories Specifier.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: DontCollapseCategories
+    group: Display
+    type: flag
+    position: main
+    antonyms: [ CollapseCategories ]
+    documentation:
+      text: Negates a CollapseCatogories Specifier inherited from a base class.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: Hidden
+    group: Display
+    type: flag
+    position: main
+    documentation:
+      text: The UCLASS specifier now takes a Hidden flag. This maps directly to the ClassFlags Enum CLASS_Hidden flag. Adding this flag will hide the given class from any class browser in the editor.
+      source: https://docs.unrealengine.com/5.0/en-US/unreal-engine-5-0-release-notes/
+  
+  
+  ###############################################################################
+  
+  # Blueprint
+  
+  - name: Abstract
+    group: Blueprint
+    type: flag
+    position: main
+    documentation:
+      text: The Abstract Specifier declares the class as an "abstract base class", preventing the user from adding Actors of this class to Levels. This is useful for classes which are not meaningful on their own. For example, the ATriggerBase base class is abstract, while the ATriggerBox subclass is not abstract and can be placed in a Level.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+    samples:
+      - |
+        // I am abstract, you can't instantiate me!
+        UCLASS(Abstract)
+        class UAnimalBase : public UObject
+        {
+          GENERATED_BODY()
+          public:
+            UAnimalBase(const FObjectInitializer& ObjectInitializer);
+        };
+  
+  
+  - name: Blueprintable
+    group: Blueprint
+    type: flag
+    position: main
+    antonyms: [ NotBlueprintable ]
+    related: [ Abstract ]
+    documentation:
+      text: Exposes this class as an acceptable base class for creating Blueprints. The default is NotBlueprintable, unless inherited otherwise. This Specifier is inherited by subclasses.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: NotBlueprintable
+    group: Blueprint
+    type: flag
+    position: main
+    antonyms: [ Blueprintable ]
+    related: [ Abstract ]
+    documentation:
+      text: Specifies that this class is not an acceptable base class for creating Blueprints. This is the default and is inherited by subclasses.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: IsBlueprintBase
+    group: Blueprint
+    type: bool
+    position: meta
+    comment: Is much less frequently used than `Blueprintable` and `NotBlueprintable`. I would stick to those.
+    related: [ Blueprintable, NotBlueprintable ]
+    documentation:
+      text: States that this class is (or is not) an acceptable base class for creating Blueprints, similar to the Blueprintable or 'NotBlueprintable' Specifiers.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: BlueprintType
+    group: Blueprint
+    type: flag
+    position: main
+    samples:
+      - |
+        UCLASS(BlueprintType)
+        class UExampleObject : public UObject
+    documentation:
+      text: Exposes this class as a type that can be used for variables in Blueprints.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  
+  ###############################################################################
+  
+  # Config
+  
+  - name: Config
+    group: Config
+    type: string
+    position: main
+    documentation:
+      text: Indicates that this class is allowed to store data in a configuration file (.ini). If there are any class properties declared with the config or globalconfig Specifiers, this Specifier causes those properties to be stored in the named configuration file. This Specifier is propagated to all child classes and cannot be negated, but child classes can change the config file by re-declaring the config Specifier and providing a different ConfigName. Common ConfigName values are "Engine", "Editor", "Input", and "Game".
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: DefaultConfig
+    group: Config
+    type: flag
+    required: [ Config ]
+    inherited: true
+    position: main
+  
+  - name: PerObjectConfig
+    group: Config
+    type: flag
+    position: main
+    required: [ Config ]
+    inherited: true
+    documentation:
+      text: Configuration information for this class will be stored per Object, where each object has a section in the .ini file named after the Object in the format [ObjectName ClassName]. This Specifier is propagated to child classes.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ConfigDoNotCheckDefaults
+    group: Config
+    type: flag
+    position: main
+    required: [ Config ]
+    inherited: true
+  
+  - name: GlobalUserConfig
+    group: Config
+    type: flag
+    required: [ Config ]
+    inherited: true
+    position: main
+  - name: ProjectUserConfig
+    group: Config
+    type: flag
+    required: [ Config ]
+    inherited: true
+    position: main
+  
+  
+  - name: Const
+    group: Blueprint
+    type: flag
+    position: main
+    related: [ EditInlineNew ]
+    inherited: true
+    comment: Not entirely sure what difference this makes or when to use it.
+    documentation:
+      text: All properties and functions in this class are const and are exported as const. This Specifier is inherited by subclasses.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ConversionRoot
+    group: Todo
+    type: flag
+    position: main
+    related: [ ComponentWrapperClass ]
+    comment: | 
+      Not entirely sure what this does.
+      Seems to co-occur with `ComponentWrapperClass` pretty often.
+  
+      As a odd aside, it seems that `IsConversionRoot=true` is metadata that is assigned by the engine when it finds the `ConversionRoot` non-meta flag.
+    documentation:
+      text: A root convert limits a subclass to only be able to convert to child classes of the first root class going up the hierarchy.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: CustomConstructor
+    group: C++
+    type: flag
+    position: main
+    documentation:
+      text: Prevents automatic generation of the constructor declaration.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: DependsOn
+    group: C++
+    type: string
+    type-comment: comma-separated
+    position: main
+    documentation:
+      text: All classes listed will be compiled before this class. The class names provided must indicate classes in the same (or a previous) package. Multiple dependency classes can be identified using a single DependsOn line delimited by commas, or can be specified using a separate DependsOn line for each class. This is important when a class uses a struct or enum declared in another class, as the compiler only knows what is in the classes it has already compiled.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: Deprecated
+    group: Todo
+    type: flag
+    position: main
+    inherited: true
+    documentation:
+      text: This class is deprecated and Objects of this class will not be saved when serializing. This Specifier is inherited by subclasses.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: EditInlineNew
+    group: Editor
+    type: flag
+    position: main
+    documentation:
+      text: Indicates that Objects of this class can be created from the Unreal Editor Property window, as opposed to being referenced from an existing Asset. The default behavior is that only references to existing Objects may be assigned through the Property window). This Specifier is propagated to all child classes; child classes can override this with the NotEditInlineNew Specifier.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: DefaultToInstanced
+    group: Editor
+    type: flag
+    position: main
+    inherited: true
+    documentation:
+      text: All instances of this class are considered "instanced". Instanced classes (components) are duplicated upon construction. This Specifier is inherited by subclasses.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  
+  - name: HideDropdown
+    group: Display
+    type: flag
+    position: main
+    documentation:
+      text: Prevents this class from showing up in property window combo boxes.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ShowFunctions
+    group: Visibility
+    type: string
+    position: main
+    antonyms: [ HideFunctions ]
+    comment:
+      This makes more sense when you first understand `HideFunctions`. I think it works to re-expose functions that were previously hidden using `HideFunctions`.
+    documentation:
+      text: Shows all functions within the listed categories in a property viewer.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+    documentation:
+      text: Shows the named function in a property viewer.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+    samples:
+      - |
+        UCLASS(ShowFunctions=FunctionName)
+      - |
+        UCLASS(ShowFunctions=(Category1, Category2))
+  - name: HideFunctions
+    group: Visibility
+    type: string
+    position: main
+    comment:
+      Say you have a class `UCameraComponent`, and within it you define a `BlueprintCallable` function `SetFieldOfView`. Next, imagine you are creating an orthographic camera class that is a subclass of `UCameraComponent`. `SetFieldOfView` no loner makes sense in this new child class, so to hide it you add `HideFunctions="SetFieldOfView"` to its `UCLASS()`.
+  
+      According to the documentation you can specify either category names or individual functions.
+  
+      There is only one example of this being used in the engine, interestingly. Ok maybe it's not that interesting.
+    samples:
+      - |
+        UCLASS()
+        class UCameraComponent : public USceneComponent
+        {
+            UFUNCTION(BlueprintCallable)
+            virtual void SetFieldOfView(float InFieldOfView);
+        };
+  
+        UCLASS(HideFunctions=(SetFieldOfView))
+        class UOrthographicCameraComponent : public UCameraComponent
+        {
+            // ...
+        };
+    antonyms: [ ShowFunctions ]
+    documentation:
+      text: Hides all functions in the specified category from the user entirely.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+    documentation:
+      text: Hides the named functions from the user entirely.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: MinimalAPI
+    group: C++
+    type: flag
+    position: main
+    documentation:
+      text: Causes only the class's type information to be exported for use by other modules. The class can be cast to, but the functions of the class cannot be called (with the exception of inline methods). This improves compile times by not exporting everything for classes that do not need all of their functions accessible in other modules.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  - name: Placeable
+    group: Actor
+    type: flag
+    position: main
+    inherited: true
+    comment: I'm pretty sure this is on all `AActor` subclasses by default. I guess you could specify its opposite `NotPlaceable` if you wanted a non-placeable actor. See `NotPlaceable` for use cases.
+    documentation:
+      text: Indicates that this class can be created in the Editor and placed into a level, UI scene, or Blueprint (depending on the class type). This flag is propagated to all child classes; child classes can override this flag using the NotPlaceable Specifier.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: NotPlaceable
+    group: Actor
+    type: flag
+    position: main
+    antonyms: [ Placeable ]
+    inherited: true
+    comment: |
+      "This is used in a lot of places in the engine: on test classes, debug actors, gizmos, actors that should only be spawned by other actors."
+    documentation:
+      text: Negates a Placeable Specifier inherited from a base class. Indicates that Objects of this class may not be placed into a Level, UI scene, or Blueprint in the Editor.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ShowCategories
+    group: Display
+    type: string
+    position: main
+    antonyms: [ HideCategories ]
+    related: [ PrioritizeCategories ]
+    documentation:
+      text: Negates a HideCategories Specifier (inherited from a base class) for the listed categories.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: HideCategories
+    group: Display
+    type: string
+    position: main
+    antonyms: [ ShowCategories ]
+    related: [ PrioritizeCategories ]
+    inherited: true
+    documentation:
+      text: Lists one or more categories that should be hidden from the user entirely. To hide properties declared with no category, use the name of the class which declares the variable. This Specifier is propagated to child classes.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: PrioritizeCategories
+    group: Display
+    type: string
+    type-comment: comma-separated category names
+    position: meta
+    related: [ ShowCategories, HideCategories  ]
+    comment:
+      Only seems to be used in one place in the source, `UCommonTextBlock`. Seems to cause the specified categories to be shown first.
+    samples:
+      - |
+        UCLASS(Config = CommonUI, DefaultConfig, ClassGroup = UI, meta = (Category = "Common UI", DisplayName = "Common Text", PrioritizeCategories = "Content"))
+        class COMMONUI_API UCommonTextBlock : public UTextBlock
+  
+  
+  - name: Transient
+    group: Serialization
+    type: flag
+    position: main
+    inherited: true
+    antonyms: [ NonTransient ]
+    documentation:
+      text: Objects belonging to this class will never be saved to disk. This is useful in conjunction with certain kinds of native classes which are non-persistent by nature, such as players or windows. This Specifier is propagated to child classes, but can be overridden by the NonTransient Specifier.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: NonTransient
+    group: Serialization
+    type: flag
+    position: main
+    antonyms: [ Transient ]
+    documentation:
+      text: Negates a Transient Specifier inherited from a base class.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  - name: Within
+    group: C++
+    type: string
+    position: main
+    comment: This is handy for making it clear that a class is designed to be owned by another. Maybe it uses `GetOuter` so it won't work when created within another class. Commonly used with `APlayerController`.
+    samples:
+      - |
+        UCLASS(Within=PlayerController)
+        class ENGINE_API UPlayerInput : public UObject
+    documentation:
+      text: Objects of this class cannot exist outside of an instance of an OuterClassName Object. This means that creating an Object of this class requires that an instance of OuterClassName is provided as its Outer Object.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  - name: BlueprintSpawnableComponent
+    group: Blueprint
+    type: flag
+    position: meta
+    comment: Adding this means that the component will appear under the "Add" dropdown for adding components to an Actor.
+    documentation:
+      text: If present, the component Class can be spawned by a Blueprint.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: BlueprintThreadSafe
+    group: Blueprint
+    type: flag
+    position: meta
+    documentation:
+      text: Only valid on Blueprint function libraries. This specifier marks the functions in this class as callable on non-game threads in animation Blueprints.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ChildCanTick
+    group: Todo
+    type: flag
+    position: meta
+    antonyms: [ ChildCannotTick ]
+    documentation:
+      text: Used for Actor and Component classes. If the native class cannot tick, Blueprint-generated classes based this Actor or Component can have the bCanEverTick flag overridden, even if bCanBlueprintsTickByDefault is false.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ChildCannotTick
+    group: Todo
+    type: flag
+    antonyms: [ ChildCanTick ]
+    position: meta
+    documentation:
+      text: Used for Actor and Component classes. If the native class cannot tick, Blueprint-generated classes based this Actor or Component can never tick, even if bCanBlueprintsTickByDefault is true.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  - name: DeprecatedNode
+    group: Todo
+    type: flag
+    position: meta
+    documentation:
+      text: For behavior tree nodes, indicates that the class is deprecated and will display a warning when compiled.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: DeprecationMessage
+    group: Todo
+    type: string
+    position: meta
+    documentation:
+      text: Deprecated classes with this metadata will include this text with the standard deprecation warning that Blueprint Scripts generate during compilation.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: DisplayName
+    group: Todo
+    type: string
+    position: meta
+    documentation:
+      text: The name of this node in a Blueprint Script will be replaced with the value provided here, instead of the code-generated name.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: DontUseGenericSpawnObject
+    group: Todo
+    type: bool
+    position: meta
+    comment: Only used in two places in the engine, on `UUserWidget` and `DragDropOperation`. TODO is it bool or flag?
+    samples:
+      - |
+        UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
+        class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
+    documentation:
+      text: Do not spawn an Object of the class using Generic Create Object node in Blueprint Scripts; this specifier applies only to Blueprint-type classes that are neither Actors nor Actor Components.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ExposedAsyncProxy
+    group: Todo
+    type: flag
+    position: meta
+    documentation:
+      text: Expose a proxy Object of this class in Async Task nodes.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: IgnoreCategoryKeywordsInSubclasses
+    group: Display
+    type: flag
+    position: meta
+    related: [ComponentWrapperClass]
+    comment: |
+      A child that subclasses a class with this meta tag will ignore the following specifiers in the parent\: `ShowCategories`, `HideCategories`, `AutoExpandCategories`, `AutoCollapseCategories` and `PrioritizeCategories`.
+  
+      Only used in one place in the codebase. `ComponentWrapperClass` is an odd alias for it.
+    documentation:
+      text: Used to make the first subclass of a class ignore all inherited ShowCategories and HideCategories Specifiers.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  - name: KismetHideOverrides
+    group: Todo
+    type: string
+    type-comment: Comma-separated list
+    position: meta
+    samples: |
+      UCLASS(meta=(KismetHideOverrides="ReceiveAnyDamage,ReceivePointDamage"))
+      class ENGINE_API ALevelScriptActor : public AActor
+    documentation:
+      text: List of Blueprint events that are not allowed to be overridden.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ProhibitedInterfaces
+    group: Todo
+    type: string
+    comment: Not found any examples of this being used in the engine.
+    position: meta
+    documentation:
+      text: Lists Interfaces that are not compatible with the class.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: RestrictedToClasses
+    group: Todo
+    type: string
+    position: meta
+    samples:
+      - |
+        UCLASS(meta=(RestrictedToClasses="BTNode"))
+        class AIMODULE_API UBTFunctionLibrary : public UBlueprintFunctionLibrary
+    documentation:
+      text: Blueprint function library classes can use this to restrict usage to the classes named in the list.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ShowWorldContextPin
+    group: Blueprint
+    type: flag
+    position: meta
+    documentation:
+      text: Indicates that Blueprint nodes placed in graphs owned by this class must show their World context pins, even if they are normally hidden, because Objects of this class cannot be used as World context.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ToolTip
+    group: Display
+    type: string
+    position: meta
+    related: [ ShortToolTip ]
+    comment: TODO Look into how this is different to ShortToolTip
+    documentation:
+      text: Overrides the automatically generated tooltip from code comments.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: ShortToolTip
+    group: Display
+    type: string
+    position: meta
+    related: [ ToolTip ]
+    comment: TODO Look into how this is different to ToolTip
+    samples:
+      - |
+        UCLASS(meta=(ShortTooltip="A layout panel for automatically laying child widgets out vertically"))
+        class UMG_API UVerticalBox : public UPanelWidget
+    documentation:
+      text: A short tooltip that is used in some contexts where the full tooltip might be overwhelming, such as the Parent Class Picker dialog.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: DisableNativeTick
+    group: UI
+    type: flag
+    position: meta
+    comment: Only used in one place in the engine, on `UUserWidget`.
+    samples:
+      - |
+        UCLASS(Abstract, editinlinenew, BlueprintType, Blueprintable, meta=( DontUseGenericSpawnObject="True", DisableNativeTick) )
+        class UMG_API UUserWidget : public UWidget, public INamedSlotInterface
+  - name: EntryInterface
+    group: UI
+    type: string
+    type-comment: Interface name without leading `I`
+    position: meta
+    comment: Used to specify the interface that must be implemented by entries to be usable by this list. Only used on `UListViewBase` and `UListView`.
+    samples:
+      - |
+        /**
+         * A virtualized list that allows up to thousands of items to be displayed.
+         * 
+         * An important distinction to keep in mind here is "Item" vs. "Entry"
+         * The list itself is based on a list of n items, but only creates as many entry widgets as can fit on screen.
+         * For example, a scrolling ListView of 200 items with 5 currently visible will only have created 5 entry widgets.
+         *
+         * To make a widget usable as an entry in a ListView, it must inherit from the IUserObjectListEntry interface.
+         */
+        UCLASS(meta = (EntryInterface = UserObjectListEntry))
+        class UMG_API UListView : public UListViewBase, public ITypedUMGListView<UObject*>
+  - name: DisplayThumbnail
+    group: Todo
+    type: bool
+    position: meta
+    related: [ uproperty.displaythumbnail ]
+    samples:
+      - |
+        UCLASS(BlueprintType, meta = (DisplayThumbnail = "true"))
+        class PAPER2D_API UPaperFlipbook : public UObject
+  
+  - name: Experimental
+    group: Todo
+    type: flag
+    position: main
+  
+  - name: IgnoreClassThumbnail
+    group: Todo
+    type: flag
+    position: meta
+  
+  - name: ExposedAsyncProxy
+    group: Todo
+    type: string
+    type-comment: Class name without prefix
+    position: meta
+    samples:
+      - |
+        UCLASS(Abstract, meta = (ExposedAsyncProxy = AsyncAction))
+        class GAMEPLAYABILITIES_API UAbilityAsync : public UBlueprintAsyncActionBase
+  
+  - name: ScriptName
+    group: Todo
+    type: string
+    position: main
+    samples:
+      - |
+        UCLASS(MinimalAPI, meta=(ScriptName="ComposureLibrary"))
+        class UComposureBlueprintLibrary : public UBlueprintFunctionLibrary
+  
+  ###############################################################################
+  #
+  # Todo
+  
+  - name: ComponentWrapperClass
+    group: Actor
+    type: flag
+    position: main
+    related: [ IgnoreCategoryKeywordsInSubclasses, ConversionRoot, ChildCanTick ]
+    comment: |
+      From what I can tell, this is effectively an alias for `IgnoreCategoryKeywordsInSubclasses=true`. A class with this specifier will cause the engine to add the `IgnoreCategoryKeywordsInSubclasses` metadata. This in turn causes all subclasses ignore `ShowCategories`, `HideCategories`, `AutoExpandCategories`, `AutoCollapseCategories` and `PrioritizeCategories`.
+  
+      Seems to be used on minimal-ish Actors that wrap components. For example on `ALight` that wraps `ULightComponent`, `ASkeletalMeshActor` that wraps `USkeletalMeshComponent`.
+  
+      Co-occurs with `ConversionRoot` and `ChildCanTick` a lot.
+  
+  - name: CommandLineID
+    group: Todo
+    type: string
+    position: meta
+  
+  
+  
+  
+  ###############################################################################
+  #
+  # Internal and Deprecated
+  
+  - name: Intrinsic
+    group: Internal and Deprecated
+    type: flag
+    position: main
+    documentation:
+      text: This indicates that the class was declared directly in C++, and has no boilerplate generated by Unreal Header Tool. Do not use this Specifier on new classes.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  - name: NoExport
+    group: Internal and Deprecated
+    type: flag
+    position: main
+    documentation:
+      text: Indicates that this class's declaration should not be included in the automatically-generated C++ header file by the header generator. The C++ class declaration must be defined manually in a separate header file. Only valid for native classes. Do not use this for new classes.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
+  
+  - name: UsesHierarchy
+    group: Internal and Deprecated
+    type: flag
+    position: meta
+    comment: The official documentation lists this for both `UCLASS` and `USTRUCT` but there are no instances of it being used in the codebase and **no code that seems to recognise it**. So I think it's maybe legacy or something someone forgot.
+    documentation:
+      text: Indicates the class uses hierarchical data. Used to instantiate hierarchical editing features in Details panels.
+      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  
