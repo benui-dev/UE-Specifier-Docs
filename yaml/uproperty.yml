@@ -116,7 +116,7 @@ specifiers:
     subgroup: Visibility
     position: meta
     type: flag
-    required: BlueprintAssignable
+    required: [ BlueprintAssignable ]
     comment: Not sure this is very useful for anything. Events are not really shown in a useful way in the details panel. The green + shape button that is shown on `UButton` is a UMG-specific editor customization so this does not relate to showing events in that way.
     documentation:
       text: Indicates that the property should be hidden in the details panel. Currently only used by events.
@@ -168,15 +168,18 @@ specifiers:
     documentation:
       text: Specifies the category of the property when displayed in Blueprint editing tools. Define nested categories using the \| operator.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-    samples: |
-      UPROPERTY(EditAnywhere, Category="Animals")
-      bool bIsCute;
+    samples:
+      - |
+        UPROPERTY(EditAnywhere, Category="Animals")
+        bool bIsCute;
   
-      UPROPERTY(EditAnywhere, Category="Animals|Dogs")
-      FString BarkWord;
-  
-      UPROPERTY(EditAnywhere, Category="Animals|Birds")
-      int32 FlyingSpeed = 99;
+      - |
+        UPROPERTY(EditAnywhere, Category="Animals|Dogs")
+        FString BarkWord;
+
+      - |
+        UPROPERTY(EditAnywhere, Category="Animals|Birds")
+        int32 FlyingSpeed = 99;
     images: [ /uproperty/category.jpg, /uproperty/category-blueprint-graph.jpg ]
   - name: DisplayName
     group: Editor
@@ -308,7 +311,7 @@ specifiers:
     source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: flag
     position: meta
-    requires: [ EditCondition ]
+    required: [ EditCondition ]
     keywords: [editor]
     comment:
       By default, `EditCondition` changes properties to be read-only when the condition evaluates to false. With `EditConditionHides`, the property is hidden.
@@ -333,7 +336,7 @@ specifiers:
   
         UPROPERTY(EditDefaultsOnly, meta=(EditCondition="PlantType==EPlantType::Poison", EditConditionHides))
         float PoisonDamagePerSecond = 0.25f;
-  
+
   - name: InlineEditConditionToggle
     group: Editor
     subgroup: Display
@@ -342,7 +345,7 @@ specifiers:
     position: meta
     keywords: [editor]
     antonyms: [ HideEditConditionToggle ]
-    requires: [ EditCondition ]
+    required: [ EditCondition ]
     related: [ EditCondition ]
     incompatible: [ EditConditionHides ]
     comment: Instead of showing the `bool` property separately, it is instead displayed inline, to the left of the property that it is controlling.
@@ -428,7 +431,7 @@ specifiers:
     type: bool
     comment: Can also be used as metadata on `UCLASS()`.
     related: [ uclass.displaythumbnail ]
-    samples: 
+    samples:
       - |
         UPROPERTY(EditAnywhere, meta=(DisplayThumbnail=false))
         class UCurveFloat* SomeCurve;
@@ -438,7 +441,7 @@ specifiers:
     documentation:
       text: Indicates that the property is an asset type and it should display the thumbnail of the selected asset.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  
+
   - name: MaxPropertyDepth
     group: Editor
     subgroup: Display
@@ -450,7 +453,7 @@ specifiers:
       
       No examples of this in the source code as far as I can tell.
   
-  
+
   - name: ForceRebuildProperty
     group: Editor
     subgroup: Misc
@@ -458,7 +461,7 @@ specifiers:
     type: string
     position: meta
     comment: Seems to find a child property node with the specified string, and if found, force them to be rebuilt
-  
+
   - name: Instanced
     group: Editor
     position: main
@@ -486,15 +489,15 @@ specifiers:
           UPROPERTY(BlueprintReadOnly, Instanced)
           UInstanceSettings* Settings;
         };
-  
+
   ###############################################################################
-  
-  
-  
-  
+
+
+
+
   ###############################################################################
   # Data Decorators
-  
+
   - name: NoResetToDefault
     group: Data Decorators
     subgroup: General
@@ -627,7 +630,7 @@ specifiers:
     type: number
     type-comment: float, int
     keywords: [number, editor]
-    relate: [ Multiple ]
+    related: [ Multiple ]
     images: [ /uproperty/delta.gif ]
     samples:
       - |
@@ -698,10 +701,10 @@ specifiers:
     documentation:
       text: Used for integer properties. Clamps the valid values that can be entered in the UI to be between 0 and the length of the array specified.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  
+
   ###############################################################################
   # Data Decorators - Text
-  
+
   - name: GetOptions
     group: Data Decorators
     subgroup: Text
@@ -774,11 +777,11 @@ specifiers:
     documentation:
       text: Used for FString and FText properties. Indicates that the edit field is a secret field (e.g a password) and entered text will be replaced with dots. Do not use this as your only security measure. The property data is still stored as plain text.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  
-  
+
+
   ###############################################################################
   # Data Decorators - Array
-  
+
   - name: ArraySizeEnum
     group: Data Decorators
     subgroup: Array
@@ -889,7 +892,7 @@ specifiers:
       Requires `operator==` and `WithEquality` to work with structs.
   
       Definitely does not work with simple data types like integers and strings.
-  
+
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(NoElementDuplicate))
@@ -897,10 +900,10 @@ specifiers:
     documentation:
       text: Used for array properties. Indicates that the duplicate icon should not be shown for entries of this array in the property panel.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  
+
   ###############################################################################
   # Data Decorators - Color
-  
+
   - name: HideAlphaChannel
     group: Data Decorators
     subgroup: Color
@@ -911,10 +914,10 @@ specifiers:
     documentation:
       text: Used for FColor and FLinearColor properties. Indicates that the Alpha property should be hidden when displaying the property widget in the details.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  
+
   ###############################################################################
   # Data Decorators - Object
-  
+
   - name: NoClear
     group: Data Decorators
     subgroup: Object
@@ -930,10 +933,10 @@ specifiers:
       text: Prevents this Object reference from being set to none from the editor. Hides clear (and browse) button in the editor.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
     images: [ /uproperty/noclear.jpg ]
-  
+
   ###############################################################################
   # Data Decorators - Bitmask
-  
+
   - name: Bitmask
     group: Data Decorators
     subgroup: Bitmask
@@ -993,14 +996,14 @@ specifiers:
     comment: |
       This shows a kind of janky-looking wireframe diamond in-world at an offset relative to the parent actor. It also shows some debug text. See the screenshot.
       A lot of examples seem to treat this like a boolean, but it's a flag; it just checks for `HasMetaData`.
-    images: 
+    images:
       - /uproperty/makeeditwidget-property.jpg
       - /uproperty/makeeditwidget-world.jpg
     documentation:
       text: Used for Transform/Rotator properties (also works on arrays of them). Indicates that the property should be exposed in the viewport as a movable widget.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-  
-  
+
+
   ###############################################################################
   # Serialization
   - name: SaveGame
@@ -1065,11 +1068,11 @@ specifiers:
     documentation:
       text: This property will not be exported to a text format (so it cannot, for example, be used in copy/paste operations).
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  
-  
+
+
   ###############################################################################
   # Blueprint Logic
-  
+
   - name: BlueprintReadOnly
     group: Blueprint Logic
     position: main
@@ -1108,7 +1111,7 @@ specifiers:
   
       Make sure your property and functions do not have clashing names. You cannot call your property `bIsPasswordEnabled` and the getter function `bool IsPasswordEnabled() const`
   
-  
+
     samples:
       - |
         UPROPERTY(EditAnywhere, BlueprintGetter = IsPassEnabled, BlueprintSetter = SetPassEnabled )
@@ -1162,7 +1165,7 @@ specifiers:
     type: flag
     position: main
     keywords: [delegate]
-    related: HideInDetailPanel
+    related: [ HideInDetailPanel ]
     documentation:
       text: Usable with Multicast Delegates only. Exposes the property for assigning in Blueprints.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -1195,7 +1198,7 @@ specifiers:
       It seems that without `DeprecationMessage`, there is no warning shown. So make sure you add one.
   
       In the Unreal codebase I've seen a lot of instances of renaming the variable with a prefix `DEPRECATED_` and using `DisplayName` to make it look the same to Blueprints.
-    samples: 
+    samples:
       - |
         // Simple
         UPROPERTY(BlueprintReadWrite, meta=(DeprecatedProperty, DeprecationMessage="This is deprecated"))
@@ -1241,7 +1244,7 @@ specifiers:
     group: Blueprint Logic
     position: meta
     incompatible: [ DisableEditOnInstance ]
-    requires: [ BlueprintReadOnly ]
+    required: [ BlueprintReadOnly ]
     type: bool
     type-comment: (see commment)
     comment: |
@@ -1427,7 +1430,8 @@ specifiers:
       - |
         UPROPERTY(meta=(BindWidgetAnimOptional))
         UWidgetAnimation* RevealWindow;
-    links: [ "https://benui.ca/unreal/ui-animations-from-cpp/" ]
+    links:
+      - [ "https://benui.ca/unreal/ui-animations-from-cpp/" ]
   
   
   
