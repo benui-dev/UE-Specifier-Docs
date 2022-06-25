@@ -103,6 +103,7 @@ specifiers:
       The classes that are supported by `Exec` by default are:
       * `UWorld`
       * `UPlayerInput`
+      * `UGameInstance`
       * `APlayerController`
       * `APawn`
       * `AHUD`
