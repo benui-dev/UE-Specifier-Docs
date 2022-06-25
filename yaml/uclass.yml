@@ -269,8 +269,6 @@ specifiers:
       text: All instances of this class are considered "instanced". Instanced classes (components) are duplicated upon construction. This Specifier is inherited by subclasses.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
   
-  
-  
   - name: HideDropdown
     group: Display
     type: flag
@@ -289,14 +287,12 @@ specifiers:
     documentation:
       text: Shows all functions within the listed categories in a property viewer.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-    documentation:
-      text: Shows the named function in a property viewer.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
     samples:
       - |
         UCLASS(ShowFunctions=FunctionName)
       - |
         UCLASS(ShowFunctions=(Category1, Category2))
+
   - name: HideFunctions
     group: Visibility
     type: string
@@ -324,9 +320,6 @@ specifiers:
     antonyms: [ ShowFunctions ]
     documentation:
       text: Hides all functions in the specified category from the user entirely.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-    documentation:
-      text: Hides the named functions from the user entirely.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
   
   - name: MinimalAPI
@@ -543,9 +536,10 @@ specifiers:
     type: string
     type-comment: Comma-separated list
     position: meta
-    samples: |
-      UCLASS(meta=(KismetHideOverrides="ReceiveAnyDamage,ReceivePointDamage"))
-      class ENGINE_API ALevelScriptActor : public AActor
+    samples:
+      - |
+        UCLASS(meta=(KismetHideOverrides="ReceiveAnyDamage,ReceivePointDamage"))
+        class ENGINE_API ALevelScriptActor : public AActor
     documentation:
       text: List of Blueprint events that are not allowed to be overridden.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
