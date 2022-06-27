@@ -8,98 +8,90 @@ specifiers:
     documentation:
       text: The AdvancedClassDisplay Specifier forces all properties of the class to show only in the advanced sections of any details panel where they appear. To override this on an individual property, use the SimpleDisplay specifier on that property.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  
-  - name: ClassGroup
-    group: Display
-    type: string
-    position: main
-    comment: |
-      Class Group must be something already registered, you can't put arbitrary strings in here.
-  
-      Seems to be only used for the Add Component button within an actor.
-    samples:
-    - |
-      UCLASS(ClassGroup="Animation")
-      class UMyActorComponent : public UActorComponent
-      {
-          GENERATED_BODY()
-      };
-    images: [ /uclass/classgroup.jpg ]
-    documentation:
-      text: Indicates that Unreal Editor's Actor Browser should include this class and any subclass of this class within the specified GroupName when Group View is enabled in the Actor Browser.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
-  
-    
-  - name: ABSLOG
+  - name: AbsLog
     group: Logging
+    type: string
     related: [ Log ]
     documentation:
       text: Same as LOG= but without a filename length check.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: AUTO
+  - name: Auto
     group: Developer
+    type: flag
     documentation:
       text: Assume yes on all questions. (for example during compile)
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: AUTOCHECKOUTPACKAGES
+  - name: AutoCheckoutPackages
     group: Developer
+    type: flag
     documentation:
       text: Automatically checkout packages that need to be saved.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: AutomatedMapBuild
     group: Developer
+    type: flag
     comment: |
       The second argument to the exe is the map, so this flag uses that.
       As to what an "automated build" means, I have no idea.
     documentation:
       text: Perform an automated build of a specified map.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: BIASCOMPRESSIONFORSIZE
+  - name: BiasCompressionForSize
     group: Developer
-    comment: Huh?
+    type: flag
+    comment: Can't find this in the engine.
     documentation:
       text: Override compression settings with respect to size.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: BUILDMACHINE
+  - name: BuildMachine
     group: Developer
     type: flag
     comment: If this is set, it implies some other arguments?
     documentation:
       text: Set as build machine. Used for deciding if debug output is enabled.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: BULKIMPORTINGSOUNDS
+  - name: BulkImportingSounds
     group: Developer
+    type: flag
+    comment: Can't find this in the engine.
     documentation:
       text: Use when importing sounds in bulk. (Content Browser specific.)
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: CHECK_NATIVE_CLASS_SIZES
     group: Developer
+    type: flag
+    comment: Can't find in source
     documentation:
       text: "Enable checking of native class sizes. Note: Native classes on console platforms will cause native class size checks to fail even though they are assumed to be correct."
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: CODERMODE
+  - name: CoderMode
     group: Deprecated
+    type: flag
     comment: Couldn't find it in the codebase for UE5. Possibly for Unreal Engine 3?
     documentation:
       text: Enables Coder mode.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: COMPATSCALE
+  - name: CompatScale
     group: Developer
+    type: flag
     documentation:
       text: Set compatibility settings manually to override PCCompat tool settings.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: CONFORMDIR
+  - name: ConformDir
+    type: flag
     group: Deprecated
+    type: flag
     comment: Can't find either ConformDir or ConfirmDir in UE5 source.
     documentation:
       text: Directory to use when conforming packages.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: COOKFORDEMO
+  - name: CookForDemo
     group: Developer
+    type: flag
     documentation:
       text: Specify as cooking packages for the demo.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: COOKPACKAGES
+  - name: CookPackages
     group: Developer
     documentation:
       text: Tag to specify cooking packages.
@@ -536,84 +528,99 @@ specifiers:
     documentation:
       text: Disable any sound output from the engine.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOSPLASH
+  - name: NoSplash
     group: User
+    type: flag
     documentation:
       text: Disable use of splash image when loading the game.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOTEXTURESTREAMING
+  - name: NoTextureStreaming
     group: User
+    type: flag
     documentation:
       text: Disable texture streaming. Highest quality textures are always loaded.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: ONETHREAD
+  - name: OneThread
     group: User
+    type: flag
     documentation:
       text: Run the engine using a single thread instead of multi-threading.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: PATHS
+  - name: Paths
     group: User
+    type: string
     documentation:
       text: Set what paths to use for testing wrangled content. Not used for shipping releases.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: PREFERREDPROCESSOR
+  - name: PreferredProcessor
     group: User
+    comment: Can't find in source.
     documentation:
       text: Set the thread affinity for a specific processor.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: USEALLAVAILABLECORES
+  - name: UseAllAvailableCores
     group: User
+    type: flag
+    comment: Can only find it with reference to archiving.
     documentation:
       text: Force the use of all available cores on the target platform. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
 
 ################################################################################
 
-  - name: LOGIN
+  - name: Login
     group: Server Switches
+    type: string
     documentation:
       text: Set username to use when logging in.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: PASSWORD
+  - name: Password
     group: Server Switches
+    type: string
     documentation:
       text: Set password to use when logging in. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
 
 ################################################################################
 
-  - name: NODATABASE
+  - name: NoDatabase
     group: Game Stats/Database
+    type: flag
     documentation:
       text: Do not use database, and ignore database connection errors.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOLIVETAGS
+  - name: NoLiveTags
     group: Game Stats/Database
+    type: flag
     documentation:
       text: Skip loading unverified tag changes from SQL database. Only load for current user. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
 
 ################################################################################
 
-  - name: ENGLISHCOALESCED
+  - name: EnglishCoalesced
     group: INI/Config Files
+    type: flag
     comment: Couldn't find in source.
     documentation:
       text: Revert to the default (English) coalesced .ini if the language-localized version cannot be found.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOAUTOINIUPDATE
+  - name: NoAutoINIUpdate
     group: INI/Config Files
+    type: flag
     incompatible: [ RegenerateInis ]
     documentation:
       text: Suppress prompts to update .ini files.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOINI
+  - name: NoINI
     group: INI/Config Files
+    type: flag
     documentation:
       text: Do not update the .ini files.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: REGENERATEINIS
+  - name: RegenerateINIs
     group: INI/Config Files
+    type: flag
     incompatible: [ NoAutoIniUpdate ]
     comment: Be careful with plurals
     documentation:
@@ -622,25 +629,30 @@ specifiers:
 
   - name: preferAMD
     group: Graphics
+    type: flag
     related: [ preferIntel, preferNVidia, preferMS ]
     platforms: [ Windows ]
     comment: Windows DX11
   - name: preferIntel
     group: Graphics
+    type: flag
     related: [ preferAMD, preferNVidia, preferMS ]
     platforms: [ Windows ]
     comment: Windows DX11
   - name: preferNVidia
     group: Graphics
+    type: flag
     related: [ preferAMD, preferIntel, preferMS ]
     platforms: [ Windows ]
     comment: Windows DX11
   - name: preferMS
     group: Graphics
+    type: flag
     related: [ preferAMD, preferIntel, preferNVidia ]
     platforms: [ Windows ]
     comment: Windows DX11
   - name: AllowSoftwareRendering
     group: Graphics
+    type: flag
     platforms: [ Windows ]
     comment: Windows DX11
