@@ -3,6 +3,11 @@ specifiers:
     group: Debug
     type: flag
     comment: Causes Unreal to wait for a debugger to be connected before continuing execution.
+
+
+################################################################################
+# Logging
+
   - name: log
     group: Logging
     documentation:
@@ -15,6 +20,18 @@ specifiers:
     documentation:
       text: Same as LOG= but without a filename length check.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+  - name: LogCmds
+    group: Logging
+    type: string
+    comment: Change the verbosity log categories 
+  - name: ForceLogFlush
+    group: Logging
+    documentation:
+      text: Force a log flush after each line.
+      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+
+################################################################################
+
   - name: Auto
     group: Developer
     type: flag
@@ -116,21 +133,24 @@ specifiers:
     documentation:
       text: Track and log File IO statistics. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+  - name: Deterministic
+    group: Developer
+    type: flag
+    related: [ FixedSeed, UseFixedTimeStep ]
+    comment: Shortcut for `-UseFixedTimeStep -FixedSeed`.
   - name: FixedSeed
     group: Developer
     type: flag
     documentation:
       text: Initialize the random number generator with a fixed value, 0.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: FIXUPTANGENTS
+  - name: UseFixedTimeStep
+    group: Developer
+    type: flag
+  - name: FixUpTangents
     group: Developer
     documentation:
       text: Fix legacy tangents in distributions automatically.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: FORCELOGFLUSH
-    group: Logging
-    documentation:
-      text: Force a log flush after each line.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: FORCEPVRTC
     group: Developer
@@ -278,44 +298,44 @@ specifiers:
     documentation:
       text: Do not verify garbage compiler assumptions.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOWRITE
+  - name: NoWrite
     group: Logging
     documentation:
       text: Disable output to log. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SEEKFREELOADING
+  - name: SeekFreeLoading
     group: Developer
     documentation:
       text: Only use cooked data.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SEEKFREEPACKAGEMAP
+  - name: SeekFreePackageMap
     group: Developer
     documentation:
       text: Override the package map with the seekfree (cooked) version.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SEEKFREELOADINGPCCONSOLE
+  - name: SeekFreeloadingPCConsole
     group: Developer
     documentation:
       text: Only use cooked data for PC console mode.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SEEKFREELOADINGSERVER
+  - name: SeekFreeLoadingServer
     group: Developer
     documentation:
       text: Only use cooked data for server.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SETTHREADNAMES
+  - name: SetThreadNames
     group: Developer
     platforms: [ Xbox ]
     documentation:
       text: (Xbox only) Force thread names to be set. This can mess up the XDK COM API which is why it must be explicitly set to be performed if desired.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SHOWMISSINGLOC
+  - name: ShowMissingLoc
     group: Developer
-    comment: I thought that error strings are already returned instead of English. Maybe this is editor-only?
+    comment: Can't find this in the source. Also, I thought that error strings are already returned instead of English. Maybe this is editor-only?
     documentation:
       text: If missing localized text, return error string instead of English text.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SILENT
+  - name: Silent
     group: Developer
     documentation:
       text: Disable output and feedback.
@@ -438,7 +458,8 @@ specifiers:
   - name: ExecCmds
     group: Developer
     type: string
-    comment: I found this in the source code. Is it a duplicate.
+    comment: |
+      It looks like this can be used to execute cheat console commands, separated with commas.
   - name: FPS
     group: Rendering
     type: integer
@@ -656,3 +677,34 @@ specifiers:
     type: flag
     platforms: [ Windows ]
     comment: Windows DX11
+  - name: NoHMD
+    group: VR
+    type: flag
+    comment: Disables head-mounted display. Useful for disabling SteamVR.
+  - name: Multiprocess
+    group: Unknown
+    type: flag
+  - name: MultiprocessSaveConfig
+    group: Unknown
+    type: flag
+  - name: SkipCompile
+    group: Unknown
+    type: flag
+  - name: SystemMalloc
+    group: Unknown
+    type: flag
+  - name: NumThreads
+    group: Unknown
+    type: integer
+    comment: Minimum 1.
+  - name: NumRuns
+    group: Unknown
+    type: integer
+    comment: Minimum 1.
+  - name: MemPerThread
+    group: Unknown
+    type: integer
+    comment: In kilobytes.
+  - name: TouchMem
+    group: Unknown
+    type: flag
