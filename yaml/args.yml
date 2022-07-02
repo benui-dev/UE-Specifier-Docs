@@ -8,11 +8,49 @@ specifiers:
 ################################################################################
 # Logging
 
-  - name: log
+  - name: Log
     group: Logging
+    type: string
+    related: [ AbsLog ]
     documentation:
-      text: The AdvancedClassDisplay Specifier forces all properties of the class to show only in the advanced sections of any details panel where they appear. To override this on an individual property, use the SimpleDisplay specifier on that property.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+      text: When used as a switch (-log), opens a separate window to display the contents of the log in real time. When used as a setting (LOG=filename.log), tells the engine to use the log filename of the string that immediately follows.
+      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+  - name: LogTimes
+    group: Logging
+    type: flag
+    antonyms: [ NoLogTimes ]
+    incompatible: [ UTCLogTimes, LocalLogTimes, LogTimesSinceStart, LogTimeCode ]
+    comment: There are a bunch of different ways to display log times.
+    documentation:
+      text: Print time with log output. (Default, same as setting LogTimes=True in the [LogFiles] section of *Engine.ini.)
+      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+  - name: UTCLogTimes
+    group: Logging
+    type: flag
+    antonyms: [ NoLogTimes ]
+    incompatible: [ LogTimes, LocalLogTimes, LogTimesSinceStart, LogTimeCode ]
+  - name: LocalLogTimes
+    group: Logging
+    type: flag
+    antonyms: [ NoLogTimes ]
+    incompatible: [ LogTimes, UTCLogTimes, LogTimesSinceStart, LogTimeCode ]
+  - name: LogTimesSinceStart
+    group: Logging
+    type: flag
+    antonyms: [ NoLogTimes ]
+    incompatible: [ LogTimes, UTCLogTimes, LocalLogTimes, LogTimeCode ]
+  - name: LogTimeCode
+    group: Logging
+    type: flag
+    antonyms: [ NoLogTimes ]
+    incompatible: [ LogTimes, UTCLogTimes, LocalLogTimes, LogTimesSinceStart ]
+  - name: NoLogTimes
+    group: Logging
+    type: flag
+    incompatible: [ LogTimes, UTCLogTimes, LocalLogTimes, LogTimesSinceStart, LogTimeCode ]
+    documentation:
+      text: Do not print time with log output. (Same as setting LogTimes=False in the [LogFiles] section of *Engine.ini.) 
+      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: AbsLog
     group: Logging
     type: string
@@ -23,9 +61,10 @@ specifiers:
   - name: LogCmds
     group: Logging
     type: string
-    comment: Change the verbosity log categories 
+    comment: Change the verbosity of log categories
   - name: ForceLogFlush
     group: Logging
+    type: flag
     documentation:
       text: Force a log flush after each line.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
@@ -41,6 +80,7 @@ specifiers:
   - name: AutoCheckoutPackages
     group: Developer
     type: flag
+    comment: Used on ResavePackagesCommandlet.
     documentation:
       text: Automatically checkout packages that need to be saved.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
@@ -54,7 +94,7 @@ specifiers:
       text: Perform an automated build of a specified map.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: BiasCompressionForSize
-    group: Developer
+    group: Deprecated
     type: flag
     comment: Can't find this in the engine.
     documentation:
@@ -68,16 +108,16 @@ specifiers:
       text: Set as build machine. Used for deciding if debug output is enabled.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: BulkImportingSounds
-    group: Developer
+    group: Deprecated
     type: flag
     comment: Can't find this in the engine.
     documentation:
       text: Use when importing sounds in bulk. (Content Browser specific.)
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: CHECK_NATIVE_CLASS_SIZES
-    group: Developer
+  - name: Check_Native_Class_Sizes
+    group: Deprecated
     type: flag
-    comment: Can't find in source
+    comment: Can't find in source.
     documentation:
       text: "Enable checking of native class sizes. Note: Native classes on console platforms will cause native class size checks to fail even though they are assumed to be correct."
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
@@ -89,13 +129,13 @@ specifiers:
       text: Enables Coder mode.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: CompatScale
-    group: Developer
+    group: Deprecated
     type: flag
+    comment: Couldn't find in source.
     documentation:
       text: Set compatibility settings manually to override PCCompat tool settings.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: ConformDir
-    type: flag
     group: Deprecated
     type: flag
     comment: Can't find either ConformDir or ConfirmDir in UE5 source.
@@ -103,33 +143,42 @@ specifiers:
       text: Directory to use when conforming packages.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: CookForDemo
-    group: Developer
+    group: Deprecated
     type: flag
+    comment: Cannot find in source.
     documentation:
       text: Specify as cooking packages for the demo.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: CookPackages
-    group: Developer
+    group: Deprecated
+    type: flag
+    comment: Cannot find in source.
     documentation:
       text: Tag to specify cooking packages.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: CRASHREPORTS
+  - name: CrashReports
     group: Developer
+    type: flag
     documentation:
       text: Always report crashes of the engine.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: D3DDEBUG
+  - name: D3DDebug
     group: Developer
+    type: flag
     documentation:
       text: Use a d3d debug device. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: DEVCON
-    group: Developer
+  - name: DevCon
+    group: Deprecated
+    type: flag
+    comment: Cannot find in source
     documentation:
       text: Disable secure connections for developers. (Uses unencrypted sockets.)
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: DUMPFILEIOSTATS
-    group: Developer
+  - name: DumpFileIOStats
+    group: Deprecated
+    type: flag
+    comment: Cannot find in source
     documentation:
       text: Track and log File IO statistics. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
@@ -149,108 +198,137 @@ specifiers:
     type: flag
   - name: FixUpTangents
     group: Developer
+    type: flag
     documentation:
       text: Fix legacy tangents in distributions automatically.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: FORCEPVRTC
+  - name: ForcePVRTC
     group: Developer
+    type: flag
+    comment: Found a reference to "bForcePVRTC".
     documentation:
       text: Force pvrtc texture compression for mobile platform.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: FORCESOUNDRECOOK
-    group: Developer
+  - name: ForceSoundRecook
+    group: Deprecated
+    type: flag
+    comment: Can't find any reference to this. Deprecated?
     documentation:
       text: Force a complete re-cook of all sounds.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: GENERICBROWSER
-    group: Developer
+  - name: GenericBrowser
+    group: Deprecated
+    type: flag
     comment: Can't find any reference to this. Deprecated?
     documentation:
       text: Use the Generic Browser.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: INSTALLED
+  - name: Installed
     group: Developer
+    type: flag
+    antonyms: [ NotInstalled ]
     documentation:
       text: For development purposes, run the game as if installed.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: INSTALLFW
+  - name: NotInstalled
     group: Developer
+    type: flag
+    antonyms: [ Installed ]
+  - name: InstallFW
+    group: Developer
+    type: flag
     antonyms: [ UninstallFW ]
     comment: Shows the Windows firewall popup maybe?
     documentation:
       text: Set whether the handling of the firewall integration should be performed.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: UNINSTALLFW
+  - name: UninstallFW
     group: Developer
+    type: flag
     antonyms: [ InstallFW ]
     documentation:
       text: Set whether the handling of the firewall integration should be performed.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: InstallGE
     group: Developer
+    type: flag
     antonyms: [ UninstallGE ]
+    related: [ AllUsers ]
     platforms: [ Windows ]
-    comment: "[Game Explorer](https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ee417682(v=vs.85)) seems to be some old Windows thing"
+    comment: "[Game Explorer](https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ee417682(v=vs.85)) seems to be some old Windows thing for managing installed games. Not sure if it's really relevant any more."
     documentation:
       text: Add the game to the Game Explorer.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: UninstallGE
     group: Developer
+    type: flag
     antonyms: [ InstallGE ]
     platforms: [ Windows ]
     documentation:
       text: Remove the game from the Game Explorer.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: ALLUSERS
+  - name: AllUsers
     group: Developer
+    type: flag
     comment: does this mean this requires InstallGe?
     requires: [ InstallGE ]
     documentation:
       text: Add the game for all users when INSTALLGE is specified.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: CULTUREFORCOOKING
-    group: Developer
+  - name: Culture
+    group: Localization
+    type: string
+    related: [ FirstInstall ]
+    comment: |
+      When this is set, the text localization manager uses the specified culture and does not look at ini files.
+
+      It seems like it might be useful for testing localization, to force the game to launch with a specific culture without having to mess around with settings.
+  - name: CultureForCooking
+    group: Localization
+    type: string
+    related: [ FirstInstall ]
+    comment: Does the same as `Culture` but can has the option to work with `FirstInstall`.
     documentation:
       text: Set language to be used for cooking.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: LIGHTMASSDEBUG
+  - name: FirstInstall
+    group: Localization
+    related: [ CultureForCooking ]
+    comment: Based on the code, if `CultureForCooking` and `FirstInstall` are set, it writes the culture specified by `CultureForCooking` to the `Internationalization` part of the engine .ini file.
+  - name: LightMassDebug
     group: Developer
+    type: flag
     documentation:
       text: Launch lightmass manually with -debug and allow lightmass to be executed multiple times.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: LIGHTMASSSTATS
+  - name: LightMassStats
     group: Logging
+    type: flag
     subgroup: Stats
     documentation:
       text: Force all lightmass agents to report detailed stats to the log.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: LOG
-    group: Logging
-    documentation:
-      text: When used as a switch (-log), opens a separate window to display the contents of the log in real time. When used as a setting (LOG=filename.log), tells the engine to use the log filename of the string that immediately follows.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: LOGTIMES
-    group: Logging
-    documentation:
-      text: Print time with log output. (Default, same as setting LogTimes=True in the [LogFiles] section of *Engine.ini.)
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOCONFORM
-    group: Developer
-    comment: What does conforming packages mean?
+  - name: NoConform
+    group: Deprecated
+    type: flag
+    comment: Cannot find in source.
     documentation:
       text: Tell the engine not to conform packages as they are compiled.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOCONTENTBROWSER
+  - name: NoContentBrowser
     group: Developer
+    type: flag
     comment: Surely this is editor-only? Why would you want to disable the content browser?
     documentation:
       text: Disable the Content Browser.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOINNEREXCEPTION
+  - name: NoInnerException
     group: Developer
+    type: flag
     comment: Seems to only be enabled with the define `_WIN64`?Why might you do this? S
     samples:
-      - #ifdef _WIN64
+      - |
+        #ifdef _WIN64
         if ( FParse::Param(CmdLine,TEXT("noinnerexception")) || FApp::IsBenchmarking() || bNoExceptionHandler)
         {
           GEnableInnerException = false;
@@ -259,165 +337,191 @@ specifiers:
     documentation:
       text: Disable the exception handler within native C++.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOLOADSTARTUPPACKAGES
+  - name: NoLoadStartupPackages
     group: Developer
+    type: flag
+    comment: There is a log message that mentions it but I cannot find any code that actually *uses* it.
     documentation:
       text: Force startup packages not to be loaded. You can use this if objects in a startup package must be deleted from within the editor.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOLOGTIMES
-    group: Developer
-    documentation:
-      text: Do not print time with log output. (Same as setting LogTimes=False in the [LogFiles] section of *Engine.ini.) 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOPAUSE
+  - name: NoPause
     group: Logging
+    type: flag
     related: [ NoPauseOnSuccess ]
     documentation:
       text: Close the log window automatically on exit.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOPAUSEONSUCCESS
+  - name: NoPauseOnSuccess
     group: Logging
+    type: flag
     related: [ NoPause ]
     documentation:
       text: Close the log window automatically on exit as long as no errors were present.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NORC
+  - name: NoRC
     group: Developer
+    type: flag
     documentation:
       text: Disable the remote control. Used for dedicated servers.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: VerifyGC
     group: Developer
+    type: flag
     antonyms: [ NoVerifyGC ]
     documentation:
       text: Force garbage compiler assumptions to be verified.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: NoVerifyGC
     group: Developer
+    type: flag
     antonyms: [ VerifyGC ]
     documentation:
       text: Do not verify garbage compiler assumptions.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: NoWrite
     group: Logging
+    type: flag
     documentation:
       text: Disable output to log. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: SeekFreeLoading
     group: Developer
+    type: flag
     documentation:
       text: Only use cooked data.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: SeekFreePackageMap
     group: Developer
+    type: flag
     documentation:
       text: Override the package map with the seekfree (cooked) version.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: SeekFreeloadingPCConsole
     group: Developer
+    type: flag
     documentation:
       text: Only use cooked data for PC console mode.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: SeekFreeLoadingServer
     group: Developer
+    type: flag
     documentation:
       text: Only use cooked data for server.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: SetThreadNames
     group: Developer
+    type: flag
     platforms: [ Xbox ]
     documentation:
       text: (Xbox only) Force thread names to be set. This can mess up the XDK COM API which is why it must be explicitly set to be performed if desired.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: ShowMissingLoc
     group: Developer
+    type: flag
     comment: Can't find this in the source. Also, I thought that error strings are already returned instead of English. Maybe this is editor-only?
     documentation:
       text: If missing localized text, return error string instead of English text.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: Silent
     group: Developer
+    type: flag
     documentation:
       text: Disable output and feedback.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: TraceAnimUsage
-    group: Developer
-    comment: huh?
+    group: Deprecated
+    type: flag
+    comment: Cannot find in source.
     documentation:
       text: Trace animation usage.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: TreatLoadWarningsAsErrors
     group: Developer
+    type: flag
     comment: What happens if there's an error?
     documentation:
       text: Force load warnings to be treated as errors.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+  - name: WarningsAsErrors
+    group: Developer
+    type: flag
+    related: [ TreatLoadWarningsAsErrors ]
+    documentation:
+      text: Treat warnings as errors. 
+      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: Unattended
     group: Developer
+    type: flag
     comment: What kinds of things require feedback? When might you want to use this?
     documentation:
       text: Set as unattended. Disable anything requiring feedback from user.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: UseUnpublished
     group: Developer
+    type: flag
     documentation:
       text: Force packages in the Unpublished folder to be used.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: VADebug
     group: Developer
+    type: flag
     documentation:
       text: Use the Visual Studio debugger interface.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: Verbose
     group: Developer
+    type: flag
     documentation:
       text: Set compiler to use verbose output.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: WarningsAsErrors
-    group: Developer
-    related: [ TreatLoadWarningsAsErrors ]
-    documentation:
-      text: Treat warnings as errors. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
 
 ################################################################################
 # Rendering
   - name: ConsoleX
     group: Rendering
+    type: integer
     documentation:
       text: Set the horizontal position for console output window.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: ConsoleY
     group: Rendering
+    type: integer
     documentation:
       text: Set the vertical position for console output window.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: ConsoleWidth
     group: Rendering
+    type: integer
   - name: ConsoleHeight
     group: Rendering
+    type: integer
   - name: WinX
     group: Rendering
+    type: integer
     documentation:
       text: Set the horizontal position of the game window on the screen.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: WinY
     group: Rendering
+    type: integer
     documentation:
       text: Set the vertical position of the game window on the screen.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: ResX
     group: Rendering
+    type: integer
     documentation:
       text: Set horizontal resolution for game window.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: ResY
     group: Rendering
+    type: integer
     documentation:
       text: Set vertical resolution for game window.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: VSync
     group: Rendering
+    type: flag
     antonyms: [ NoVSync ]
     documentation:
       text: Activate the VSYNC via command line. Pprevents tearing of the image but costs fps and causes input latency.)
@@ -429,12 +533,13 @@ specifiers:
     documentation:
       text: Deactivate the VSYNC via command line.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: BENCHMARK
+  - name: Benchmark
     group: Rendering
+    type: flag
     documentation:
       text: Run game at fixed-step in order to process each frame without skipping any frames. This is useful in conjunction with DUMPMOVIE options.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: DUMPMOVIE
+  - name: DumpMovie
     group: Rendering
     type: flag
     comment: |
@@ -449,8 +554,9 @@ specifiers:
     documentation:
       text: Dump rendered frames to files using current resolution of game.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: EXEC
+  - name: Exec
     group: Rendering
+    type: flag
     comment: What is an exec file? Is it really related to rendering?
     documentation:
       text: Executes the specified exec file.
@@ -466,23 +572,23 @@ specifiers:
     documentation:
       text: Set the frames per second for benchmarking.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: SECONDS
-    group: Rendering
+  - name: Seconds
+    group: Deprecated
     comment: I couldn't find this in the Unreal Engine 5 codebase.
     documentation:
       text: Set the maximum tick time.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: FULLSCREEN
+  - name: Fullscreen
     group: Rendering
     type: flag
-    antonym: [ Windowed ]
+    antonyms: [ Windowed ]
     documentation:
       text: Set game to run in fullscreen mode.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: WINDOWED
+  - name: Windowed
     group: Rendering
     type: flag
-    antonym: [ Fullscreen ]
+    antonyms: [ Fullscreen ]
     documentation:
       text: Set game to run in windowed mode. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
@@ -490,43 +596,64 @@ specifiers:
 ################################################################################
 # Network
 
-  - name: LANPLAY
+  - name: LanPlay
     group: Network
+    type: flag
     documentation:
       text: Tell the engine to not cap client bandwidth when connecting to servers. Causes double the amount of server updates and can saturate client's bandwidth.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: LimitClientTicks
     group: Network
+    type: flag
+    comment: See `NetDriver.cpp`. This flag seems to be on by default if `GetNetMode() == NM_ListenServer`
+    samples:
+      - |
+        #if WITH_SERVER_CODE
+        int32 UNetDriver::ServerReplicateActors_PrepConnections( const float DeltaSeconds )
+        {
+          int32 NumClientsToTick = ClientConnections.Num();
+
+          // by default only throttle update for listen servers unless specified on the commandline
+          static bool bForceClientTickingThrottle = FParse::Param( FCommandLine::Get(), TEXT( "limitclientticks" ) );
+          if ( bForceClientTickingThrottle || GetNetMode() == NM_ListenServer )
+          {
+              // ...
     documentation:
       text: Force throttling of network updates.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: MultiHome
     group: Network
+    type: flag
     documentation:
       text: Tell the engine to use a multihome address for networking.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: MultiHomeHttp
     group: Network
+    type: flag
     documentation:
       text: Tell the engine to use a multihome address for networking.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NETWORKPROFILER
+  - name: NetworkProfiler
     group: Network
+    type: flag
     documentation:
       text: Enable network profiler tracking.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOSTEAM
+  - name: NoSteam
     group: Network
+    type: flag
     documentation:
       text: Set steamworks to not be used.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: PORT
+  - name: Port
     group: Network
+    type: string
     documentation:
       text: Tell the engine to use a specific port number.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: PRIMARYNET
-    group: Network
+  - name: PrimaryNet
+    group: Deprecated
+    type: flag
     comment: Couldn't find this in the source code, deprecated?
     documentation:
       text: Affect how the engine handles network binding. 
@@ -534,18 +661,22 @@ specifiers:
 
 ################################################################################
 
-  - name: NOHOMEDIR
+  - name: NoHomeDir
     group: User
+    type: flag
+    comment: So what does it do instead?
     documentation:
       text: Override use of My Documents folder as home directory.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOFORCEFEEDBACK
+  - name: NoForceFeedback
     group: User
+    type: flag
     documentation:
       text: Disable force feedback in the engine.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
-  - name: NOSOUND
+  - name: NoSound
     group: User
+    type: flag
     documentation:
       text: Disable any sound output from the engine.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
@@ -574,7 +705,8 @@ specifiers:
       text: Set what paths to use for testing wrangled content. Not used for shipping releases.
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
   - name: PreferredProcessor
-    group: User
+    group: Deprecated
+    type: flag
     comment: Can't find in source.
     documentation:
       text: Set the thread affinity for a specific processor.
@@ -620,7 +752,7 @@ specifiers:
 ################################################################################
 
   - name: EnglishCoalesced
-    group: INI/Config Files
+    group: Deprecated
     type: flag
     comment: Couldn't find in source.
     documentation:
@@ -648,35 +780,36 @@ specifiers:
       text: Forces .ini files to be regenerated. 
       source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
 
-  - name: preferAMD
+  - name: PreferAMD
     group: Graphics
     type: flag
-    related: [ preferIntel, preferNVidia, preferMS ]
+    comment: Part of the Windows D3D12, D3D11 and Vulkan Render Hardware Interfaces, this lets you set a preferred adapter vendor. I guess you might want to use it if you've optimised for one over another, and the user has multiple installed?
+    related: [ PreferIntel, PreferNVidia, PreferMS ]
     platforms: [ Windows ]
     comment: Windows DX11
-  - name: preferIntel
+  - name: PreferIntel
     group: Graphics
     type: flag
-    related: [ preferAMD, preferNVidia, preferMS ]
+    comment: Part of the Windows D3D12, D3D11 and Vulkan Render Hardware Interfaces, this lets you set a preferred adapter vendor. I guess you might want to use it if you've optimised for one over another, and the user has multiple installed?
+    related: [ PreferAMD, PreferNVidia, PreferMS ]
     platforms: [ Windows ]
-    comment: Windows DX11
-  - name: preferNVidia
+  - name: PreferNVidia
     group: Graphics
     type: flag
-    related: [ preferAMD, preferIntel, preferMS ]
+    comment: Part of the Windows D3D12, D3D11 and Vulkan Render Hardware Interfaces, this lets you set a preferred adapter vendor. I guess you might want to use it if you've optimised for one over another, and the user has multiple installed?
+    related: [ PreferAMD, PreferIntel, PreferMS ]
     platforms: [ Windows ]
-    comment: Windows DX11
-  - name: preferMS
+  - name: PreferMS
     group: Graphics
     type: flag
-    related: [ preferAMD, preferIntel, preferNVidia ]
+    comment: Part of the Windows D3D11 Render Hardware Interface *only*, this lets you set a preferred adapter vendor. I guess you might want to use it if you've optimised for one over another, and the user has multiple installed?
+    related: [ PreferAMD, PreferIntel, PreferNVidia ]
     platforms: [ Windows ]
-    comment: Windows DX11
   - name: AllowSoftwareRendering
     group: Graphics
     type: flag
     platforms: [ Windows ]
-    comment: Windows DX11
+    comment: In the D3D11 and D3D12 RHI, setting this allows it to fall back to software rendering. By default it seem this is disabled.
   - name: NoHMD
     group: VR
     type: flag
