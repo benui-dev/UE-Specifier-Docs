@@ -280,6 +280,15 @@ specifiers:
     documentation:
       text: The name of this node in a Blueprint will be replaced with the value provided here, instead of the code-generated name.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
+  - name: ReturnDisplayName
+    group: Appearance
+    type: string
+    position: meta
+    comment: Change the label on the return value from the default "Return Value" to the specified string.
+    samples:
+      - |
+	    UFUNCTION(BlueprintCallable, Category = "Doggy Daycare", Meta = (ReturnDisplayName = "Success"))
+	    bool TryPetDog(const FName Name);
   - name: ExpandEnumAsExecs
     group: Blueprint Logic
     type: string
