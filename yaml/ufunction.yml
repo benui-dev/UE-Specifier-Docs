@@ -287,8 +287,8 @@ specifiers:
     comment: Change the label on the return value from the default "Return Value" to the specified string.
     samples:
       - |
-	    UFUNCTION(BlueprintCallable, Category = "Doggy Daycare", Meta = (ReturnDisplayName = "Success"))
-	    bool TryPetDog(const FName Name);
+        UFUNCTION(BlueprintCallable, Category = "Doggy Daycare", Meta = (ReturnDisplayName = "Success"))
+        bool TryPetDog(const FName Name);
   - name: ExpandEnumAsExecs
     group: Blueprint Logic
     type: string
