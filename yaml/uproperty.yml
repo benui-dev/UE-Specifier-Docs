@@ -235,7 +235,6 @@ specifiers:
     type: flag
     incompatible: [ AdvancedDisplay ]
     antonyms: [ AdvancedDisplay ]
-    comment: use
     documentation:
       text: Visible or editable properties appear in the Details panel and are visible without opening the "Advanced" section.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -275,7 +274,9 @@ specifiers:
     comment: |
       `EditCondition` can be used to change a property from read-only to writeable depending on another property.
   
-      The simplest way is simply using another `bool` property i
+      The simplest way is simply using another `bool` property, but as of 4.23 more complex statements are supported.
+
+      It is worth noting that `EditCondition` also changes the appearance of properties inside Blueprint logic Make Struct nodes.
     position: meta
     samples: 
     - |
