@@ -1084,7 +1084,7 @@ specifiers:
     comment: |
       `BlueprintReadOnly` and its sibling `BlueprintReadWrite` Allow
   
-      By default, variables marked with `BlueprintReadOnly` or `BlueprintReadWrite` cannot be `private` (i.e. they must be `protected` or `private`). However the [`AllowPrivateAccess`](#allowprivateaccess) meta flag can change this to allow `private` variables.
+      By default, variables marked with `BlueprintReadOnly` or `BlueprintReadWrite` cannot be `private` (i.e. they must be `protected` or `public`). However the [`AllowPrivateAccess`](#allowprivateaccess) meta flag can change this to allow `private` variables.
   
       It seems possible to mark a property with both `BlueprintReadOnly` and `BlueprintGetter`, though I assume that only the Getter is called and the `BlueprintReadOnly` is redundant.
     documentation:
