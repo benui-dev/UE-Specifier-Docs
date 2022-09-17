@@ -284,10 +284,18 @@ specifiers:
     group: Appearance
     type: string
     position: meta
-    comment: Change the label on the return value from the default "Return Value" to the specified string.
+    comment: |
+      Change the label on the return value from the default "Return Value" to the specified string.
+
+      It's also possible to achieve the same thing by adding a `UPARAM()` outside of the main `UFUNCTION()` specifier. See the second example for how to do it.
     samples:
       - |
-        UFUNCTION(BlueprintCallable, Category = "Doggy Daycare", Meta = (ReturnDisplayName = "Success"))
+        UFUNCTION(BlueprintCallable, Category = "Doggy Daycare", meta=(ReturnDisplayName = "Success"))
+        bool TryPetDog(const FName Name);
+      - |
+        // Does the same thing but looks gross
+        UFUNCTION(BlueprintCallable, Category = "Doggy Daycare")
+        UPARAM(meta=(DisplayName="Success"))
         bool TryPetDog(const FName Name);
   - name: ExpandEnumAsExecs
     group: Blueprint Logic
