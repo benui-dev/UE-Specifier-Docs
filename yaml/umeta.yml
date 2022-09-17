@@ -35,7 +35,9 @@ specifiers:
           Count UMETA(Hidden),
         };
     comment:
-      This can be used in conjunction with `ENUM_RANGE_BY_COUNT` to allow [iteration over `UENUM`](/unreal/iterate-over-enum-tenumrange)
+      This can be used in conjunction with `ENUM_RANGE_BY_COUNT` to allow [iteration over `UENUM`](/unreal/iterate-over-enum-tenumrange).
+      
+      It looks like "Spacer" used to be an alternative name for this.
     documentation:
       text: This value will not appear in the Editor.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
