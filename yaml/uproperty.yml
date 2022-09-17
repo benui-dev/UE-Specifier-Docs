@@ -1109,7 +1109,7 @@ specifiers:
     comment: |
       `BlueprintReadOnly` and its sibling `BlueprintReadWrite` Allow
   
-      By default, variables marked with `BlueprintReadOnly` or `BlueprintReadWrite` cannot be `private` (i.e. they must be `protected` or `private`). However the [`AllowPrivateAccess`](#allowprivateaccess) meta flag can change this to allow `private` variables.
+      By default, variables marked with `BlueprintReadOnly` or `BlueprintReadWrite` cannot be `private` (i.e. they must be `protected` or `public`). However the [`AllowPrivateAccess`](#allowprivateaccess) meta flag can change this to allow `private` variables.
   
       It seems possible to mark a property with both `BlueprintReadOnly` and `BlueprintGetter`, though I assume that only the Getter is called and the `BlueprintReadOnly` is redundant.
     documentation:
@@ -1519,7 +1519,7 @@ specifiers:
     type: string
     position: meta
     related: [ AllowedClasses ]
-    comment: Some datatypes like `FSoftClassPath` allow any class type. `MetaClass` lets users allow only certain classes.
+    comment: Some datatypes like `FSoftClassPath` and `FSoftObjectPath` are not templated and allow any class type. `MetaClass` lets users allow only certain classes. In comparison `TSoftClassPtr` and `TSoftObjectPtr` use template parameters instead of `MetaClass`.
     related: [ AllowAbstract ]
     examples: [ /Engine/Source/Developer/Localization/Public/LocalizationTargetTypes.h ]
     documentation:
@@ -1614,6 +1614,12 @@ specifiers:
     documentation:
       text: Used for Subclass properties. Indicates whether only placeable classes should be shown in the class picker.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+  - name: DisallowCreateNew
+    group: Pickers
+    subgroup: Class
+    position: meta
+    type: flag
+    comment: "On any property that points to a class (e.g. `TSubclassOf<T>`, `UClass*`, `FSoftClassPath`), this causes the \"Create New\" plus button to be hidden."
   - name: AllowAnyActor
     group: Pickers
     subgroup: Component
