@@ -239,11 +239,13 @@ specifiers:
       text: Visible or editable properties appear in the Details panel and are visible without opening the "Advanced" section.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
   - name: EditInline
-    group: Editor
-    subgroup: Display
+    group: Internal and Deprecated
     type: flag
     source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     position: meta
+    related: [ Instanced, class.editinlinenew ]
+    comment: |
+      Using this shows the error "`EditInline` is deprecated. Remove it, or use `Instanced` instead."
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(EditInline))
@@ -271,6 +273,7 @@ specifiers:
     source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: string
     type-comment: Conditional statement
+    related: [ TransientToolProperty ]
     comment: |
       `EditCondition` can be used to change a property from read-only to writeable depending on another property.
   
@@ -712,16 +715,17 @@ specifiers:
     position: meta
     type: string
     type-comment: function name
+    related: [ TransientToolProperty ]
     comment: |
-      Generates a dropdown instead of a text box for the `FName` or `FString` property. The contents of the dropdown are populated by the results of the function.
+      Generates a dropdown instead of a text box for the `FName`/`FString`/`TArray<FString>`/`TArray<FString>` property. The contents of the dropdown are populated by the results of the function.
   
       The function is called once on opening the Blueprint in the editor, and then every time the user clicks the drop-down.
   
-      Note the documentation mentions to always return `TArray<FString>` even if the property is `FName`.
+      Note the documentation mentions to always return `TArray<FString>` even if the property is `FName`. But it seems to work even if you return `TArray<FName>`. Examples in the engine codebase return `const TArray<FString>&` rather than just plain `TArray<FString>` but either seems to work.
   
-      Works for both `FName`/`FString` and also `TArray<FName>`/`TArray<FString>`
-  
-      Supports external static function references via `Module.Class.Function` syntax.
+      The function that returns the array of options *must* be a `UFUNCTION()` or it will not work. The editor searches through the hierarchy of owning objects for the `UPROPERTY()`, using the first `UFUNCTION` it finds with a matching names. This means that `USTRUCT`s can use functions defined in owning `UObject`s, where `USTRUCT`s would not normally be able to contain `UFUNCTION`S  
+
+      `GetOptions` also supports external static function references via `Module.Class.Function` syntax. If the function name contains a `.`, it is assumed to be static and the editor will crash if it is not.
     documentation:
       text: TArray FuncName() const; // Always return string array even if FName property.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -745,6 +749,27 @@ specifiers:
             TArray<FString> SocketNames;
             // Get skeletal mesh, populate list of socket names
             return SocketNames;
+        }
+      - |
+        USTRUCT()
+        struct FPlantEntry
+        {
+            GENERATED_BODY()
+            
+            // This calls the UFUNCTION in the owning UGarden
+            UPROPERTY(meta=(GetOptions="GetPlantTypeNames"))
+            FString PlantTypeName;
+        };
+        UCLASS()
+        class UGarden : public UObject
+        {
+            GENERATED_BODY()
+
+            UPROPERTY()
+            TArray<FPlantEntry> Plants;
+
+            UFUNCTION()
+            TArray<FString> GetPlantTypeNames;
         }
     images: [ /uproperty/getoptions.jpg ]
   - name: MultiLine
@@ -1053,8 +1078,8 @@ specifiers:
     group: Serialization
     position: meta
     type: flag
-    related: [ EditCondition ]
-    comment: Properties with this meta flag are in `UInteractiveToolPropertySet::SaveRestoreProperties`. Is often used to mark properties that are used as edit conditions.
+    related: [ EditCondition, GetOptions ]
+    comment: Properties with this meta flag are in `UInteractiveToolPropertySet::SaveRestoreProperties`. Is often used to mark properties that are used as edit conditions or properties that are used to fill GetOptions results.
   - name: NonPIEDuplicateTransient
     group: Serialization
     position: main
