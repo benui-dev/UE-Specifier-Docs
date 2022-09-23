@@ -532,7 +532,7 @@ specifiers:
     comment: |
       Not sure how to describe this one.
       Technically it doesn't have a name.
-      Use it to give a parameter a default value, separate to how C++ sassigns default values.
+      Use it to give a parameter a default value, separate to how C++ assigns default values.
     samples:
       - |
         UFUNCTION(BlueprintCallable, meta=(Number="99"))
