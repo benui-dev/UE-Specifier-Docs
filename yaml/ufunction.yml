@@ -67,7 +67,7 @@ specifiers:
       
       Could be useful for adding helper functions to change the values on the selected instance. For example increasing the level of an enemy by changing their stats, or filling out default values using C++. 
   
-      To reiterate, only works with functions that have no parameters, and return `void`. `BlueprintCallable` is not required. Only works on instances of the class. So Actors placed in a level, not on Blueprint classes.
+      To reiterate, only works with functions that have no parameters, and return `void`. `BlueprintCallable` is not required. Only works on instances of the class. So Actors placed in a level, *not* on Blueprint classes.
   
       This works as a flag in the main position, or as a boolean in the meta position. I would stick to the Main position just because there are more examples of this in the Unreal codebase.
     samples:
