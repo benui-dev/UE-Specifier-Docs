@@ -1249,7 +1249,8 @@ specifiers:
     subgroup: Deprecation
     position: meta
     type: string (comma-separated list)
-    related: [ DeprecatedProperty ]
+    related: [ DeprecatedProperty, UseComponentPicker ]
+    antonyms: [ AllowedClasses ]
     documentation:
       text: Used in conjunction with DeprecatedNode, DeprecatedProperty, or DeprecatedFunction to customize the warning message displayed to the user.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -1535,7 +1536,7 @@ specifiers:
   - name: AllowedClasses
     group: Pickers
     subgroup: Class
-    related: [ MetaClass ]
+    related: [ MetaClass, UseComponentPicker ]
     antonyms: [ DisallowedClasses ]
     position: meta
     type: string (comma-separated list of classes)
@@ -1625,7 +1626,7 @@ specifiers:
     subgroup: Component
     position: meta
     type: flag
-    related: [ UseComponentPicker ]
+    required: [ UseComponentPicker ]
     documentation:
       text: Used for ComponentReference properties. Indicates whether other actor that are not in the property outer hierarchy should be shown in the component picker. 
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -1638,8 +1639,11 @@ specifiers:
     subgroup: Component
     position: meta
     type: flag
-    comment: You can pick components with `FComponentReference`? Only seems to be used once or twice in the codebase.
-    related: [ AllowAnyActor ]
+    comment: |
+      Use with `FComponentReference` properties.
+
+      Only works on components attached to actor instances in levels. Does *not* work when editing a Blueprint subclass.
+    related: [ AllowAnyActor, AllowedClasses, DisallowedClasses ]
     samples:
       - |
         UPROPERTY(EditAnywhere, meta = (UseComponentPicker, AllowAnyActor))
