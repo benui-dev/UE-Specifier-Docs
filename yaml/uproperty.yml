@@ -872,7 +872,7 @@ specifiers:
     type: string
     position: meta
     comment: |
-      When displaying an array of structs, `TitleProperty` allows you to set an `FString` or `FName` property within the struct to use as a title for array elements.
+      When displaying an array of structs, `TitleProperty` allows you to customize a text that is used in the right-hand column to summarize each entry in the array. The title can be built from any of the struct properties that have `GetName()`. So any `FString`, `FName`, `float`, `int32`, `FGameplayTag` properties would usable as a title for array elements.
   
       As of Unreal 5.0, you can use `FText::Format`-like formatting to output something more complicated. See the `FDogMapping` example below.
     documentation:
@@ -903,10 +903,12 @@ specifiers:
           UPROPERTY(EditDefaultsOnly)
           FString Name;
           UPROPERTY(EditDefaultsOnly)
+          int32 Age;
+          UPROPERTY(EditDefaultsOnly)
           TSoftClassPtr<AActor> ActorClass;
       };
       // Unreal 5.0 onwards supports FText-like formatting
-      UPROPERTY(EditAnywhere, meta=(TitleProperty="{Name} spawns {ActorClass}"))
+      UPROPERTY(EditAnywhere, meta=(TitleProperty="{Name} ({Age}) spawns {ActorClass}"))
       TArray<FDogMapping> DogMappings;
   - name: NoElementDuplicate
     group: Data Decorators
