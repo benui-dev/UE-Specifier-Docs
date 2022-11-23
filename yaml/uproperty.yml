@@ -2083,7 +2083,12 @@ specifiers:
     subgroup: TMap
     position: meta
     type: flag
+    comment: |
+      Show key-value TMaps in a table format.
+    images: [ /uproperty/force-inline-row.png ]
     samples:
       - |
+        UPROPERTY(EditAnywhere)
+        TMap<FGameplayTag, int32> Stats;
         UPROPERTY(EditAnywhere, meta=(ForceInlineRow))
-        TMap<FGameplayTag, FMyStruct> Prop;
+        TMap<FGameplayTag, int32> StatsInlineRow;
