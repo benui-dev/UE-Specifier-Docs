@@ -1542,11 +1542,30 @@ specifiers:
     antonyms: [ DisallowedClasses ]
     position: meta
     type: string (comma-separated list of classes)
-    comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect. This *does* work with interfaces.
+    comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect. This *does* work with interfaces and with `FPrimaryAssetId`'s.
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/Engine.h#L650 ]
     documentation:
-      text: Used for `FSoftObjectPath`, `ComponentReference` and `UClass` properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the asset picker (`FSoftObjectPath`) or component picker or class viewer (`UClass`).
+      text: Used for `FSoftObjectPath`, `ComponentReference`, `FPrimaryAssetId`, and `UClass` properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the asset picker (`FSoftObjectPath`) or component picker or class viewer (`UClass`). For this meta tag to work with `FPrimaryAssetID`'s you have to instead specify the literal `FPrimaryAssetType` instead of the object class name.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+    samples:
+        - |
+          UCLASS()
+          class UYourAssetName : public UPrimaryDataAsset
+          {
+              UYourAssetName()
+              { 
+                  // This is the allowed type
+                  AssetType = TEXT("FancyAssetName"); 
+              }
+              //...
+          }
+        - |
+          UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
+          FPrimaryAssetId FancyAsset;
+  
+          // Affects any primary asset ID's in the TMap
+          UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
+          TMap<FGameplayTag, FPrimaryAssetId> FancyAssetMap;
   - name: AllowAbstract
     group: Pickers
     subgroup: Class
