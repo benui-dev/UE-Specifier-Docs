@@ -1521,9 +1521,8 @@ specifiers:
     subgroup: Class
     type: string
     position: meta
-    related: [ AllowedClasses ]
-    comment: Some datatypes like `FSoftClassPath` and `FSoftObjectPath` are not templated and allow any class type. `MetaClass` lets users allow only certain classes. In comparison `TSoftClassPtr` and `TSoftObjectPtr` use template parameters instead of `MetaClass`.
-    related: [ AllowAbstract ]
+    related: [ AllowedClasses, AllowAbstract ]
+    comment: Some datatypes like `FSoftClassPath` and `FSoftObjectPath` are not templated and allow any class type. `MetaClass` lets users allow only certain classes. In comparison `TSoftClassPtr` and `TSoftObjectPtr` use template parameters instead of `MetaClass`.    
     examples: [ /Engine/Source/Developer/Localization/Public/LocalizationTargetTypes.h ]
     documentation:
       text: Used FSoftClassPath properties. Indicates the parent class that the class picker will use when filtering which classes to display.
@@ -1538,34 +1537,15 @@ specifiers:
   - name: AllowedClasses
     group: Pickers
     subgroup: Class
-    related: [ MetaClass, UseComponentPicker ]
+    related: [ AllowedTypes, MetaClass, UseComponentPicker ]
     antonyms: [ DisallowedClasses ]
     position: meta
     type: string (comma-separated list of classes)
-    comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect. This *does* work with interfaces and with `FPrimaryAssetId`'s.
+    comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect.
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/Engine.h#L650 ]
     documentation:
-      text: Used for `FSoftObjectPath`, `ComponentReference`, `FPrimaryAssetId`, and `UClass` properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the asset picker (`FSoftObjectPath`) or component picker or class viewer (`UClass`). For this meta tag to work with `FPrimaryAssetID`'s you have to instead specify the literal `FPrimaryAssetType` instead of the object class name.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
-    samples:
-        - |
-          UCLASS()
-          class UYourAssetName : public UPrimaryDataAsset
-          {
-              UYourAssetName()
-              { 
-                  // This is the allowed type
-                  AssetType = TEXT("FancyAssetName"); 
-              }
-              //...
-          }
-        - |
-          UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
-          FPrimaryAssetId FancyAsset;
-  
-          // Affects any primary asset ID's in the TMap
-          UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
-          TMap<FGameplayTag, FPrimaryAssetId> FancyAssetMap;
+      text: Used for `FSoftObjectPath`, `ComponentReference`, and `UClass` properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the asset picker (`FSoftObjectPath`) or component picker or class viewer (`UClass`).
+      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/ 
   - name: AllowAbstract
     group: Pickers
     subgroup: Class
@@ -1835,7 +1815,39 @@ specifiers:
   
   ###############################################################################
   # Asset Registry
-  
+
+  - name: AllowedTypes
+    group: Asset Registry    
+    related: [ AllowedClasses, MetaClass, UseComponentPicker ]
+    position: meta
+    type: string (comma-separated list of classes)
+    comment: |
+      The only time this is actually used is inside the Lyra Example Project but has existed in the engine prior to Unreal Engine 5.0.
+    
+      To confirm that it exists within the engine you can look inside `PrimaryAssetIdCustomization.cpp` and look for `GetMetaData("AllowedTypes")`, 
+      that file was added in 4.16(but the underlying code for it could have existed somewhere else in an earlier version).
+    
+      For some reason this doesn't even show up in the `ObjectMacros.h` file.
+    documentation:
+      text: Used only with `FPrimaryAssetId`'s, used to display only certain types of `FPrimaryAssetType`'s in the asset picker of `FPrimaryAssetId`. For this meta tag to work with `FPrimaryAssetID`'s you have to instead specify the literal `FPrimaryAssetType` instead of the object class name.      
+    samples:
+      - |
+        UCLASS(Blueprintable, BlueprintType)
+        class UFancyNamedDataAsset : public UPrimaryDataAsset
+        {
+            UFancyNamedDataAsset()
+            { 
+                // This is the allowed type, which is the FPrimaryAssetType
+                AssetType = TEXT("FancyAssetName");
+            }              
+        }
+      - |
+        UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
+        FPrimaryAssetId FancyAsset;
+        
+        // Affects any primary asset ID's in the TMap
+        UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
+        TMap<FGameplayTag, FPrimaryAssetId> FancyAssetMap; 
   - name: AssetRegistrySearchable
     group: Asset Registry
     type: flag
@@ -1843,7 +1855,7 @@ specifiers:
     documentation:
       text: The `AssetRegistrySearchable` Specifier indicates that this property and its value will be automatically added to the Asset Registry for any Asset class instances containing this as a member variable. It is not legal to use on struct properties or parameters.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-  
+      
   - name: Untracked
     group: Asset Registry
     position: meta
