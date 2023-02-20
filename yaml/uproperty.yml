@@ -1541,7 +1541,7 @@ specifiers:
     antonyms: [ DisallowedClasses ]
     position: meta
     type: string (comma-separated list of classes)
-    comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect.
+    comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect. This *does* work with interfaces.
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/Engine.h#L650 ]
     documentation:
       text: Used for `FSoftObjectPath`, `ComponentReference`, and `UClass` properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the asset picker (`FSoftObjectPath`) or component picker or class viewer (`UClass`).
