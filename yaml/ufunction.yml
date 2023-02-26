@@ -322,7 +322,7 @@ specifiers:
           Rooster
         };
   
-        UFUNCTION(BlueprintCallable, meta=(ExpandBoolAsExec="DidSucceed"))
+        UFUNCTION(BlueprintCallable, meta=(ExpandEnumAsExecs="Animal"))
         static void SwitchAnimalByName(FString Name, EAnimalType& Animal);
     images: [ /ufunction/expandenumsasexecs.jpg ]
     documentation:
@@ -333,13 +333,13 @@ specifiers:
     type: string
     type-comment: name of bool parameter
     position: meta
-    comment: Note that "ReturnValue" is a special 
+    comment: Note that "ReturnValue" is a special string used to refer to the return value of the function.
     samples: 
     - |
-      UFUNCTION(BlueprintCallable, meta=(ExpandEnumAsExecs="ReturnValue"))
+      UFUNCTION(BlueprintCallable, meta=(ExpandBoolAsExecs="ReturnValue"))
       static bool IsAboveFreezing(float Temperature);
     - |
-      UFUNCTION(BlueprintCallable, meta=(ExpandEnumAsExecs="bFreezing"))
+      UFUNCTION(BlueprintCallable, meta=(ExpandBoolAsExecs="bFreezing"))
       static void IsAboveFreezing(float Temperature, bool& bFreezing);
     documentation:
       text: For BlueprintCallable functions, this indicates that one input execution pin should be created for each entry in the enum used by the parameter. The parameter must be of an enumerated type that has the UENUM tag.
@@ -530,9 +530,7 @@ specifiers:
     type: string
     group: Blueprint Logic
     comment: |
-      Not sure how to describe this one.
-      Technically it doesn't have a name.
-      Use it to give a parameter a default value, separate to how C++ assigns default values.
+      Not sure how to describe this one. Technically it doesn't have a name. Use it to give a parameter a default value, and override any existing C++ default value. See the examples and screenshots for how it affects what is displayed in-editor.
     samples:
       - |
         UFUNCTION(BlueprintCallable, meta=(Number="99"))
@@ -551,8 +549,8 @@ specifiers:
         void DefaultStructValue(FLinearColor RectColor);
     images:
       - /ufunction/parametername.jpg
-      - /ufunction/defaultstructvalue.jpg
       - /ufunction/defaulttsubclassofvalue.jpg
+      - /ufunction/defaultstructvalue.jpg
   - name: DataTablePin
     position: meta
     type: string
