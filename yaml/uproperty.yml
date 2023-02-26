@@ -713,6 +713,21 @@ specifiers:
     type-comment: Comma-separated values
     antonyms: [ InvalidEnumValues ]
     comment: Restricts the allowed enum values to those listed in the string.
+    samples:
+      - |
+        UENUM()
+        enum class EBodyPartType : uint8
+        {
+            Head,
+            Body,
+            LeftArm,
+            RightArm,
+            LeftLeg,
+            RightLeg,
+        };
+
+        UPROPERTY(EditAnywhere, meta=(ValidEnumValues="LeftArm, RightArm"))
+        EBodyPartType GloveSlot;
   - name: InvalidEnumValues
     group: Data Decorators
     position: meta
