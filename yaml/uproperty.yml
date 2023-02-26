@@ -706,6 +706,21 @@ specifiers:
       text: Used for integer properties. Clamps the valid values that can be entered in the UI to be between 0 and the length of the array specified.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
 
+  - name: ValidEnumValues
+    group: Data Decorators
+    position: meta
+    type: string
+    type-comment: Comma-separated values
+    antonyms: [ InvalidEnumValues ]
+    comment: Restricts the allowed enum values to those listed in the string.
+  - name: InvalidEnumValues
+    group: Data Decorators
+    position: meta
+    type: string
+    type-comment: Comma-separated values
+    antonyms: [ ValidEnumValues ]
+    comment: Disallows listed enum values from being chosen.
+
   ###############################################################################
   # Data Decorators - Text
 
