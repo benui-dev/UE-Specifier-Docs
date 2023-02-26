@@ -769,7 +769,7 @@ specifiers:
             TArray<FPlantEntry> Plants;
 
             UFUNCTION()
-            TArray<FString> GetPlantTypeNames;
+            TArray<FString> GetPlantTypeNames();
         }
     images: [ /uproperty/getoptions.jpg ]
   - name: MultiLine
