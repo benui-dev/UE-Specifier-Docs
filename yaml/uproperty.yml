@@ -1280,7 +1280,8 @@ specifiers:
     group: Blueprint Logic
     subgroup: Deprecation
     position: meta
-    type: string (comma-separated list)
+    type: string
+    type-comment: comma-separated list
     related: [ DeprecatedProperty, UseComponentPicker ]
     antonyms: [ AllowedClasses ]
     documentation:
@@ -1570,7 +1571,8 @@ specifiers:
     related: [ AllowedTypes, MetaClass, UseComponentPicker ]
     antonyms: [ DisallowedClasses ]
     position: meta
-    type: string (comma-separated list of classes)
+    type: string
+    type-comment: comma-separated list of classes
     comment: Not sure how this is different to MetaClass. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect. This *does* work with interfaces.
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/Engine.h#L650 ]
     documentation:
@@ -1683,7 +1685,8 @@ specifiers:
     group: Pickers
     subgroup: Gameplay Tags
     position: meta
-    type: string (comma-separated list of gameplay tags)
+    type: string
+    type-comment: comma-separated list of gameplay tags
     comment: |
       This allows you to limit which gameplaytags are allowed to be chosen for a `FGameplayTag` property. Multiple tags can be specified with commas separating them.
   
@@ -1850,7 +1853,8 @@ specifiers:
     group: Asset Registry    
     related: [ AllowedClasses, MetaClass, UseComponentPicker ]
     position: meta
-    type: string (comma-separated list of classes)
+    type: string
+    type-comment: comma-separated list of classes
     comment: |
       The only time this is actually used is inside the Lyra Example Project but has existed in the engine prior to Unreal Engine 5.0.
     
