@@ -747,7 +747,7 @@ specifiers:
     type-comment: function name
     related: [ TransientToolProperty ]
     comment: |
-      Generates a dropdown instead of a text box for the `FName`/`FString`/`TArray<FString>`/`TArray<FString>` property. The contents of the dropdown are populated by the results of the function.
+      Generates a dropdown instead of a text box for the `FName`/`FString`/`TArray<FString>`/`TArray<FString>`/`TMap` with an `FName` or `FString` property. The contents of the dropdown are populated by the results of the function.
   
       The function is called once on opening the Blueprint in the editor, and then every time the user clicks the drop-down.
   
