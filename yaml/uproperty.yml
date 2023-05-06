@@ -1869,17 +1869,28 @@ specifiers:
         UCLASS(Blueprintable, BlueprintType)
         class UFancyNamedDataAsset : public UPrimaryDataAsset
         {
+            GENERATED_BODY()
+        public:
+        
             UFancyNamedDataAsset()
             { 
                 // This is the allowed type, which is the FPrimaryAssetType
                 AssetType = TEXT("FancyAssetName");
-            }              
+            }
+        
+            // UObject interface
+            virtual FPrimaryAssetId GetPrimaryAssetId() const override { return FPrimaryAssetId(AssetType, GetFName()); }
+            // ~UObject interface
+        
+            /** The type of asset, in this example this value HAS to be specified in the constructor for each type(unless its abstract). */
+            UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Primary Asset")
+            FPrimaryAssetType AssetType;
         }
       - |
         UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
         FPrimaryAssetId FancyAsset;
         
-        // Affects any primary asset ID's in the TMap
+        /** Affects any primary asset ID's in the TMap */
         UPROPERTY(meta = (AllowedTypes = "FancyAssetName"))
         TMap<FGameplayTag, FPrimaryAssetId> FancyAssetMap; 
   - name: AssetRegistrySearchable
