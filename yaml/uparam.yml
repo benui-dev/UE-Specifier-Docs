@@ -45,7 +45,7 @@ specifiers:
         void UseDogInfo(const FDogInfo& SearchParams);
   
   - name: AllowAbstract
-    group: Blueprint Logic
+    group: Pickers
     type: bool
     position: meta
     comment: |
@@ -56,7 +56,7 @@ specifiers:
         UCompositingElementOutput* FindOutputPass(UPARAM(meta = (AllowAbstract = "false"))TSubclassOf<UCompositingElementOutput> OutputType, FName OptionalPassName = NAME_None);
   
   - name: Categories
-    group: Blueprint Logic
+    group: Pickers
     type: string (comma-separated list of gameplay tags)
     position: meta
     comment: |
@@ -69,3 +69,14 @@ specifiers:
         UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = GameplayEffects)
         virtual void UpdateActiveGameplayEffectSetByCallerMagnitude(FActiveGameplayEffectHandle ActiveHandle, UPARAM(meta=(Categories = "SetByCaller"))FGameplayTag SetByCallerTag, float NewValue);
   
+  - name: MustImplement
+    group: Pickers
+    type: string (comma-separated list of interface script paths)
+    position: meta
+    comment: |
+      Limits the classes selectable in blueprint from `TSoftClassPtr` or `TSubclassOf` to only those that implement the named interfaces
+    samples:
+      - |
+        UFUNCTION(unreliable, client, BlueprintCallable, Category="Game|Feedback")
+        void ClientSpawnGenericCameraLensEffect(UPARAM(meta=(MustImplement ="CameraLensEffectInterface")) TSubclassOf<class AActor>  LensEffectEmitterClass);
+    images: [/uparam/spawn-generic-camera-lens-effect.png]
