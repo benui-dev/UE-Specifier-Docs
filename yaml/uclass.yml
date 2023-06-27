@@ -169,7 +169,9 @@ specifiers:
     required: [ Config ]
     inherited: true
     position: main
-  
+    documentation:
+      text: Save object config only to Default INIs, never to local INIs.
+
   - name: PerObjectConfig
     group: Config
     type: flag
