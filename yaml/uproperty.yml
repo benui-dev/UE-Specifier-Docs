@@ -1252,7 +1252,7 @@ specifiers:
     position: meta
     keywords: [delegate]
     documentation:
-      text: Expose the propriety to be bindable on on editor.
+      text: Expose the propriety to be bindable on on editor like BlueprintAssignable but for non-multicast dynamic events.
     samples: |
         DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(UWidget*, FGenerateWidgetEvent, FName, Item);
 
