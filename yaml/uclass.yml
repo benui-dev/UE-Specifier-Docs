@@ -34,7 +34,7 @@ specifiers:
   - name: AutoCollapseCategories
     group: Display
     type: string
-    type-comment: Comma-separated list
+    type-comment: Space-separated list
     position: main
     antonyms: [ DontAutoCollapseCategories ]
     incompatible: [ AutoExpandCategories ]
@@ -53,7 +53,7 @@ specifiers:
   - name: AutoExpandCategories
     group: Display
     type: string
-    type-comment: Comma-separated list
+    type-comment: Space-separated list
     position: main
     antonyms: [ AutoCollapseCategories ]
     documentation:
@@ -282,6 +282,7 @@ specifiers:
   - name: ShowFunctions
     group: Visibility
     type: string
+    type-comment: Space-separated function names
     position: main
     antonyms: [ HideFunctions ]
     comment:
@@ -298,6 +299,7 @@ specifiers:
   - name: HideFunctions
     group: Visibility
     type: string
+    type-comment: Space-separated function names
     position: main
     comment:
       Say you have a class `UCameraComponent`, and within it you define a `BlueprintCallable` function `SetFieldOfView`. Next, imagine you are creating an orthographic camera class that is a subclass of `UCameraComponent`. `SetFieldOfView` no loner makes sense in this new child class, so to hide it you add `HideFunctions="SetFieldOfView"` to its `UCLASS()`.
@@ -377,11 +379,13 @@ specifiers:
   - name: PrioritizeCategories
     group: Display
     type: string
-    type-comment: comma-separated category names
+    type-comment: Space-separated category names
     position: meta
     related: [ ShowCategories, HideCategories  ]
     comment:
       Only seems to be used in one place in the source, `UCommonTextBlock`. Seems to cause the specified categories to be shown first.
+
+      Note that the category names are _space_ separated, not comma-separated.
     samples:
       - |
         UCLASS(Config = CommonUI, DefaultConfig, ClassGroup = UI, meta = (Category = "Common UI", DisplayName = "Common Text", PrioritizeCategories = "Content"))
