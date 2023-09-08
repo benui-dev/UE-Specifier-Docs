@@ -142,6 +142,7 @@ specifiers:
     group: Blueprint
     type: flag
     position: main
+    antonyms: [ NotBlueprintType ]
     samples:
       - |
         UCLASS(BlueprintType)
@@ -149,6 +150,18 @@ specifiers:
     documentation:
       text: Exposes this class as a type that can be used for variables in Blueprints.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+  - name: NotBlueprintType
+    group: Blueprint
+    type: flag
+    position: main
+    antonyms: [ BlueprintType ]
+    samples:
+      - |
+        UCLASS(NotBlueprintType)
+        class UExampleObject : public UObject
+    documentation:
+      text: Prevents this class from being used for variables in blueprints
+      source: https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h
   
   
   
