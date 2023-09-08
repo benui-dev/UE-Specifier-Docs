@@ -2104,12 +2104,38 @@ specifiers:
   - name: AssetBundles
     position: meta
     type: string
-    group: Todo
-    comment: "PrimaryA Client, Server, Explicit. Comma-separated. Seems to be internal-use only. \"Use it on soft pointers. When you load a primary asset with the asset manager you can optionally also specify which asset bundles to load. When you do that, all soft references matching that bundle will also be loaded.\""
+    group: Assets
+    comment: "Use it on soft pointers. When you load a primary asset with the asset manager you can optionally also specify which asset bundles to load. When you do that, all soft references matching that bundle will also be loaded.\""
+    related: [ IncludeAssetBundles ]
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/PrimaryAssetLabel.h, Engine/Source/Runtime/Engine/Classes/Engine/AssetManager.h#L544 ]
     documentation:
       text: Used for SoftObjectPtr/SoftObjectPath properties. Comma separated list of Bundle names used inside PrimaryDataAssets to specify which bundles this reference is part of
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+  - name: IncludeAssetBundles
+    position: meta
+    type: string
+    group: Assets
+    comment: Used to make properties marked with `AssetBundles` be included with the outer object's `AssetBundleData`
+    related: [ AssetBundles ]
+    samples:
+        - |
+          UCLASS()
+          class UMyContainer : public UObject
+          {
+             GENERATED_BODY()
+
+             UPROPERTY(EditDefaultsOnly, meta=(AssetBundles="Client"))
+             TSoftClassPtr<UObject> Something;
+          }
+          
+          UCLASS()
+          class UMyPrimaryAsset : public UPrimaryDataAsset
+          {
+             // Without meta=(IncludeAssetBundles), the properties within UMyContainer
+             // would not be added to this asset's AssetBundleData
+             UPROPERTY(EditDefaultsOnly, meta=(IncludeAssetBundles))
+             TSoftObjectPtr<UMyContainer> Container;
+          }
   
   - name: ExposeFunctionCategories
     group: Editor
