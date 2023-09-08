@@ -57,7 +57,8 @@ specifiers:
   
   - name: Categories
     group: Pickers
-    type: string (comma-separated list of gameplay tags)
+    type: string
+    type-comment: comma-separated list of gameplay tags
     position: meta
     comment: |
       Limits the Gameplay Tags that are selectable on the `UFUNCTION`. Works in the same way as the `UPROPERTY` `Categories` meta flag.
@@ -71,7 +72,8 @@ specifiers:
   
   - name: MustImplement
     group: Pickers
-    type: string (comma-separated list of interface script paths)
+    type: string
+    type-comment: comma-separated list of interface script paths
     position: meta
     comment: |
       Limits the classes selectable in blueprint from `TSoftClassPtr` or `TSubclassOf` to only those that implement the named interfaces
