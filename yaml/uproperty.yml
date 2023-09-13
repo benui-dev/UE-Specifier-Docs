@@ -1245,19 +1245,19 @@ specifiers:
     documentation:
       text: Multicast Delegates only. Property should be exposed for calling in Blueprint code.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
-   - name: IsBindableEvent
+  - name: IsBindableEvent
     group: Blueprint Logic
     subgroup: Events
     type: bool
     position: meta
-    keywords: [delegate]
+    keywords: [ delegate ]
     documentation:
       text: Expose the propriety to be bindable on on editor like BlueprintAssignable but for non-multicast dynamic events.
     samples: |
-        DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(UWidget*, FGenerateWidgetEvent, FName, Item);
+      DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(UWidget*, FGenerateWidgetEvent, FName, Item);
 
-      	UPROPERTY(EditAnywhere, Category = Events, meta = (IsBindableEvent = "True"))
-	      FGenerateWidgetEvent OnGenerateContentWidget;
+      UPROPERTY(EditAnywhere, Category = Events, meta = (IsBindableEvent = "True"))
+        FGenerateWidgetEvent OnGenerateContentWidget;
     comment: |
       The same thing works if your propriety has "Event" or name, but the metadata is prefeered.
       Also there's nothing on code requiring the bool, but the engine always uses as a bool.
