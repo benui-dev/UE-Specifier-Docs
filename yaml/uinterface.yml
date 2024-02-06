@@ -4,6 +4,7 @@ specifiers:
     group: Blueprint
     type: flag
     position: main
+    comment: Whether this is set or not does not affect if the interface can be implemented by a Blueprint class.
     documentation:
       text: Exposes this class as a type that can be used for variables in Blueprints.
       source: https://docs.unrealengine.com/5.1/en-US/interfaces-in-unreal-engine/
@@ -12,6 +13,7 @@ specifiers:
     group: Blueprint
     type: string
     position: main
+    comment: Seems deprecated?
     documentation:
       text: All classes listed will be compiled before this class. ClassName must specify a class in the same (or a previous) package. Multiple dependency classes can be specified using a single `DependsOn` line delimited by commas, or can be specified using a separate `DependsOn` line for each class. This is important when a class uses a struct or enum declared in another class as the compiler only knows what is in the classes it has already compiled.
       source: https://docs.unrealengine.com/5.1/en-US/interfaces-in-unreal-engine/
@@ -33,6 +35,7 @@ specifiers:
     group: Blueprint
     type: flag
     position: meta
+    comment: By default all `UINTERFACE`s are implementable in Blueprints. This tag changes that behavior. You may want to set this on interfaces that are for low-level C++ classes only, to clean up the interface drop-down box in Blueprints.
 
   - name: DisplayName
     group: Blueprint
