@@ -126,7 +126,10 @@ specifiers:
     subgroup: Visibility
     position: meta
     type: flag
-    comment: Useful when you want to avoid making users click to expand an struct, for example when it is the only thing inside an outer class.
+    comment: |
+      Useful when you want to avoid making users click to expand an struct, for example when it is the only thing inside an outer class.
+
+      Does not work for arrays.
     documentation:
       text: Used by struct properties. Indicates that the inner properties will not be shown inside an expandable struct, but promoted up a level.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
