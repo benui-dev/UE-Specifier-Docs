@@ -186,10 +186,20 @@ specifiers:
     type: flag
     position: meta
     comment:
-      Internally calls SearchForAutocastFunction
+      In Blueprints when you a drag a connection from pin of one type to another, Unreal can automatically cast from the incoming type to the other.
+      `BlueprintAutocast` is the way to make your own Blueprint helper functions to do that cast action.
+
+      `BlueprintAutocast` requires the function to be static, public, `BlueprintPure`, have at least 1 input, and have a return output.
+      Only the first input will be considered for auto conversion, but you can have multiple.
+    samples:
+      - |
+      public:
+        UFUNCTION(BlueprintPure, meta=(BlueprintAutocast))
+        static EAnimal IntToAnimal(int32 Input);
     documentation:
       text: Used only by static BlueprintPure functions from a Blueprint function library. A cast node will be automatically added for the return type and the type of the first parameter of the function.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
+    images: [ /ufunction/blueprintautocast.png, /ufunction/blueprintautocast-drag.png ]
   - name: BlueprintInternalUseOnly
     group: Blueprint Logic
     type: bool
