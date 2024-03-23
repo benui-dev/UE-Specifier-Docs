@@ -745,9 +745,11 @@ specifiers:
     position: meta
     type: string
     type-comment: function name
-    related: [ TransientToolProperty ]
+    related: [ GetKeyOptions, GetValueOptions, TransientToolProperty ]
     comment: |
       Generates a dropdown instead of a text box for the `FName`/`FString`/`TArray<FString>`/`TArray<FString>`/`TMap` with an `FName` or `FString` property. The contents of the dropdown are populated by the results of the function.
+  
+      For specifying options for Keys or Values within a `TMap`, look at `GetKeyOptions` and `GetValueOptions`.
   
       The function is called once on opening the Blueprint in the editor, and then every time the user clicks the drop-down.
   
@@ -802,6 +804,28 @@ specifiers:
             TArray<FString> GetPlantTypeNames();
         }
     images: [ /uproperty/getoptions.jpg ]
+  - name: GetKeyOptions
+    group: Data Decorators
+    subgroup: Text
+    position: meta
+    type: string
+    type-comment: function name
+    related: [ GetOptions, GetValueOptions ]
+    comment: |
+      Use to limit what are acceptable string values for the key values of a `TMap<FText, ...>`, `TMap<FString, ...>` or `TMap<FName, ...>`.
+
+      See the `GetOptions` documentation for details.
+  - name: GetValueOptions
+    group: Data Decorators
+    subgroup: Text
+    position: meta
+    type: string
+    type-comment: function name
+    related: [ GetOptions, GetKeyOptions ]
+    comment: |
+      Use to limit what are acceptable string values for the value values of a `TMap<..., FText>`, `TMap<..., FString>` or `TMap<..., FName>`.
+
+      See the `GetOptions` documentation for details.
   - name: MultiLine
     group: Data Decorators
     subgroup: Text
