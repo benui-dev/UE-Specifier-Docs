@@ -44,10 +44,10 @@ Example entry:
 | --- | --- | --- | --- |
 | `name` | string | Required | Plain text. I try to camelcase even though the name is technically case-insensitive. |
 | `group` | string | | Arbitrary string I use to display related specifiers together. |
-| `subgroup` | string | | A way of categorizing specifiers further within a group. |
+| `subgroup` | string | Requires `group` | A way of categorizing specifiers further within a group. |
 | `position` | string | Required | Valid values are `main` or `meta`. |
 | `type` | string | Required | Valid values are `flag`, `string`, `number`, `bool`. |
-| `type-comment` | string | | Extra information about the type. For example if the `string` must be the name of a valid `UPROPERTY` member variable, or `number` must be an integer. |
+| `type-comment` | string | Requires `type` | Extra information about the type. For example if the `string` must be the name of a valid `UPROPERTY` member variable, or `number` must be an integer. |
 | `comment` | string | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
 | `samples` | string array | | An array of code snippets that show how the specifier is used. |
 | `required` | specifier array | | A list of specifiers that must be included for this specifier to be valid. |
@@ -59,7 +59,7 @@ Example entry:
 | `documentation` | struct | | See below for the properties within this struct. |
 | `documentation.text` | text | Required if `documentation` struct exists. | Official Unreal Engine documentation that describes the specifier. Can be taken from web or source code. |
 | `documentation.source` | url | | The URL from which the documentation is taken. In the case of files I include a link to the file on GitHub. |
-| `images` | string array | | I try to take screenshots with Unreal Engine 5.0 for consistency. |
+| `images` | string array | | I try to take screenshots with Unreal Engine 5.0 for consistency. See existing documentation for relative path. |
 
 
 ## Known Issues
