@@ -76,6 +76,5 @@ specifiers:
         FDataTableRowHandle RowHandleExample;
     comment:
       Allows the editor drop-down of a `FDataTableRowHandle` to only show data tables of a specific row type.
-    documentation:
-      text: Currently undocumented but implemented in [`DataTableCustomization.cpp`](https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Editor/DetailCustomizations/Private/DataTableCustomization.cpp#L37).
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
+
+      Currently undocumented but implemented in [`DataTableCustomization.cpp`](https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Editor/DetailCustomizations/Private/DataTableCustomization.cpp#L37).
