@@ -193,9 +193,9 @@ specifiers:
       Only the first input will be considered for auto conversion, but you can have multiple.
     samples:
       - |
-      public:
-        UFUNCTION(BlueprintPure, meta=(BlueprintAutocast))
-        static EAnimal IntToAnimal(int32 Input);
+        public:
+          UFUNCTION(BlueprintPure, meta=(BlueprintAutocast))
+          static EAnimal IntToAnimal(int32 Input);
     documentation:
       text: Used only by static BlueprintPure functions from a Blueprint function library. A cast node will be automatically added for the return type and the type of the first parameter of the function.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
