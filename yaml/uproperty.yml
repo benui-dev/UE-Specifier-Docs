@@ -931,7 +931,7 @@ specifiers:
     comment: |
       When displaying an array of structs, `TitleProperty` allows you to customize a text that is used in the right-hand column to summarize each entry in the array. The title can be built from any of the struct properties that have `GetName()`. So any `FString`, `FName`, `float`, `int32`, `FGameplayTag` properties would usable as a title for array elements.
   
-      As of Unreal 5.0, you can use `FText::Format`-like formatting to output something more complicated. See the `FDogMapping` example below.
+      As of Unreal 5.0, you can use `FText::Format`-like formatting to output multiple parts of structs in the array. See the `FDogMapping` example below.
     documentation:
       text: Used by arrays of structs. Indicates a single property inside of the struct that should be used as a title summary when the array entry is collapsed.
       source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
@@ -949,7 +949,7 @@ specifiers:
           UPROPERTY(EditDefaultsOnly)
           FLinearColor Color;
       };
-      // ...
+      // Then in another location, making an array of FCats
       UPROPERTY(EditAnywhere, meta=(TitleProperty="Name"))
       TArray<FCat> Cats;
     - |
