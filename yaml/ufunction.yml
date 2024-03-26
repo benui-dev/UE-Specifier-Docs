@@ -52,18 +52,18 @@ specifiers:
       Pure functions do not cache their results, so be careful when doing any non-trivial amount of work a blueprint pure function. It is good practice to avoid outputting array properties in blueprint pure functions.
     images: [ /ufunction/blueprintpure.jpg ]
     samples:
-    - |
-      UFUNCTION(BlueprintPure)
-      int32 BlueprintPureFunction();
-  
-      UFUNCTION(BlueprintCallable)
-      int32 BlueprintCallableFunction();
-  
-      UFUNCTION(BlueprintCallable)
-      int32 BlueprintCallableConstFunction() const;
-  
-      UFUNCTION(BlueprintPure=false)
-      int32 BlueprintPureFalseFunction() const;
+      - |
+        UFUNCTION(BlueprintPure)
+        int32 BlueprintPureFunction();
+    
+        UFUNCTION(BlueprintCallable)
+        int32 BlueprintCallableFunction();
+    
+        UFUNCTION(BlueprintCallable)
+        int32 BlueprintCallableConstFunction() const;
+    
+        UFUNCTION(BlueprintPure=false)
+        int32 BlueprintPureFalseFunction() const;
 
   - name: ArrayParm
     group: Blueprint Logic
@@ -642,6 +642,7 @@ specifiers:
     documentation:
       text: Metadata that flags TMap function parameters that will have their type determined at blueprint compile time
       source: "https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h"
+    samples:
      - |
        // An arbitrary function that takes a map of any type and does something with it
        UFUNCTION(BlueprintCallable, CustomThunk, meta=(MapParam="SomeMap"))
