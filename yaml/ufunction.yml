@@ -259,6 +259,8 @@ specifiers:
     position: main
     comment: |
       I'm still not very familiar with this but check out `KismetArrayLibrary.h` for an implementation that uses it.
+
+      See [CustomThunkExample.h](https://github.com/benui-dev/UE-Specifier-Docs/blob/main/Example/Source/Example/UFunction/CustomThunkExample.h) and [CustomThunkExample.cpp](https://github.com/benui-dev/UE-Specifier-Docs/blob/main/Example/Source/Example/UFunction/CustomThunkExample.cpp).
     documentation:
       text: The UnrealHeaderTool code generator will not produce a thunk for this function; it is up to the user to provide one with the DECLARE_FUNCTION or DEFINE_FUNCTION macros.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
@@ -619,7 +621,7 @@ specifiers:
       Using `SetParam` allows you to make "templated" Blueprint functions for Set containers that work for any datatype. It requires a `CustomThunk`-generated function definition for it to work. For an example check `BlueprintSetLibrary`.
 
       In the Blueprint function declaration you write `int32` but with these metadata specifiers and CustomThunk you can make it work for any datatype.
-    images: [ /ufunction/setparam.jpg ]
+    images: [ /ufunction/setparam.png ]
     samples:
      - |
        // An arbitrary function that takes a set of any type and does something with it
