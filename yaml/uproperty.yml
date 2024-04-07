@@ -252,7 +252,7 @@ specifiers:
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(EditInline))
-        UDog* Dog;
+        TObjectPtr<UDog> Dog;
     documentation:
       text: Allows the user to edit the properties of the Object referenced by this property within Unreal Editor's property inspector (only useful for Object references, including arrays of Object reference).
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -441,7 +441,7 @@ specifiers:
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(DisplayThumbnail=false))
-        class UCurveFloat* SomeCurve;
+        TObjectPtr<UCurveFloat> SomeCurve;
       - |
         UPROPERTY(EditAnywhere, meta=(DisplayThumbnail=true))
         TSoftObjectPtr<USkeletalMesh> AnimalMesh;
@@ -494,7 +494,7 @@ specifiers:
           GENERATED_BODY()
         public:
           UPROPERTY(BlueprintReadOnly, Instanced)
-          UInstanceSettings* Settings;
+          TObjectPtr<UInstanceSettings> Settings;
         };
 
   ###############################################################################
