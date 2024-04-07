@@ -263,7 +263,8 @@ specifiers:
   
   - name: ExposedAsyncProxy
     group: Blueprint
-    type: flag
+    type: string
+    type-comment: Class name without prefix
     position: meta
     comment: |
       Values in the engine include AsyncTaskRef, AsyncAction, AsyncTask.
@@ -271,6 +272,10 @@ specifiers:
     documentation:
       text: Expose a proxy Object of this class in Async Task nodes.
       source: https://docs.unrealengine.com/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
+    samples:
+      - |
+        UCLASS(Abstract, meta = (ExposedAsyncProxy = AsyncAction))
+        class GAMEPLAYABILITIES_API UAbilityAsync : public UBlueprintAsyncActionBase
 
   - name: HasDedicatedAsyncNode
     group: Blueprint
@@ -718,16 +723,6 @@ specifiers:
     group: Todo
     type: flag
     position: meta
-  
-  - name: ExposedAsyncProxy
-    group: Todo
-    type: string
-    type-comment: Class name without prefix
-    position: meta
-    samples:
-      - |
-        UCLASS(Abstract, meta = (ExposedAsyncProxy = AsyncAction))
-        class GAMEPLAYABILITIES_API UAbilityAsync : public UBlueprintAsyncActionBase
   
   - name: ScriptName
     group: Todo
