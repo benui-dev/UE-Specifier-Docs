@@ -1350,7 +1350,7 @@ specifiers:
     incompatible: [ DisableEditOnInstance ]
     required: [ BlueprintReadOnly ]
     type: bool
-    type-comment: (see commment)
+    type-comment: Often used as a flag, I recommend treating it as a bool.
     comment: |
       When using `SpawnActor` or `Construct Object` from Blueprints, marking a property with `ExposeOnSpawn` will cause it to be shown in the same node. Useful for variables you often want to set up when creating an Actor or Object.
   
