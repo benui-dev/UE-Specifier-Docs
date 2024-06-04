@@ -78,3 +78,18 @@ specifiers:
       Allows the editor drop-down of a `FDataTableRowHandle` to only show data tables of a specific row type.
 
       Currently undocumented but implemented in [`DataTableCustomization.cpp`](https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Editor/DetailCustomizations/Private/DataTableCustomization.cpp#L37).
+
+  - name: FilePathFilter
+    group: Display
+    position: main
+    type: string
+    samples:
+      - |
+        UPROPERTY(EditAnywhere, meta = (FilePathFilter = "Text Files (*.txt)|*.txt"))
+        FFilePath MyFilePath;
+    comment:
+      Used by FFilePath properties. Indicates the path filter to display in the file picker.
+
+      The filter string follows the `Description|ExtensionList` format as used in many operating systems.
+      The following example filter would limit the file picker to show `*.txt` files only: `Text files (*.txt)|*.txt`
+      Multiple filters can be applied like this: `Text files (*.txt)|*.txt|Image files (*.png)|*.png|All files (*.*)|*.*`
