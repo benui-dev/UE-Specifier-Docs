@@ -101,7 +101,7 @@ specifiers:
     type: string
     position: meta
     related: [ ShortToolTip ]
-    comment: TODO Look into how this is different to ShortToolTip
+    comment: The tooltip displayed for the class. Useful to override the generated tooltip from the comment when very detailed.
     documentation:
       text: Overrides the automatically generated tooltip from code comments.
       source: https://docs.unrealengine.com/en-US/ProgrammingAndScripting/GameplayArchitecture/Classes/Specifiers/
@@ -111,7 +111,10 @@ specifiers:
     type: string
     position: meta
     related: [ ToolTip ]
-    comment: TODO Look into how this is different to ToolTip
+    comment:
+        |
+        The tooltip returned when passing true for `bShortTooltip` in `GetTooltTipText`. Can be used in conjunction with `ToolTip` or a code comment.
+        It is mainly used by the Class Picker dialog, and in various other places in the engine.
     samples:
       - |
         UCLASS(meta=(ShortTooltip="A layout panel for automatically laying child widgets out vertically"))
