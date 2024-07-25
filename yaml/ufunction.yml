@@ -288,7 +288,7 @@ specifiers:
       * `AGameStateBase`
       * `APlayerCameraManager`
 
-      By default it uses the function name the console command. The command can be changed by using the meta specifier `OverrideNativeName` (like `meta=(OverrideNativeName=“Player.SetHealth")` ). [Source](https://dev.epicgames.com/community/learning/tutorials/dXl5/advanced-debugging-in-unreal-engine#cheatmanager)
+      By default it uses the function name as the console command. The command can be changed by using the meta specifier `OverrideNativeName` (like `meta=(OverrideNativeName=“Player.SetHealth")` ). [Source](https://dev.epicgames.com/community/learning/tutorials/dXl5/advanced-debugging-in-unreal-engine#cheatmanager)
     documentation:
       text: The function can be executed from the in-game console. Exec commands only function when declared within certain Classes.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
