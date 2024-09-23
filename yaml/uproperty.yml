@@ -738,6 +738,35 @@ specifiers:
     type-comment: Comma-separated values
     antonyms: [ ValidEnumValues ]
     comment: Disallows listed enum values from being chosen.
+  - name: GetRestrictedEnumValues
+    group: Data Decorators
+    position: meta
+    type: string
+    type-comment: function name
+    comment: |
+      Specifies which enums in a dropdown should be disabled / grayed out. 
+    samples:
+      - |
+        UENUM()
+        enum class EAnimal
+        {
+          Cat,
+          Dog,
+          Elephant,
+          Fish,
+          Horse,
+          Rabbit,
+          Snake
+        };
+        
+        UPROPERTY(meta=(GetRestrictedEnumValues="GetAnimalOptionsWithoutLegs"))
+        EAnimal AnimalWithLegs;
+  
+        UFUNCTION()
+        TArray<FString> GetAnimalOptionsWithoutLegs() const
+        {
+            return { "Fish", "Snake" }; // This will disable these two options
+        }
 
   ###############################################################################
   # Data Decorators - Text
