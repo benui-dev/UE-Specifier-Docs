@@ -87,7 +87,7 @@ specifiers:
       - |
         UPROPERTY(EditAnywhere, meta = (FilePathFilter = "Text Files (*.txt)|*.txt"))
         FFilePath MyFilePath;
-    comment:
+    comment: |
       Used by FFilePath properties. Indicates the path filter to display in the file picker.
 
       The filter string follows the `Description|ExtensionList` format as used in many operating systems.
