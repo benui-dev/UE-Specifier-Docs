@@ -47,11 +47,11 @@ Example entry:
 | `group` | string | | Arbitrary string I use to display related specifiers together. |
 | `subgroup` | string | Requires `group` | A way of categorizing specifiers further within a group. |
 | `position` | string | Required | Valid values are `main` or `meta`. |
-| `type` | string | Required | Valid values are `flag`, `string`, `number`, `bool`. |
+| `type` | string | Required | Valid values are `flag`, `string`, `number`, `bool`, `integer`. |
 | `type-comment` | string | Requires `type` | Extra information about the type. For example if the `string` must be the name of a valid `UPROPERTY` member variable, or `number` must be an integer. |
 | `comment` | string | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
 | `samples` | string array | | An array of code snippets that show how the specifier is used. |
-| `required` | specifier array | | A list of specifiers that **must be included** for this specifier to be valid. |
+| `required` | specifier array | | A list of specifiers that **must be included** for this specifier to be valid. See note below on specifier IDs. |
 | `related` | specifier array | | Other specifiers that are worth looking at related to this context. |
 | `incompatible` | specifier array | | A list of specifiers that are invalid when paired with this specifier. |
 | `synonyms` | specifier array | | A list of specifiers that have the **same effect** to this specifier. |
@@ -62,6 +62,12 @@ Example entry:
 | `documentation.source` | url | | The URL from which the documentation is taken. In the case of files I include a link to the file on GitHub. |
 | `images` | string array | | I try to take screenshots with Unreal Engine 5.0 for consistency. See existing documentation for relative path. |
 
+**Specifier IDs:** For the purpose of cross-linking between specifier documents, 
+* The `EditInline` property in `UProperty` has a `related` entry `UClass.EditInlineNew`
+
+## Tests
+
+* Validate changes to the yaml files with `tests/validator.py`
 
 ## Example Project
 
