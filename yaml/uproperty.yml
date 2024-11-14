@@ -738,6 +738,35 @@ specifiers:
     type-comment: Comma-separated values
     antonyms: [ ValidEnumValues ]
     comment: Disallows listed enum values from being chosen.
+  - name: GetRestrictedEnumValues
+    group: Data Decorators
+    position: meta
+    type: string
+    type-comment: function name
+    comment: |
+      Specifies which enums in a dropdown should be disabled / grayed out. 
+    samples:
+      - |
+        UENUM()
+        enum class EAnimal
+        {
+          Cat,
+          Dog,
+          Elephant,
+          Fish,
+          Horse,
+          Rabbit,
+          Snake
+        };
+        
+        UPROPERTY(meta=(GetRestrictedEnumValues="GetAnimalOptionsWithoutLegs"))
+        EAnimal AnimalWithLegs;
+  
+        UFUNCTION()
+        TArray<FString> GetAnimalOptionsWithoutLegs() const
+        {
+            return { "Fish", "Snake" }; // This will disable these two options
+        }
 
   ###############################################################################
   # Data Decorators - Text
@@ -1279,15 +1308,15 @@ specifiers:
     position: meta
     keywords: [ delegate ]
     documentation:
-      text: Expose the propriety to be bindable on on editor like BlueprintAssignable but for non-multicast dynamic events.
+      text: Expose the propriety to be bindable on on editor like BlueprintAssignable but for non-multicast dynamic events. Only works on widgets
     samples:
       - |
         DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(UWidget*, FGenerateWidgetEvent, FName, Item);
 
         UPROPERTY(EditAnywhere, Category = Events, meta = (IsBindableEvent = "True"))
-          FGenerateWidgetEvent OnGenerateContentWidget;
+        FGenerateWidgetEvent OnGenerateContentWidget;
     comment: |
-      The same thing works if your propriety has "Event" or name, but the metadata is prefeered.
+      The same thing works if your propriety name ends with "Event", but the metadata is prefeered.
       Also there's nothing on code requiring the bool, but the engine always uses as a bool.
   - name: DeprecatedProperty
     group: Blueprint Logic

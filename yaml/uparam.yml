@@ -82,3 +82,20 @@ specifiers:
         UFUNCTION(unreliable, client, BlueprintCallable, Category="Game|Feedback")
         void ClientSpawnGenericCameraLensEffect(UPARAM(meta=(MustImplement ="CameraLensEffectInterface")) TSubclassOf<class AActor>  LensEffectEmitterClass);
     images: [/uparam/spawn-generic-camera-lens-effect.png]
+
+  - name: AllowedClasses
+    group: Pickers
+    type: string
+    type-comment: comma-separated list of classes
+	version: ">= 5.5"
+    position: meta
+    comment: |
+      This works the same as the UPROPERTY specifier of the same name. Limits the classes available in pickers in Blueprint. Note that the string must *not* contain prefixes, so "Actor" is correct, "AActor" is incorrect. This *does* work with interfaces.
+
+  - name: ShowDisplayNames
+    group: Pickers
+    type: flag
+	version: ">= 5.5"
+    position: meta
+    comment: |
+      Unknown, but it works the same as the UPROPERTY specifier of the same name.
