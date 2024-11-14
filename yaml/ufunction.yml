@@ -399,6 +399,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: HideSelfPin
     group: Appearance
+    type: flag
     position: meta
     documentation:
       text: Hides the "self" pin, which indicates the object on which the function is being called. The "self" pin is automatically hidden on BlueprintPure functions that are compatible with the calling Blueprint's Class. Functions that use the HideSelfPin Meta Tag frequently also use the DefaultToSelf Specifier.
@@ -420,6 +421,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: Latent
     group: General
+    type: flag
     position: meta
     related: [ LatentInfo ]
     documentation:
@@ -435,18 +437,21 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: MaterialParameterCollectionFunction
     group: Materials
+    type: flag
     position: meta
     documentation:
       text: For BlueprintCallable functions, indicates that the material override node should be used.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: NativeBreakFunc
     group: General
+    type: flag
     position: meta
     documentation:
       text: For BlueprintCallable functions, indicates that the function should be displayed the same way as a standard Break Struct node.
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: NotBlueprintThreadSafe
     group: General
+    type: flag
     position: meta
     documentation:
       text: Only valid in Blueprint function libraries. This function will be treated as an exception to the owning Class's general BlueprintThreadSafe metadata.
@@ -467,6 +472,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: UnsafeDuringActorConstruction
     group: General
+    type: flag
     position: meta
     documentation:
       text: This function is not safe to call during Actor construction.
@@ -486,6 +492,7 @@ specifiers:
   
   - name: Server
     group: Network
+    type: flag
     position: main
     incompatible: [ Client ]
     documentation:
@@ -501,6 +508,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: NetMulticast
     group: Network
+    type: flag
     position: main
     documentation:
       text: The function is executed both locally on the server, and replicated to all clients, regardless of the Actor's NetOwner.
@@ -514,6 +522,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: WithValidation
     group: Network
+    type: flag
     position: main
     documentation:
       text: Declares an additional function named the same as the main function, but with _Validate added to the end. This function takes the same parameters, and returns a bool to indicate whether or not the call to the main function should proceed.
@@ -527,6 +536,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: Reliable
     group: Network
+    type: flag
     position: main
     antonyms: [ Unreliable ]
     required: [ Client, Server ] 
@@ -535,6 +545,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: Unreliable
     group: Network
+    type: flag
     position: main
     antonyms: [ Reliable ]
     required: [ Client, Server ] 
@@ -543,6 +554,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: ServiceRequest
     group: Network
+    type: flag
     position: main
     related: [ ServiceResponse ]
     implies: [ NetMulticast, Reliable ]
@@ -551,6 +563,7 @@ specifiers:
       source: https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/GameplayArchitecture/Functions/
   - name: ServiceResponse
     group: Network
+    type: flag
     position: main
     related: [ ServiceRequest ]
     implies: [ NetMulticast, Reliable ]
