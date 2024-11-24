@@ -1577,10 +1577,13 @@ specifiers:
     group: Data Table
     type: string
     position: meta
-    comment: Only shows data table assets with the specified row structure class.
+    comment: |
+      Only shows data table assets with the specified row structure class.
+
+      Note that previously the format was "RowStructure=ImageRow", but as of Unreal 5 you have to specify the full path to the class, as in "/Script/MyProject.ImageRow".
     samples:
       - |
-        UPROPERTY(EditDefaultsOnly, meta=(RequiredAssetDataTags="RowStructure=ImageRow"))
+        UPROPERTY(EditDefaultsOnly, meta=(RequiredAssetDataTags="RowStructure=/Script/MyProject.ImageRow"))
         class UDataTable* ImageSetTable;
   
   - name: RowType
