@@ -31,7 +31,7 @@ Example entry:
       int32 VisibleAnywhereNumber;
   documentation:
     text: Indicates that this property is visible in all property windows, but cannot be edited. This Specifier is incompatible with the "Edit" Specifiers.
-    source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+    source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   images: [ /assets/unreal/uproperty/visibility-defaults-selected.png, /assets/unreal/uproperty/visibility-instance-selected.jpg ]
 ```
 

@@ -14,7 +14,7 @@ specifiers:
     related: [ AbsLog ]
     documentation:
       text: When used as a switch (-log), opens a separate window to display the contents of the log in real time. When used as a setting (LOG=filename.log), tells the engine to use the log filename of the string that immediately follows.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: LogTimes
     group: Logging
     type: flag
@@ -23,7 +23,7 @@ specifiers:
     comment: There are a bunch of different ways to display log times.
     documentation:
       text: Print time with log output. (Default, same as setting LogTimes=True in the [LogFiles] section of *Engine.ini.)
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: UTCLogTimes
     group: Logging
     type: flag
@@ -50,14 +50,14 @@ specifiers:
     incompatible: [ LogTimes, UTCLogTimes, LocalLogTimes, LogTimesSinceStart, LogTimeCode ]
     documentation:
       text: Do not print time with log output. (Same as setting LogTimes=False in the [LogFiles] section of *Engine.ini.) 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: AbsLog
     group: Logging
     type: string
     related: [ Log ]
     documentation:
       text: Same as LOG= but without a filename length check.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: LogCmds
     group: Logging
     type: string
@@ -67,7 +67,7 @@ specifiers:
     type: flag
     documentation:
       text: Force a log flush after each line.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 
@@ -76,14 +76,14 @@ specifiers:
     type: flag
     documentation:
       text: Assume yes on all questions. (for example during compile)
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: AutoCheckoutPackages
     group: Developer
     type: flag
     comment: Used on ResavePackagesCommandlet.
     documentation:
       text: Automatically checkout packages that need to be saved.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: AutomatedMapBuild
     group: Developer
     type: flag
@@ -92,96 +92,96 @@ specifiers:
       As to what an "automated build" means, I have no idea.
     documentation:
       text: Perform an automated build of a specified map.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: BiasCompressionForSize
     group: Deprecated
     type: flag
     comment: Can't find this in the engine.
     documentation:
       text: Override compression settings with respect to size.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: BuildMachine
     group: Developer
     type: flag
     comment: If this is set, it implies some other arguments?
     documentation:
       text: Set as build machine. Used for deciding if debug output is enabled.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: BulkImportingSounds
     group: Deprecated
     type: flag
     comment: Can't find this in the engine.
     documentation:
       text: Use when importing sounds in bulk. (Content Browser specific.)
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Check_Native_Class_Sizes
     group: Deprecated
     type: flag
     comment: Can't find in source.
     documentation:
       text: "Enable checking of native class sizes. Note: Native classes on console platforms will cause native class size checks to fail even though they are assumed to be correct."
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: CoderMode
     group: Deprecated
     type: flag
     comment: Couldn't find it in the codebase for UE5. Possibly for Unreal Engine 3?
     documentation:
       text: Enables Coder mode.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: CompatScale
     group: Deprecated
     type: flag
     comment: Couldn't find in source.
     documentation:
       text: Set compatibility settings manually to override PCCompat tool settings.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ConformDir
     group: Deprecated
     type: flag
     comment: Can't find either ConformDir or ConfirmDir in UE5 source.
     documentation:
       text: Directory to use when conforming packages.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: CookForDemo
     group: Deprecated
     type: flag
     comment: Cannot find in source.
     documentation:
       text: Specify as cooking packages for the demo.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: CookPackages
     group: Deprecated
     type: flag
     comment: Cannot find in source.
     documentation:
       text: Tag to specify cooking packages.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: CrashReports
     group: Developer
     type: flag
     documentation:
       text: Always report crashes of the engine.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: D3DDebug
     group: Developer
     type: flag
     documentation:
       text: Use a d3d debug device. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: DevCon
     group: Deprecated
     type: flag
     comment: Cannot find in source
     documentation:
       text: Disable secure connections for developers. (Uses unencrypted sockets.)
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: DumpFileIOStats
     group: Deprecated
     type: flag
     comment: Cannot find in source
     documentation:
       text: Track and log File IO statistics. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Deterministic
     group: Developer
     type: flag
@@ -192,7 +192,7 @@ specifiers:
     type: flag
     documentation:
       text: Initialize the random number generator with a fixed value, 0.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: UseFixedTimeStep
     group: Developer
     type: flag
@@ -201,35 +201,35 @@ specifiers:
     type: flag
     documentation:
       text: Fix legacy tangents in distributions automatically.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ForcePVRTC
     group: Developer
     type: flag
     comment: Found a reference to "bForcePVRTC".
     documentation:
       text: Force pvrtc texture compression for mobile platform.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ForceSoundRecook
     group: Deprecated
     type: flag
     comment: Can't find any reference to this. Deprecated?
     documentation:
       text: Force a complete re-cook of all sounds.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: GenericBrowser
     group: Deprecated
     type: flag
     comment: Can't find any reference to this. Deprecated?
     documentation:
       text: Use the Generic Browser.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Installed
     group: Developer
     type: flag
     antonyms: [ NotInstalled ]
     documentation:
       text: For development purposes, run the game as if installed.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NotInstalled
     group: Developer
     type: flag
@@ -241,14 +241,14 @@ specifiers:
     comment: Shows the Windows firewall popup maybe?
     documentation:
       text: Set whether the handling of the firewall integration should be performed.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: UninstallFW
     group: Developer
     type: flag
     antonyms: [ InstallFW ]
     documentation:
       text: Set whether the handling of the firewall integration should be performed.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: InstallGE
     group: Developer
     type: flag
@@ -258,7 +258,7 @@ specifiers:
     comment: "[Game Explorer](https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ee417682(v=vs.85)) seems to be some old Windows thing for managing installed games. Not sure if it's really relevant any more."
     documentation:
       text: Add the game to the Game Explorer.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: UninstallGE
     group: Developer
     type: flag
@@ -266,7 +266,7 @@ specifiers:
     platforms: [ Windows ]
     documentation:
       text: Remove the game from the Game Explorer.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: AllUsers
     group: Developer
     type: flag
@@ -274,7 +274,7 @@ specifiers:
     requires: [ InstallGE ]
     documentation:
       text: Add the game for all users when INSTALLGE is specified.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Culture
     group: Localization
     type: string
@@ -290,7 +290,7 @@ specifiers:
     comment: Does the same as `Culture` but can has the option to work with `FirstInstall`.
     documentation:
       text: Set language to be used for cooking.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: FirstInstall
     group: Localization
     related: [ CultureForCooking ]
@@ -300,28 +300,28 @@ specifiers:
     type: flag
     documentation:
       text: Launch lightmass manually with -debug and allow lightmass to be executed multiple times.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: LightMassStats
     group: Logging
     type: flag
     subgroup: Stats
     documentation:
       text: Force all lightmass agents to report detailed stats to the log.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoConform
     group: Deprecated
     type: flag
     comment: Cannot find in source.
     documentation:
       text: Tell the engine not to conform packages as they are compiled.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoContentBrowser
     group: Developer
     type: flag
     comment: Surely this is editor-only? Why would you want to disable the content browser?
     documentation:
       text: Disable the Content Browser.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoInnerException
     group: Developer
     type: flag
@@ -336,144 +336,144 @@ specifiers:
         #endif
     documentation:
       text: Disable the exception handler within native C++.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoLoadStartupPackages
     group: Developer
     type: flag
     comment: There is a log message that mentions it but I cannot find any code that actually *uses* it.
     documentation:
       text: Force startup packages not to be loaded. You can use this if objects in a startup package must be deleted from within the editor.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoPause
     group: Logging
     type: flag
     related: [ NoPauseOnSuccess ]
     documentation:
       text: Close the log window automatically on exit.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoPauseOnSuccess
     group: Logging
     type: flag
     related: [ NoPause ]
     documentation:
       text: Close the log window automatically on exit as long as no errors were present.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoRC
     group: Developer
     type: flag
     documentation:
       text: Disable the remote control. Used for dedicated servers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: VerifyGC
     group: Developer
     type: flag
     antonyms: [ NoVerifyGC ]
     documentation:
       text: Force garbage compiler assumptions to be verified.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoVerifyGC
     group: Developer
     type: flag
     antonyms: [ VerifyGC ]
     documentation:
       text: Do not verify garbage compiler assumptions.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoWrite
     group: Logging
     type: flag
     documentation:
       text: Disable output to log. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: SeekFreeLoading
     group: Developer
     type: flag
     documentation:
       text: Only use cooked data.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: SeekFreePackageMap
     group: Developer
     type: flag
     documentation:
       text: Override the package map with the seekfree (cooked) version.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: SeekFreeloadingPCConsole
     group: Developer
     type: flag
     documentation:
       text: Only use cooked data for PC console mode.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: SeekFreeLoadingServer
     group: Developer
     type: flag
     documentation:
       text: Only use cooked data for server.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: SetThreadNames
     group: Developer
     type: flag
     platforms: [ Xbox ]
     documentation:
       text: (Xbox only) Force thread names to be set. This can mess up the XDK COM API which is why it must be explicitly set to be performed if desired.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ShowMissingLoc
     group: Developer
     type: flag
     comment: Can't find this in the source. Also, I thought that error strings are already returned instead of English. Maybe this is editor-only?
     documentation:
       text: If missing localized text, return error string instead of English text.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Silent
     group: Developer
     type: flag
     documentation:
       text: Disable output and feedback.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: TraceAnimUsage
     group: Deprecated
     type: flag
     comment: Cannot find in source.
     documentation:
       text: Trace animation usage.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: TreatLoadWarningsAsErrors
     group: Developer
     type: flag
     comment: What happens if there's an error?
     documentation:
       text: Force load warnings to be treated as errors.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: WarningsAsErrors
     group: Developer
     type: flag
     related: [ TreatLoadWarningsAsErrors ]
     documentation:
       text: Treat warnings as errors. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Unattended
     group: Developer
     type: flag
     comment: What kinds of things require feedback? When might you want to use this?
     documentation:
       text: Set as unattended. Disable anything requiring feedback from user.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: UseUnpublished
     group: Developer
     type: flag
     documentation:
       text: Force packages in the Unpublished folder to be used.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: VADebug
     group: Developer
     type: flag
     documentation:
       text: Use the Visual Studio debugger interface.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Verbose
     group: Developer
     type: flag
     documentation:
       text: Set compiler to use verbose output.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 # Rendering
@@ -482,13 +482,13 @@ specifiers:
     type: integer
     documentation:
       text: Set the horizontal position for console output window.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ConsoleY
     group: Rendering
     type: integer
     documentation:
       text: Set the vertical position for console output window.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ConsoleWidth
     group: Rendering
     type: integer
@@ -500,45 +500,45 @@ specifiers:
     type: integer
     documentation:
       text: Set the horizontal position of the game window on the screen.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: WinY
     group: Rendering
     type: integer
     documentation:
       text: Set the vertical position of the game window on the screen.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ResX
     group: Rendering
     type: integer
     documentation:
       text: Set horizontal resolution for game window.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ResY
     group: Rendering
     type: integer
     documentation:
       text: Set vertical resolution for game window.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: VSync
     group: Rendering
     type: flag
     antonyms: [ NoVSync ]
     documentation:
       text: Activate the VSYNC via command line. Pprevents tearing of the image but costs fps and causes input latency.)
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoVSync
     group: Rendering
     type: flag
     antonyms: [ VSync ]
     documentation:
       text: Deactivate the VSYNC via command line.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Benchmark
     group: Rendering
     type: flag
     documentation:
       text: Run game at fixed-step in order to process each frame without skipping any frames. This is useful in conjunction with DUMPMOVIE options.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: DumpMovie
     group: Rendering
     type: flag
@@ -553,14 +553,14 @@ specifiers:
           ECVF_Cheat);
     documentation:
       text: Dump rendered frames to files using current resolution of game.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Exec
     group: Rendering
     type: flag
     comment: What is an exec file? Is it really related to rendering?
     documentation:
       text: Executes the specified exec file.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: ExecCmds
     group: Developer
     type: string
@@ -571,27 +571,27 @@ specifiers:
     type: integer
     documentation:
       text: Set the frames per second for benchmarking.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Seconds
     group: Deprecated
     comment: I couldn't find this in the Unreal Engine 5 codebase.
     documentation:
       text: Set the maximum tick time.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Fullscreen
     group: Rendering
     type: flag
     antonyms: [ Windowed ]
     documentation:
       text: Set game to run in fullscreen mode.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Windowed
     group: Rendering
     type: flag
     antonyms: [ Fullscreen ]
     documentation:
       text: Set game to run in windowed mode. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 # Network
@@ -601,7 +601,7 @@ specifiers:
     type: flag
     documentation:
       text: Tell the engine to not cap client bandwidth when connecting to servers. Causes double the amount of server updates and can saturate client's bandwidth.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: LimitClientTicks
     group: Network
     type: flag
@@ -620,44 +620,44 @@ specifiers:
               // ...
     documentation:
       text: Force throttling of network updates.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: MultiHome
     group: Network
     type: flag
     documentation:
       text: Tell the engine to use a multihome address for networking.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: MultiHomeHttp
     group: Network
     type: flag
     documentation:
       text: Tell the engine to use a multihome address for networking.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NetworkProfiler
     group: Network
     type: flag
     documentation:
       text: Enable network profiler tracking.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoSteam
     group: Network
     type: flag
     documentation:
       text: Set steamworks to not be used.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Port
     group: Network
     type: string
     documentation:
       text: Tell the engine to use a specific port number.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: PrimaryNet
     group: Deprecated
     type: flag
     comment: Couldn't find this in the source code, deprecated?
     documentation:
       text: Affect how the engine handles network binding. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 
@@ -667,57 +667,57 @@ specifiers:
     comment: So what does it do instead?
     documentation:
       text: Override use of My Documents folder as home directory.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoForceFeedback
     group: User
     type: flag
     documentation:
       text: Disable force feedback in the engine.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoSound
     group: User
     type: flag
     documentation:
       text: Disable any sound output from the engine.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoSplash
     group: User
     type: flag
     documentation:
       text: Disable use of splash image when loading the game.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoTextureStreaming
     group: User
     type: flag
     documentation:
       text: Disable texture streaming. Highest quality textures are always loaded.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: OneThread
     group: User
     type: flag
     documentation:
       text: Run the engine using a single thread instead of multi-threading.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Paths
     group: User
     type: string
     documentation:
       text: Set what paths to use for testing wrangled content. Not used for shipping releases.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: PreferredProcessor
     group: Deprecated
     type: flag
     comment: Can't find in source.
     documentation:
       text: Set the thread affinity for a specific processor.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: UseAllAvailableCores
     group: User
     type: flag
     comment: Can only find it with reference to archiving.
     documentation:
       text: Force the use of all available cores on the target platform. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 
@@ -726,13 +726,13 @@ specifiers:
     type: string
     documentation:
       text: Set username to use when logging in.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: Password
     group: Server Switches
     type: string
     documentation:
       text: Set password to use when logging in. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 
@@ -741,13 +741,13 @@ specifiers:
     type: flag
     documentation:
       text: Do not use database, and ignore database connection errors.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoLiveTags
     group: Game Stats/Database
     type: flag
     documentation:
       text: Skip loading unverified tag changes from SQL database. Only load for current user. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
 ################################################################################
 
@@ -757,20 +757,20 @@ specifiers:
     comment: Couldn't find in source.
     documentation:
       text: Revert to the default (English) coalesced .ini if the language-localized version cannot be found.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoAutoINIUpdate
     group: INI/Config Files
     type: flag
     incompatible: [ RegenerateInis ]
     documentation:
       text: Suppress prompts to update .ini files.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: NoINI
     group: INI/Config Files
     type: flag
     documentation:
       text: Do not update the .ini files.
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
   - name: RegenerateINIs
     group: INI/Config Files
     type: flag
@@ -778,7 +778,7 @@ specifiers:
     comment: Be careful with plurals
     documentation:
       text: Forces .ini files to be regenerated. 
-      source: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CommandLineArguments/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments
 
   - name: PreferAMD
     group: Graphics

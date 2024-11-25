@@ -18,7 +18,7 @@ specifiers:
         };
     documentation:
       text: This value's name will be the text provided here, rather than the code-generated name.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/metadata-specifiers-in-unreal-engine#enummetadataspecifiers
   
   - name: Hidden
     group: Display
@@ -40,7 +40,7 @@ specifiers:
       It looks like "Spacer" used to be an alternative name for this.
     documentation:
       text: This value will not appear in the Editor.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/metadata-specifiers-in-unreal-engine#enummetadataspecifiers
   
   - name: ToolTip
     group: Display
@@ -58,7 +58,7 @@ specifiers:
         };
     documentation:
       text: Overrides the automatically generated tooltip from code comments.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/#enummetadataspecifiers
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/metadata-specifiers-in-unreal-engine#enummetadataspecifiers
 
   - name: RowType
     group: Display

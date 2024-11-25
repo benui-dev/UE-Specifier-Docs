@@ -7,7 +7,7 @@ specifiers:
     comment: Whether this is set or not does not affect if the interface can be implemented by a Blueprint class.
     documentation:
       text: Exposes this class as a type that can be used for variables in Blueprints.
-      source: https://docs.unrealengine.com/5.1/en-US/interfaces-in-unreal-engine/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/interfaces-in-unreal-engine
 
   - name: DependsOn
     group: Blueprint
@@ -16,7 +16,7 @@ specifiers:
     comment: Seems deprecated?
     documentation:
       text: All classes listed will be compiled before this class. ClassName must specify a class in the same (or a previous) package. Multiple dependency classes can be specified using a single `DependsOn` line delimited by commas, or can be specified using a separate `DependsOn` line for each class. This is important when a class uses a struct or enum declared in another class as the compiler only knows what is in the classes it has already compiled.
-      source: https://docs.unrealengine.com/5.1/en-US/interfaces-in-unreal-engine/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/interfaces-in-unreal-engine
 
   - name: MinimalApi
     group: Blueprint
@@ -24,7 +24,7 @@ specifiers:
     position: main
     documentation:
       text: Causes only the class's type information to be exported for use by other modules. The class can be cast to, but the functions of the class cannot be called (with the exception of inline methods). This improves compile times by not exporting everything for classes that do not need all of their functions accessible in other modules.
-      source: https://docs.unrealengine.com/5.1/en-US/interfaces-in-unreal-engine/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/interfaces-in-unreal-engine
 
   - name: Category
     group: Blueprint

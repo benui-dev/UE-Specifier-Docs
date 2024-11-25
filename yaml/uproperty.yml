@@ -18,7 +18,7 @@ specifiers:
         int32 VisibleAnywhereNumber;
     documentation:
       text: Indicates that this property is visible in all property windows, but cannot be edited. This Specifier is incompatible with the "Edit" Specifiers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/visibility-defaults-selected.png, /uproperty/visibility-instance-selected.jpg ]
   - name: VisibleDefaultsOnly
     group: Editor
@@ -38,7 +38,7 @@ specifiers:
         int32 VisibleAnywhereNumber;
     documentation:
       text: Indicates that this property is only visible in property windows for archetypes, and cannot be edited. This Specifier is incompatible with any of the "Edit" Specifiers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/visibility-defaults-selected.png ]
   - name: VisibleInstanceOnly
     group: Editor
@@ -58,7 +58,7 @@ specifiers:
         int32 VisibleInstanceOnlyNumber;
     documentation:
       text: Indicates that this property is only visible in property windows for instances, not for archetypes, and cannot be edited. This Specifier is incompatible with any of the "Edit" Specifiers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/visibility-instance-selected.jpg ]
   - name: EditAnywhere
     group: Editor
@@ -77,7 +77,7 @@ specifiers:
         int32 EditAnywhereNumber;
     documentation:
       text: Indicates that this property can be edited by property windows, on archetypes and instances. This Specifier is incompatible with any of the the "Visible" Specifiers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/visibility-defaults-selected.png, /uproperty/visibility-instance-selected.jpg ]
   - name: EditInstanceOnly
     group: Editor
@@ -94,7 +94,7 @@ specifiers:
         int32 EditInstanceOnlyNumber;
     documentation:
       text: Indicates that this property can be edited by property windows, but only on instances, not on archetypes. This Specifier is incompatible with any of the "Visible" Specifiers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/visibility-instance-selected.jpg ]
   - name: EditDefaultsOnly
     group: Editor
@@ -109,7 +109,7 @@ specifiers:
         int32 EditDefaultsOnlyNumber;
     documentation:
       text: Indicates that this property can be edited by property windows, but only on archetypes. This Specifier is incompatible with any of the "Visible" Specifiers.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/visibility-defaults-selected.png ]
   - name: HideInDetailPanel
     group: Editor
@@ -120,7 +120,7 @@ specifiers:
     comment: Not sure this is very useful for anything. Events are not really shown in a useful way in the details panel. The green + shape button that is shown on `UButton` is a UMG-specific editor customization so this does not relate to showing events in that way.
     documentation:
       text: Indicates that the property should be hidden in the details panel. Currently only used by events.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ShowOnlyInnerProperties
     group: Editor
     subgroup: Visibility
@@ -132,7 +132,7 @@ specifiers:
       Does not work for arrays.
     documentation:
       text: Used by struct properties. Indicates that the inner properties will not be shown inside an expandable struct, but promoted up a level.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     images: [ /uproperty/show-only-inner-properties.jpg ]
     samples:
       - |
@@ -227,7 +227,7 @@ specifiers:
       Note that whitespace is important; if there are two properties one marked with `Category="Parent|Child"` and one with `Category="Parent | Child"`, it will result in two folders being displayed.
     documentation:
       text: Specifies the category of the property when displayed in Blueprint editing tools. Define nested categories using the \| operator.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     samples:
       - |
         UPROPERTY(EditAnywhere, Category="Animals")
@@ -286,7 +286,7 @@ specifiers:
         bool bEnableEvilMode;
     documentation:
       text: The property will be placed in the advanced (dropdown) section of any panel where it appears.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/advanceddisplay.gif ]
   - name: SimpleDisplay
     group: Editor
@@ -297,7 +297,7 @@ specifiers:
     antonyms: [ AdvancedDisplay ]
     documentation:
       text: Visible or editable properties appear in the Details panel and are visible without opening the "Advanced" section.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: EditInline
     group: Internal and Deprecated
     type: flag
@@ -312,7 +312,7 @@ specifiers:
         TObjectPtr<UDog> Dog;
     documentation:
       text: Allows the user to edit the properties of the Object referenced by this property within Unreal Editor's property inspector (only useful for Object references, including arrays of Object reference).
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: ShowInnerProperties
     group: Editor
     subgroup: Display
@@ -425,7 +425,7 @@ specifiers:
     images: [ /uproperty/inline-edit-condition-toggle.gif ]
     documentation:
       text: Signifies that the bool property is only displayed inline as an edit condition toggle in other properties, and should not be shown on its own row.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: NonTransactional
     group: Editor
     subgroup: Undo and Redo
@@ -434,7 +434,7 @@ specifiers:
     keywords: [editor]
     documentation:
       text: Indicates that changes to this property's value will not be included in the editor's undo/redo history.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: DisplayAfter
     group: Editor
     subgroup: Display
@@ -446,7 +446,7 @@ specifiers:
       Multiple properties with DisplayAfter that refer to the same property will be displayed in the order they are defined.
     documentation:
       text: Indicates that the property should be displayed immediately after the property named in the metadata.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(DisplayAfter="ShowFirst"))
@@ -474,7 +474,7 @@ specifiers:
       Internally is converted from a string to an integer with `FCString::Atoi`.
     documentation:
       text: The relative order within its category that the property should be displayed in where lower values are sorted first.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(DisplayPriority=3))
@@ -504,7 +504,7 @@ specifiers:
         TSoftObjectPtr<USkeletalMesh> AnimalMesh;
     documentation:
       text: Indicates that the property is an asset type and it should display the thumbnail of the selected asset.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
 
   - name: MaxPropertyDepth
     group: Editor
@@ -533,7 +533,7 @@ specifiers:
     related: [ uclass.editinlinenew, uclass.defaulttoinstanced ]
     documentation:
       text: Object (`UCLASS`) properties only. When an instance of this class is created, it will be given a unique copy of the Object assigned to this property in defaults. Used for instancing subobjects defined in class default properties. Implies `EditInline` and `Export`.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     samples:
       - |
         UCLASS(EditInlineNew, DefaultToInstanced, CollapseCategories)
@@ -580,7 +580,7 @@ specifiers:
         int32 HasResetToDefault = 1;
     documentation:
       text: Property wont have a 'reset to default' button when displayed in property windows
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ClampMin
     group: Data Decorators
     subgroup: Numeric
@@ -596,7 +596,7 @@ specifiers:
       In comparison, `UIMax` and `UIMin` stop the number from going outside the bounds when the user drags their mouse, but still allows them to type in a number outside the `UIMin`/`UIMax` range.
     documentation:
       text: Used for float and integer properties. Specifies the minimum value that may be entered for the property.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(ClampMin=1))
@@ -616,7 +616,7 @@ specifiers:
       In comparison, `UIMax` and `UIMin` stop the number from going outside the bounds when the user drags their mouse, but still allows them to type in a number outside the `UIMin`/`UIMax` range.
     documentation:
       text: Used for float and integer properties. Specifies the maximum value that may be entered for the property.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(ClampMin=0, ClampMax=100))
@@ -629,7 +629,7 @@ specifiers:
     comment: Setting `UIMin` stops the user being able to drag the property lower than the specified number. The user *can* however set the number lower than this value by typing it in. Most of the time it makes sense to use both `UIMin` and `ClampMin`.
     documentation:
       text: Used for float and integer properties. Specifies the lowest that the value slider should represent.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     type: number
     type-comment: float, int
     samples:
@@ -648,7 +648,7 @@ specifiers:
     type-comment: float, int
     documentation:
       text: Used for float and integer properties. Specifies the highest that the value slider should represent.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     keywords: [number, editor]
     related: [ClampMax, UIMin]
     samples:
@@ -668,7 +668,7 @@ specifiers:
       Note that this is a bool not a flag.
     documentation:
       text: Used for integer and float properties. Indicates that the spin box element of the number editing widget should not be displayed.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: SliderExponent
     group: Data Decorators
     subgroup: Numeric
@@ -684,7 +684,7 @@ specifiers:
     examples: [ Plugins/Runtime/HairStrands/Source/HairStrandsCore/Public/GroomAssetRendering.h ]
     documentation:
       text: Used by numeric properties. Indicates how rapidly the value will grow when moving an unbounded slider.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: Delta
     group: Data Decorators
     subgroup: Numeric
@@ -710,7 +710,7 @@ specifiers:
     related: [ Delta ]
     documentation:
       text: Used for numeric properties. Stipulates that the value must be a multiple of the metadata value.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(meta=(Multiple=12, Delta=12))
@@ -766,7 +766,7 @@ specifiers:
         int32 SelectedAttributeIndex = 0;
     documentation:
       text: Used for integer properties. Clamps the valid values that can be entered in the UI to be between 0 and the length of the array specified.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
 
   - name: ValidEnumValues
     group: Data Decorators
@@ -851,7 +851,7 @@ specifiers:
       `GetOptions` also supports external static function references via `Module.Class.Function` syntax. If the function name contains a `.`, it is assumed to be static and the editor will crash if it is not.
     documentation:
       text: TArray FuncName() const; // Always return string array even if FName property.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(meta=(GetOptions="GetAnimalOptions"))
@@ -950,7 +950,7 @@ specifiers:
         FText SomeLongText;
     documentation:
       text: Used for FString and FText properties. Indicates that the edit field should be multi-line, allowing entry of newlines.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: PasswordField
     group: Data Decorators
     subgroup: Text
@@ -964,7 +964,7 @@ specifiers:
         FString ShhSecret;
     documentation:
       text: Used for FString and FText properties. Indicates that the edit field is a secret field (e.g a password) and entered text will be replaced with dots. Do not use this as your only security measure. The property data is still stored as plain text.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
 
 
   ###############################################################################
@@ -1011,7 +1011,7 @@ specifiers:
       Not sure the best place to initialize the contents of a EditFixedSize-marked `TArray` but it seems to work in the constructor.
     documentation:
       text: Only useful for dynamic arrays. This will prevent the user from changing the length of an array via the Unreal Editor property window.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: EditFixedOrder
     group: Data Decorators
     subgroup: Array
@@ -1026,7 +1026,7 @@ specifiers:
         TArray<FString> FixedOrderNames;
     documentation:
       text: Keeps the elements of an array from being reordered by dragging.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: TitleProperty
     group: Data Decorators
     subgroup: Array
@@ -1039,7 +1039,7 @@ specifiers:
       As of Unreal 5.0, you can use `FText::Format`-like formatting to output multiple parts of structs in the array. See the `FDogMapping` example below.
     documentation:
       text: Used by arrays of structs. Indicates a single property inside of the struct that should be used as a title summary when the array entry is collapsed.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     images: [ /uproperty/titleproperty.png, /uproperty/titleproperty-format.jpg ]
     samples:
     - |
@@ -1089,7 +1089,7 @@ specifiers:
         TArray<TObjectPtr<class AActor>> NoDuplicatedActors;
     documentation:
       text: Used for array properties. Indicates that the duplicate icon should not be shown for entries of this array in the property panel.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
 
   ###############################################################################
   # Data Decorators - Color
@@ -1103,7 +1103,7 @@ specifiers:
     images: [ /uproperty/hidealphachannel.jpg, /uproperty/hidealphachannel-colorpicker.jpg ]
     documentation:
       text: Used for FColor and FLinearColor properties. Indicates that the Alpha property should be hidden when displaying the property widget in the details.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
 
   ###############################################################################
   # Data Decorators - Object
@@ -1121,7 +1121,7 @@ specifiers:
         TSubclassOf<UObject> ObjectNoClear;
     documentation:
       text: Prevents this Object reference from being set to none from the editor. Hides clear (and browse) button in the editor.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     images: [ /uproperty/noclear.jpg ]
 
   ###############################################################################
@@ -1173,7 +1173,7 @@ specifiers:
     images: [ /uproperty/allowpreserveratio.jpg ]
     documentation:
       text: Used for `FVector` properties. It causes a ratio lock to be added when displaying this property in details panels.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: MakeEditWidget
     group: Data Decorators
     subgroup: Vector
@@ -1191,7 +1191,7 @@ specifiers:
       - /uproperty/makeeditwidget-world.jpg
     documentation:
       text: Used for Transform/Rotator properties (also works on arrays of them). Indicates that the property should be exposed in the viewport as a movable widget.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
 
 
   ###############################################################################
@@ -1202,7 +1202,7 @@ specifiers:
     type: flag
     documentation:
       text: This Specifier is a simple way to include fields explicitly for a checkpoint/save system at the property level. The flag should be set on all fields that are intended to be part of a saved game, and then a proxy archiver can be used to read/write it.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     comment: Variables marked with `SaveGame` will be serialized by a `USaveGame` object
     links:
       - [ "Tutorial", "https://www.tomlooman.com/save-system-unreal-engine-tutorial/" ]
@@ -1216,28 +1216,28 @@ specifiers:
     type: flag
     documentation:
       text: Native property should be serialized as text (ImportText, ExportText).
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: SkipSerialization
     group: Serialization
     type: flag
     position: main
     documentation:
       text: This property will not be serialized, but can still be exported to a text format (such as for copy/paste operations).
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: Transient
     group: Serialization
     position: main
     type: flag
     documentation:
       text: Property is transient, meaning it will not be saved or loaded. Properties tagged this way will be zero-filled at load time.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: DuplicateTransient
     group: Serialization
     position: main
     type: flag
     documentation:
       text: Indicates that the property's value should be reset to the class default value during any type of duplication (copy/paste, binary duplication, etc.).
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: TransientToolProperty
     group: Serialization
     position: meta
@@ -1250,14 +1250,14 @@ specifiers:
     type: flag
     documentation:
       text: The property will be reset to the default value during duplication, except if it's being duplicated for a Play In Editor (PIE) session.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: TextExportTransient
     group: Serialization
     position: main
     type: flag
     documentation:
       text: This property will not be exported to a text format (so it cannot, for example, be used in copy/paste operations).
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
 
 
   ###############################################################################
@@ -1278,7 +1278,7 @@ specifiers:
       It seems possible to mark a property with both `BlueprintReadOnly` and `BlueprintGetter`, though I assume that only the Getter is called and the `BlueprintReadOnly` is redundant.
     documentation:
       text: This property can be read by Blueprints, but not modified. This Specifier is incompatible with the `BlueprintReadWrite` Specifier.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: BlueprintReadWrite
     group: Blueprint Logic
     position: main
@@ -1289,7 +1289,7 @@ specifiers:
       Allows Blueprint graphs to change the values of C++-defined variables.
     documentation:
       text: This property can be read or written from a Blueprint. This Specifier is incompatible with the `BlueprintReadOnly` Specifier.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: BlueprintGetter
     group: Blueprint Logic
     type: string
@@ -1314,7 +1314,7 @@ specifiers:
         void SetPassEnabled(bool bSetEnabledTo = true);
     documentation:
       text: This property specifies a custom accessor function. If this property isn't also tagged with `BlueprintSetter` or `BlueprintReadWrite`, then it is implicitly `BlueprintReadOnly`.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: BlueprintSetter
     group: Blueprint Logic
     type: string
@@ -1333,14 +1333,14 @@ specifiers:
         void SetPassEnabled(bool bSetEnabledTo = true);
     documentation:
       text: This property has a custom mutator function, and is implicitly tagged with BlueprintReadWrite. Note that the mutator function must be named and part of the same class.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: AllowPrivateAccess
     position: meta
     group: Blueprint Logic
     type: bool
     documentation:
       text: Indicates that a private member marked as BluperintReadOnly or BlueprintReadWrite should be accessible from blueprints
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         private:
@@ -1358,7 +1358,7 @@ specifiers:
     related: [ HideInDetailPanel ]
     documentation:
       text: Usable with Multicast Delegates only. Exposes the property for assigning in Blueprints.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: BlueprintAuthorityOnly
     group: Blueprint Logic
     subgroup: Events
@@ -1367,7 +1367,7 @@ specifiers:
     keywords: [delegate]
     documentation:
       text: This property must be a Multicast Delegate. In Blueprints, it will only accept events tagged with BlueprintAuthorityOnly.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: BlueprintCallable
     group: Blueprint Logic
     subgroup: Events
@@ -1376,7 +1376,7 @@ specifiers:
     keywords: [delegate]
     documentation:
       text: Multicast Delegates only. Property should be exposed for calling in Blueprint code.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: IsBindableEvent
     group: Blueprint Logic
     subgroup: Events
@@ -1418,7 +1418,7 @@ specifiers:
     required: [ DeprecationMessage ]
     documentation:
       text: This property is deprecated, any blueprint references to it cause a compilation warning.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: DeprecationMessage
     group: Blueprint Logic
     subgroup: Deprecation
@@ -1436,7 +1436,7 @@ specifiers:
     antonyms: [ AllowedClasses ]
     documentation:
       text: Used in conjunction with DeprecatedNode, DeprecatedProperty, or DeprecatedFunction to customize the warning message displayed to the user.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: MakeStructureDefaultValue
     group: Blueprint Logic
     position: meta
@@ -1448,7 +1448,7 @@ specifiers:
         FVector Scale3D;
     documentation:
       text: For properties in a structure indicates the default value of the property in a blueprint make structure node.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     examples: [ Engine/Source/Runtime/CoreUObject/Public/UObject/NoExportTypes.h#L1079 ]
   - name: ExposeOnSpawn
     group: Blueprint Logic
@@ -1472,7 +1472,7 @@ specifiers:
         int32 StartingCash = 200;
     documentation:
       text: Specifies whether the property should be exposed on a Spawn Actor for the class type.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   
   
   ###############################################################################
@@ -1489,7 +1489,7 @@ specifiers:
       Marking a property as `Replicated` is not enough on its own. In the `.cpp` you also need to define a `GetLifetimeReplicatedProps` function (see example).
     documentation:
       text: The property should be replicated over the network.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     samples:
       - |
         #pragma once
@@ -1522,7 +1522,7 @@ specifiers:
       Can be useful to on properties within structs where part should be replicated and others should not (see the example below).
     documentation:
       text: Skip replication. This only applies to struct members and parameters in service request functions.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
     samples:
       - |
         USTRUCT()
@@ -1577,7 +1577,7 @@ specifiers:
     examples: [ Plugins/Online/OnlineFramework/Source/Lobby/Public/LobbyBeaconPlayerState#L36 ]
     documentation:
       text: The `ReplicatedUsing` Specifier specifies a callback function which is executed when the property is updated over the network.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   ###############################################################################
   # UMG
   
@@ -1692,7 +1692,7 @@ specifiers:
     type: flag
     documentation:
       text: Property defaults are generated by the Blueprint compiler and will not be copied when CopyPropertiesForUnrelatedObjects is called post-compile.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   
   
   
@@ -1710,7 +1710,7 @@ specifiers:
     examples: [ /Engine/Source/Developer/Localization/Public/LocalizationTargetTypes.h ]
     documentation:
       text: Used FSoftClassPath properties. Indicates the parent class that the class picker will use when filtering which classes to display.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
         - |
           UPROPERTY(EditAnywhere, meta=(MetaClass="UserWidget"))
@@ -1730,7 +1730,7 @@ specifiers:
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/Engine.h#L650 ]
     documentation:
       text: Used for `FSoftObjectPath`, `ComponentReference`, and `UClass` properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the asset picker (`FSoftObjectPath`) or component picker or class viewer (`UClass`).
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/ 
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3 
   - name: AllowAbstract
     group: Pickers
     subgroup: Class
@@ -1739,7 +1739,7 @@ specifiers:
     comment: By default class pickers do not include abstract classes in their list of options. This changes that behaviour to include them. Could be useful when being able to instantiate the specified class is not important.
     documentation:
       text: Used for Subclass and SoftClass properties. Indicates whether abstract class types should be shown in the class picker.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     related: [ MetaClass ]
     samples:
       - |
@@ -1753,7 +1753,7 @@ specifiers:
     type-comment: Interface name without `I` prefix. 
     documentation:
       text: Used for Subclass and SoftClass properties. Indicates the selected class must implement a specific interface
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(MustImplement="InteractibleInterface"))
@@ -1765,7 +1765,7 @@ specifiers:
     type: flag
     documentation:
       text: Used for Subclass and SoftClass properties. Shows the picker as a tree view instead of as a list
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: BlueprintBaseOnly
     group: Pickers
     subgroup: Class
@@ -1778,7 +1778,7 @@ specifiers:
         TSubclassOf<class UObject> ParentClass;
     documentation:
       text: Used for Subclass and SoftClass properties. Indicates whether only blueprint classes should be shown in the class picker.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ExactClass
     group: Pickers
     subgroup: Class
@@ -1788,7 +1788,7 @@ specifiers:
     type: flag
     documentation:
       text: Used for `FSoftObjectPath` properties in conjunction with AllowedClasses. Indicates whether only the exact classes specified in AllowedClasses can be used or whether subclasses are valid.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: OnlyPlaceable
     group: Pickers
     subgroup: Class
@@ -1800,7 +1800,7 @@ specifiers:
         TSubclassOf<AActor> ActorToSpawn;
     documentation:
       text: Used for Subclass properties. Indicates whether only placeable classes should be shown in the class picker.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: DisallowCreateNew
     group: Pickers
     subgroup: Class
@@ -1815,7 +1815,7 @@ specifiers:
     required: [ UseComponentPicker ]
     documentation:
       text: Used for ComponentReference properties. Indicates whether other actor that are not in the property outer hierarchy should be shown in the component picker. 
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
       - |
         UPROPERTY(EditAnywhere, meta = (UseComponentPicker, AllowAnyActor))
@@ -1864,7 +1864,7 @@ specifiers:
     type: flag
     documentation:
       text: Used by FDirectoryPath properties. Indicates that the directory dialog will output a relative path when setting the property.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ContentDir
     group: Pickers
     subgroup: Files and Directories
@@ -1872,7 +1872,7 @@ specifiers:
     type: flag
     documentation:
       text: Used by `FDirectoryPath` properties. Indicates that the path will be picked using the Slate-style directory picker inside the game Content dir.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: RelativeToGameContentDir
     group: Pickers
     subgroup: Files and Directories
@@ -1882,7 +1882,7 @@ specifiers:
     incompatible: [ RelativeToGameDir ]
     documentation:
       text: Used by FDirectoryPath properties. Indicates that the directory dialog will output a path relative to the game content directory when setting the property.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: RelativeToGameDir
     group: Pickers
     subgroup: Files and Directories
@@ -1892,7 +1892,7 @@ specifiers:
     comment: Note that this **does not work with `FDirectoryPath`**.
     documentation:
       text: Used by FFilePath properties. Indicates that the FilePicker dialog will output a path relative to the game directory when setting the property. An absolute path will be used when outside the game directory.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: FilePathFilter
     group: Pickers
     subgroup: Files and Directories
@@ -1907,7 +1907,7 @@ specifiers:
         FFilePath CSVFilePath;
     documentation:
       text: Used by FFilePath properties. Indicates the path filter to display in the file picker.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ForceShowEngineContent
     group: Pickers
     subgroup: Files and Directories
@@ -1915,7 +1915,7 @@ specifiers:
     type: flag
     documentation:
       text: Used by asset properties. Indicates that the asset pickers should always show engine content
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ForceShowPluginContent
     group: Pickers
     subgroup: Files and Directories
@@ -1923,7 +1923,7 @@ specifiers:
     type: flag
     documentation:
       text: Used by asset properties. Indicates that the asset pickers should always show plugin content
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: HideViewOptions
     group: Pickers
     subgroup: Files and Directories
@@ -1931,7 +1931,7 @@ specifiers:
     type: flag
     documentation:
       text: Used for Subclass and SoftClass properties. Specifies to hide the ability to change view options in the class picker
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: LongPackageName
     group: Pickers
     subgroup: Files and Directories
@@ -1939,7 +1939,7 @@ specifiers:
     type: flag
     documentation:
       text: Used by FDirectoryPath properties. Converts the path to a long package name
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   
   
   ###############################################################################
@@ -1952,7 +1952,7 @@ specifiers:
     comment: Also used on `UFUNCTION()`
     documentation:
       text: Flag set on a property or function to prevent it being exported to a scripting language.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ScriptName
     group: Scripting
     position: meta
@@ -1975,14 +1975,14 @@ specifiers:
     type: flag
     documentation:
       text: This property will be made configurable. The current value can be saved to the `.ini` file associated with the class and will be loaded when created. Cannot be given a value in default properties. Implies `BlueprintReadOnly`.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: GlobalConfig
     group: Config Files
     position: main
     type: flag
     documentation:
       text: Works just like `Config` except that you cannot override it in a subclass. Cannot be given a value in default properties. Implies `BlueprintReadOnly`.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: ConfigHierarchyEditable
     group: Config Files
     position: meta
@@ -1990,7 +1990,7 @@ specifiers:
     required: [ Config ]
     documentation:
       text: Property is serialized to config and we should be able to set it anywhere along the config hierarchy.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: ConfigRestartRequired
     group: Config Files
     position: meta
@@ -2052,7 +2052,7 @@ specifiers:
     position: main
     documentation:
       text: The `AssetRegistrySearchable` Specifier indicates that this property and its value will be automatically added to the Asset Registry for any Asset class instances containing this as a member variable. It is not legal to use on struct properties or parameters.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
       
   - name: Untracked
     group: Asset Registry
@@ -2060,7 +2060,7 @@ specifiers:
     type: flag
     documentation:
       text: Used for SoftObjectPtr/SoftObjectPath properties to specify a reference should not be tracked. This reference will not be automatically cooked or saved into the asset registry for redirector/delete fixup.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   
   
   
@@ -2084,7 +2084,7 @@ specifiers:
         float Radius;
     documentation:
       text: Indicates that the value can be driven over time by a Track in Sequencer.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   
   - name: AlwaysAsPin
     group: Animation
@@ -2179,7 +2179,7 @@ specifiers:
     type: flag
     documentation:
       text: Only useful for Object properties (or arrays of Objects). Indicates that the Object assigned to this property should be exported in its entirety as a subobject block when the Object is copied (such as for copy/paste operations), as opposed to just outputting the Object reference itself.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   
   
   ###############################################################################
@@ -2192,7 +2192,7 @@ specifiers:
     comment: As of Unreal 5.0 Early Access 2, RepRetry is marked as deprecated.
     documentation:
       text: Only useful for struct properties. Retry replication of this property if it fails to be fully sent (for example, Object references not yet available to serialize over the network). For simple references, this is the default, but for structs, this is often undesirable due to the bandwidth cost, so it is disabled unless this flag is specified.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: Localized
     group: Internal and Deprecated
     position: main
@@ -2200,7 +2200,7 @@ specifiers:
     comment: This is mentioend in the documentation, but it's deprecated. And it's not used anywhere in the engine. If you're looking for localization stuff start with `FText`.
     documentation:
       text: The value of this property will have a localized value defined. Mostly used for strings. Implies `ReadOnly`.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   - name: FixedIncrement
     group: Internal and Deprecated
     position: meta
@@ -2209,21 +2209,21 @@ specifiers:
     comment: Probably superceded by [Delta](#delta)?
     documentation:
       text: Deprecated.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: NeedsLatentFixup
     group: Internal and Deprecated
     position: meta
     type: flag
     documentation:
       text: (Internal use only) Used for the latent action manager to fix up a latent action with the VM
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: LatentCallbackTarget
     group: Internal and Deprecated
     position: meta
     type: flag
     documentation:
       text: (Internal use only) Used for the latent action manager to track where it's re-entry should be
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   
   
   
@@ -2237,7 +2237,7 @@ specifiers:
     type: flag
     documentation:
       text: "Property is native: C++ code is responsible for serializing it and exposing to [Garbage Collection](https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Objects/Optimizations#garbagecollection)."
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   
   - name: NoExport
     group: C++
@@ -2245,7 +2245,7 @@ specifiers:
     type: flag
     documentation:
       text: Only useful for native classes. This property should not be included in the auto-generated class declaration.
-      source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
   
   - name: IgnoreForMemberInitializationTest
     group: C++
@@ -2253,7 +2253,7 @@ specifiers:
     type: flag
     documentation:
       text: "Used for bypassing property initialization tests when the property cannot be safely tested in a deterministic fashion. Example: random numbers, guids, etc."
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: AssetBundles
     position: meta
     type: string
@@ -2263,7 +2263,7 @@ specifiers:
     examples: [ Engine/Source/Runtime/Engine/Classes/Engine/PrimaryAssetLabel.h, Engine/Source/Runtime/Engine/Classes/Engine/AssetManager.h#L544 ]
     documentation:
       text: Used for SoftObjectPtr/SoftObjectPath properties. Comma separated list of Bundle names used inside PrimaryDataAssets to specify which bundles this reference is part of
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
   - name: IncludeAssetBundles
     position: meta
     type: string
@@ -2298,7 +2298,7 @@ specifiers:
     comment: Seems to be used for exposing components within actors.
     documentation:
       text: Specifies a list of categories whose functions should be exposed when building a function list in the Blueprint Editor.
-      source: https://docs.unrealengine.com/4.27/en-US/API/Runtime/CoreUObject/UObject/UM_3/
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
     samples:
         - |
           UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(ExposeFunctionCategories="PointLight,Rendering|Lighting"))
