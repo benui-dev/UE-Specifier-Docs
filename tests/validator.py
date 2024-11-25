@@ -165,6 +165,11 @@ class SpecifierValidatorBase:
 			if ref_field in entry:
 				for ref_value in entry[ref_field]:
 					lowered_id = ref_value.lower()
+
+					# split into class and property
+					if '.' in lowered_id:
+						page, property = lowered_id.split('.')
+
 					if lowered_id not in self.ids:
 						errors.append(f"Field '{ref_field}' referenced non-existant id '{lowered_id}'")
 		
@@ -200,6 +205,10 @@ class UDefaultValidator(SpecifierValidatorBase):
 
 
 class UFunctionValidator(SpecifierValidatorBase):
+	def __init__(self):
+		super().__init__()
+		self.allowed_properties.append('implies')
+
 	def should_run(self, filename: str):
 		return filename.endswith('ufunction.yml')
 
