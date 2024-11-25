@@ -152,8 +152,65 @@ specifiers:
         FCat Cat;
         UPROPERTY(EditAnywhere, Category="Cat With ShowOnlyInnerProperties", meta=(ShowOnlyInnerProperties))
         FCat Cat;
-     
-  
+  - name: BaseStruct
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: string
+    type-comment: class
+    related: [ ExcludeBaseStruct ]
+    images: [ /uproperty/basestruct.webp ]
+    comment: |
+      There are two different ways of limiting which instanced structs can be chosen in the editor:
+      
+      a) Use FInstancedStruct and set the BaseStruct meta property to point to structure.
+
+      b) Use `TInstancedStruct<T>` templated property and point it to the structure.
+    samples:
+      - |
+        USTRUCT(BlueprintType)
+        struct FBaseStruct
+        {
+          GENERATED_BODY()
+        };
+      
+        USTRUCT()
+        struct FDerivedStruct : public FBaseStruct
+        {
+          GENERATED_BODY()
+        };
+      
+        UCLASS(Blueprintable)
+        class UInstancedStructExample : public UObject
+        {
+          GENERATED_BODY()
+      
+          // There are two different ways of limiting selection of instanced structs:
+      
+          // a) Specify type using meta BaseStruct specifier
+          UPROPERTY(EditAnywhere, meta=(BaseStruct="/Script/Example.BaseStruct"))
+          FInstancedStruct MetaBaseAndDerived;
+      
+          UPROPERTY(EditAnywhere, meta=(BaseStruct="/Script/Example.BaseStruct", ExcludeBaseStruct))
+          FInstancedStruct MetaDerivedOnly;
+      
+          // b) Specify type using Templated TInstancedStruct<T>
+          UPROPERTY(EditAnywhere)
+          TInstancedStruct<FBaseStruct> TemplatedBaseAndDerived;
+      
+          UPROPERTY(EditAnywhere, meta=(ExcludeBaseStruct))
+          TInstancedStruct<FBaseStruct> TemplatedDerivedOnly;
+        };
+  - name: ExcludeBaseStruct
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    related: [ BaseStruct ]
+    images: [ /uproperty/excludebasestruct.webp ]
+    comment: |
+      Used in combination with `BaseStruct`, but with this flag the base struct cannot be chosen.
+
   
   ###############################################################################
   
