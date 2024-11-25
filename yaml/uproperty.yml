@@ -246,7 +246,7 @@ specifiers:
     type: flag
     source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     position: meta
-    related: [ Instanced, class.editinlinenew ]
+    related: [ Instanced, class.EditInlineNew ]
     comment: |
       Using this shows the error "`EditInline` is deprecated. Remove it, or use `Instanced` instead."
     samples:
@@ -847,21 +847,21 @@ specifiers:
       Use to limit what are acceptable string values for the key values of a `TMap<FText, ...>`, `TMap<FString, ...>` or `TMap<FName, ...>`.
 
       See the `GetOptions` documentation for details.
-    example: |
+    samples: |
       UPROPERTY(EditAnywhere, Meta=(GetKeyOptions="GetLootOptions"))
-	    TMap<FName, FLoot> Loot;
+      TMap<FName, FLoot> Loot;
 
-	    UFUNCTION()
-	    TArray<FName> GetLootOptions() const {
-        // Get data from a DataTable, or hard-coded
-        if (const UDataTable* const LootDatabase = GetLootDatabase())
-	      {
-		      TArray<FName> Result;
-		      LootDatabase->GetRowMap().GetKeys(Result);
-		      return Result;
-	      }
-	      return TArray<FName>();
-      }
+      UFUNCTION()
+      TArray<FName> GetLootOptions() const {
+         // Get data from a DataTable, or hard-coded
+         if (const UDataTable* const LootDatabase = GetLootDatabase())
+        {
+         TArray<FName> Result;
+         LootDatabase->GetRowMap().GetKeys(Result);
+         return Result;
+        }
+        return TArray<FName>();
+       }
     images: [ /uproperty/getkeyoptions.webp ]
   - name: GetValueOptions
     group: Data Decorators
