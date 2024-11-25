@@ -21,6 +21,8 @@ specifiers:
     group: General
     position: meta
     type: bool
+    related: [ uproperty.BitMask, uproperty.BitmaskEnum ]
+    comment: Allows a `UENUM` to be used as checkmark-style flags in a UPROPERTY.
   
   
   - name: Experimental

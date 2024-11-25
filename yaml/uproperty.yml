@@ -696,7 +696,9 @@ specifiers:
     subgroup: Numeric
     position: meta
     type: string
-    comment: Clamps an integer to be within the range of the specified `TArray`.
+    type-comment: UPROPERTY-marked TArray
+    comment: |
+      Clamps an integer to be within the range of the specified `TArray`.
     examples: [Engine/Source/Runtime/Engine/Classes/Engine/SkeletalMesh.h#L96, Plugins/Experimental/MeshModelingToolset/Source/MeshModelingTools/Public/MeshAttributePaintTool.h#L129 ]
     samples:
       - |
@@ -852,16 +854,17 @@ specifiers:
       TMap<FName, FLoot> Loot;
 
       UFUNCTION()
-      TArray<FName> GetLootOptions() const {
-         // Get data from a DataTable, or hard-coded
-         if (const UDataTable* const LootDatabase = GetLootDatabase())
+      TArray<FName> GetLootOptions() const
+      {
+        // Get data from a DataTable, or hard-coded
+        if (const UDataTable* LootDatabase = GetLootDatabase())
         {
-         TArray<FName> Result;
-         LootDatabase->GetRowMap().GetKeys(Result);
-         return Result;
+          TArray<FName> Result;
+          LootDatabase->GetRowMap().GetKeys(Result);
+          return Result;
         }
         return TArray<FName>();
-       }
+      }
     images: [ /uproperty/getkeyoptions.webp ]
   - name: GetValueOptions
     group: Data Decorators
@@ -1211,7 +1214,7 @@ specifiers:
     related: [ AllowPrivateAccess, BlueprintGetter ]
     images: [ /uproperty/blueprintvisibility.jpg ]
     comment: |
-      `BlueprintReadOnly` and its sibling `BlueprintReadWrite` Allow
+      `BlueprintReadOnly` and its sibling `BlueprintReadWrite` allow Blueprints to access C++-defined variables. `BlueprintReadOnly` variables can be read/used in Blueprint graphs but their values cannot be changed.
   
       By default, variables marked with `BlueprintReadOnly` or `BlueprintReadWrite` cannot be `private` (i.e. they must be `protected` or `public`). However the [`AllowPrivateAccess`](#allowprivateaccess) meta flag can change this to allow `private` variables.
   
@@ -1225,6 +1228,8 @@ specifiers:
     type: flag
     incompatible: [ BlueprintReadOnly ]
     images: [ /uproperty/blueprintvisibility.jpg ]
+    comment: |
+      Allows Blueprint graphs to change the values of C++-defined variables.
     documentation:
       text: This property can be read or written from a Blueprint. This Specifier is incompatible with the `BlueprintReadOnly` Specifier.
       source: https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/
@@ -1240,8 +1245,6 @@ specifiers:
       If you end up with an error message like `error: use of undeclared identifier 'Mode'`
   
       Make sure your property and functions do not have clashing names. You cannot call your property `bIsPasswordEnabled` and the getter function `bool IsPasswordEnabled() const`
-  
-
     samples:
       - |
         UPROPERTY(EditAnywhere, BlueprintGetter = IsPassEnabled, BlueprintSetter = SetPassEnabled )
@@ -1324,16 +1327,16 @@ specifiers:
     position: meta
     keywords: [ delegate ]
     documentation:
-      text: Expose the propriety to be bindable on on editor like BlueprintAssignable but for non-multicast dynamic events. Only works on widgets
+      text: Expose the property to be bindable on on editor like BlueprintAssignable but for non-multicast dynamic events. Only works on widgets
     samples:
       - |
         DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(UWidget*, FGenerateWidgetEvent, FName, Item);
 
-        UPROPERTY(EditAnywhere, Category = Events, meta = (IsBindableEvent = "True"))
+        UPROPERTY(EditAnywhere, Category = Events, meta = (IsBindableEvent=true))
         FGenerateWidgetEvent OnGenerateContentWidget;
     comment: |
-      The same thing works if your propriety name ends with "Event", but the metadata is prefeered.
-      Also there's nothing on code requiring the bool, but the engine always uses as a bool.
+      The same thing works if your property name ends with "Event", but the metadata is preferred.
+      From the engine code that parses this property, both flag and bool would work, but other engine code that uses this property always does so as a bool. So I would stick with the bool.
   - name: DeprecatedProperty
     group: Blueprint Logic
     subgroup: Deprecation
@@ -1363,6 +1366,7 @@ specifiers:
     group: Blueprint Logic
     subgroup: Deprecation
     position: meta
+    related: [ DeprecatedProperty ]
     comment: "See [`DeprecatedProperty`](#deprecatedproperty)"
     type: string
   - name: DisallowedClasses
@@ -1383,7 +1387,7 @@ specifiers:
     comment: There's only one example of this in the codebase, inside `NoExportTypes.h`. Not sure how this is different from just doing a C11-style `FVector Scale3D = FVector(1,1,1)`.
     samples:
       - |
-        UPROPERTY(EditAnywhere, meta=(MakeStructureDefaultValue = "1,1,1"))
+        UPROPERTY(EditAnywhere, meta=(MakeStructureDefaultValue="1,1,1"))
         FVector Scale3D;
     documentation:
       text: For properties in a structure indicates the default value of the property in a blueprint make structure node.

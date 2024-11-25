@@ -37,8 +37,7 @@ specifiers:
   
         // Use existing data, add some more
         UFUNCTION(BlueprintCallable)
-        void UseAndFillDogInfo(
-            UPARAM(ref) FDogInfo& SearchParams);
+        void UseAndFillDogInfo(UPARAM(ref) FDogInfo& SearchParams);
   
         // Just use existing data and don't change it
         UFUNCTION(BlueprintCallable)
@@ -53,7 +52,7 @@ specifiers:
     samples:
       - |
         UFUNCTION(BlueprintCallable, Category = "Composure", meta = (DeterminesOutputType = "OutputType"))
-        UCompositingElementOutput* FindOutputPass(UPARAM(meta = (AllowAbstract = "false"))TSubclassOf<UCompositingElementOutput> OutputType, FName OptionalPassName = NAME_None);
+        UCompositingElementOutput* FindOutputPass(UPARAM(meta=(AllowAbstract=false)) TSubclassOf<UCompositingElementOutput> OutputType, FName OptionalPassName = NAME_None);
   
   - name: Categories
     group: Pickers
@@ -65,10 +64,10 @@ specifiers:
     samples:
       - |
         UFUNCTION(BlueprintCallable)
-        void SellItems(UPARAM(meta=(Categories="Inventory.Item"))FGameplayTag Itemtag, int32 Count);
+        void SellItems(UPARAM(meta=(Categories="Inventory.Item") )FGameplayTag Itemtag, int32 Count);
       - |
         UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = GameplayEffects)
-        virtual void UpdateActiveGameplayEffectSetByCallerMagnitude(FActiveGameplayEffectHandle ActiveHandle, UPARAM(meta=(Categories = "SetByCaller"))FGameplayTag SetByCallerTag, float NewValue);
+        virtual void UpdateActiveGameplayEffectSetByCallerMagnitude(FActiveGameplayEffectHandle ActiveHandle, UPARAM(meta=(Categories="SetByCaller")) FGameplayTag SetByCallerTag, float NewValue);
   
   - name: MustImplement
     group: Pickers
@@ -80,7 +79,7 @@ specifiers:
     samples:
       - |
         UFUNCTION(unreliable, client, BlueprintCallable, Category="Game|Feedback")
-        void ClientSpawnGenericCameraLensEffect(UPARAM(meta=(MustImplement ="CameraLensEffectInterface")) TSubclassOf<class AActor>  LensEffectEmitterClass);
+        void ClientSpawnGenericCameraLensEffect(UPARAM(meta=(MustImplement="CameraLensEffectInterface")) TSubclassOf<class AActor> LensEffectEmitterClass);
     images: [/uparam/spawn-generic-camera-lens-effect.png]
 
   - name: AllowedClasses
