@@ -847,6 +847,22 @@ specifiers:
       Use to limit what are acceptable string values for the key values of a `TMap<FText, ...>`, `TMap<FString, ...>` or `TMap<FName, ...>`.
 
       See the `GetOptions` documentation for details.
+    example: |
+      UPROPERTY(EditAnywhere, Meta=(GetKeyOptions="GetLootOptions"))
+	    TMap<FName, FLoot> Loot;
+
+	    UFUNCTION()
+	    TArray<FName> GetLootOptions() const {
+        // Get data from a DataTable, or hard-coded
+        if (const UDataTable* const LootDatabase = GetLootDatabase())
+	      {
+		      TArray<FName> Result;
+		      LootDatabase->GetRowMap().GetKeys(Result);
+		      return Result;
+	      }
+	      return TArray<FName>();
+      }
+    images: [ /uproperty/getkeyoptions.webp ]
   - name: GetValueOptions
     group: Data Decorators
     subgroup: Text
