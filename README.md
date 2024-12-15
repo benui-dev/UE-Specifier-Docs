@@ -76,7 +76,7 @@ There is an Unreal Engine project located in `/Example/`. The code is partly the
 
 ## Issues
 
-Please submit bug reports in cases of missing specifiers or mistakes in the documentation.
+Please [submit Issues](https://github.com/benui-dev/UE-Specifier-Docs/issues) cases of missing specifiers or mistakes in the documentation.
 
 
 ## Known Issues
@@ -88,4 +88,4 @@ Please submit bug reports in cases of missing specifiers or mistakes in the docu
 
 ## License
 
-CC0-1.0
+See License file
