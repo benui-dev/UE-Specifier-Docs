@@ -20,6 +20,7 @@ Example entry:
   subgroup: Visibility
   position: main
   type: flag
+  utility: 3
   incompatible: [ VisibleDefaultsOnly, VisibleInstanceOnly, EditAnywhere, EditDefaultsOnly, EditInstanceOnly ]
   comment:
     Properties marked with `VisibleAnywhere` are visible in the both Details Panel of Blueprint assets and the Details Panel of Blueprint instances within maps.
@@ -47,6 +48,7 @@ Example entry:
 | `group` | string | | Arbitrary string I use to display related specifiers together. |
 | `subgroup` | string | Requires `group` | A way of categorizing specifiers further within a group. |
 | `position` | string | Required | Valid values are `main` or `meta`. |
+| `utility` | integer | | Value between 1-3. 3 is for extremely-commonly-used specifiers, 1 is for niche or rarely-used specifiers.  |
 | `type` | string | Required | Valid values are `flag`, `string`, `number`, `bool`, `integer`. |
 | `type-comment` | string | Requires `type` | Extra information about the type. For example if the `string` must be the name of a valid `UPROPERTY` member variable, or `number` must be an integer. |
 | `comment` | string | | Long free-text description on how to use the specifier. Includes Markdown formatting. |
@@ -56,7 +58,7 @@ Example entry:
 | `incompatible` | specifier array | | A list of specifiers that are invalid when paired with this specifier. |
 | `synonyms` | specifier array | | A list of specifiers that have the **same effect** to this specifier. |
 | `antonyms` | specifier array | | A list of specifiers that have the **opposite effect** to this specifier. |
-| `inherited` | boolean | | `UCLASS`-specific. Whether a specifier on a parent means the child implicitly has that same specifier. |
+| `inherited` | boolean | | `UCLASS`-specific. Whether a specifier on a parent means the child implicitly has that same specifier. If no value is defined, interpret as 'false'. True is just the string 'true'. |
 | `documentation` | struct | | See below for the properties within this struct. |
 | `documentation.text` | text | Required if `documentation` struct exists. | Official Unreal Engine documentation that describes the specifier. Can be taken from web or source code. |
 | `documentation.source` | url | | The URL from which the documentation is taken. In the case of files I include a link to the file on GitHub. |
