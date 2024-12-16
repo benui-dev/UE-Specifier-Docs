@@ -1,3 +1,4 @@
+id: ufunction
 specifiers:
 
 ###############################################################################
@@ -553,6 +554,8 @@ specifiers:
     position: main
     antonyms: [ Unreliable ]
     required: [ Client, Server ] 
+    comment: |
+      The class and its parents must be marked as replicated for replicated functions to work. Check your constructor has `SetIsReplicatedByDefault(true)`.
     documentation:
       text: The function is replicated over the network, and is guaranteed to arrive regardless of bandwidth or network errors. Only valid when used in conjunction with Client or Server.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/ufunctions
@@ -641,7 +644,7 @@ specifiers:
     position: meta
     type: string
     type-comment: Groups are separated by commas, params are separated by pipe.
-    related: [ MapParam, MapKeyParam, MapValueParam ]
+    related: [ MapParam ]
     required: [ CustomThunk ]
     comment: |
       Using `SetParam` allows you to make "templated" Blueprint functions for Set containers that work for any datatype. It requires a `CustomThunk`-generated function definition for it to work. For an example check `BlueprintSetLibrary`.
