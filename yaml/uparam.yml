@@ -5,6 +5,7 @@ specifiers:
   - name: DisplayName
     group: Blueprint Logic
     type: string
+    utility: 3
     position: main
     comment: |
       Allows renaming parameters in `UFUNCTION` functions.
@@ -59,6 +60,7 @@ specifiers:
     group: Pickers
     type: string
     type-comment: comma-separated list of gameplay tags
+    utility: 3
     position: meta
     comment: |
       Limits the Gameplay Tags that are selectable on the `UFUNCTION`. Works in the same way as the `UPROPERTY` `Categories` meta flag.

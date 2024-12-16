@@ -4,6 +4,7 @@ specifiers:
   - name: BlueprintType
     group: Blueprint
     type: flag
+    utility: 3
     position: main
     comment: Whether this is set or not does not affect if the interface can be implemented by a Blueprint class.
     documentation:
@@ -30,6 +31,7 @@ specifiers:
   - name: Category
     group: Blueprint
     type: string
+    utility: 3
     position: main
   
   - name: CannotImplementInterfaceInBlueprint
@@ -41,6 +43,7 @@ specifiers:
   - name: DisplayName
     group: Blueprint
     type: string
+    utility: 3
     position: meta
 
   - name: Experimental

@@ -7,12 +7,14 @@ specifiers:
     group: General
     position: main
     type: flag
+    utility: 3
   
   
   - name: Bitflags
     group: General
     position: meta
     type: flag
+    utility: 3
     documentation:
       text: Indicates that this enumerated type can be used as flags by integer `UPROPERTY` variables that are set up with the `Bitmask` Metadata Specifier.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/metadata-specifiers-in-unreal-engine#enummetadataspecifiers
@@ -82,4 +84,5 @@ specifiers:
     group: General
     position: main
     type: flag
+    utility: 3
     comment: Exposes the UENUM to be used as a variable type in Blueprint scripts.

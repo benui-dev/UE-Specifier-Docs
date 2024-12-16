@@ -7,6 +7,7 @@ specifiers:
   - name: AdvancedClassDisplay
     group: Display
     type: flag
+    utility: 2
     position: main
     related: [ uproperty.AdvancedDisplay, uproperty.SimpleDisplay ]
     documentation:
@@ -16,6 +17,7 @@ specifiers:
   - name: ClassGroup
     group: Display
     type: string
+    utility: 2
     position: main
     comment: |
       Class Group must be something already registered, you can't put arbitrary strings in here.
@@ -132,6 +134,7 @@ specifiers:
   - name: Abstract
     group: Blueprint
     type: flag
+    utility: 3
     position: main
     documentation:
       text: The Abstract Specifier declares the class as an "abstract base class", preventing the user from adding Actors of this class to Levels. This is useful for classes which are not meaningful on their own. For example, the ATriggerBase base class is abstract, while the ATriggerBox subclass is not abstract and can be placed in a Level.
@@ -150,6 +153,7 @@ specifiers:
   - name: Blueprintable
     group: Blueprint
     type: flag
+    utility: 3
     position: main
     antonyms: [ NotBlueprintable ]
     related: [ Abstract ]
@@ -160,6 +164,7 @@ specifiers:
   - name: NotBlueprintable
     group: Blueprint
     type: flag
+    utility: 1
     position: main
     antonyms: [ Blueprintable ]
     related: [ Abstract ]
@@ -180,6 +185,7 @@ specifiers:
   - name: BlueprintType
     group: Blueprint
     type: flag
+    utility: 3
     position: main
     antonyms: [ NotBlueprintType ]
     samples:
@@ -193,6 +199,7 @@ specifiers:
   - name: NotBlueprintType
     group: Blueprint
     type: flag
+    utility: 1
     position: main
     inherited: false
     antonyms: [ BlueprintType ]
@@ -207,6 +214,7 @@ specifiers:
   - name: Const
     group: Blueprint
     type: flag
+    utility: 1
     position: main
     related: [ EditInlineNew ]
     inherited: true
@@ -248,6 +256,7 @@ specifiers:
   - name: BlueprintSpawnableComponent
     group: Blueprint
     type: flag
+    utility: 2
     position: meta
     comment: Adding this means that the component will appear under the "Add" dropdown for adding components to an Actor.
     documentation:
@@ -323,6 +332,7 @@ specifiers:
     group: Blueprint
     type: string
     type-comment: Space-separated struct names without 'F' prefix
+    utility: 1
     position: main
     comment: The engine does not contain examples of this but the documentation is great.
     documentation:
@@ -336,6 +346,7 @@ specifiers:
   - name: Config
     group: Config
     type: string
+    utility: 3
     position: main
     inherited: true
     documentation:
@@ -345,6 +356,7 @@ specifiers:
   - name: DefaultConfig
     group: Config
     type: flag
+    utility: 2
     required: [ Config ]
     inherited: true
     position: main
@@ -354,6 +366,7 @@ specifiers:
   - name: PerObjectConfig
     group: Config
     type: flag
+    utility: 2
     position: main
     required: [ Config ]
     inherited: true
@@ -364,6 +377,7 @@ specifiers:
   - name: ConfigDoNotCheckDefaults
     group: Config
     type: flag
+    utility: 1
     position: main
     required: [ Config ]
     inherited: true
@@ -371,6 +385,7 @@ specifiers:
   - name: GlobalUserConfig
     group: Config
     type: flag
+    utility: 2
     required: [ Config ]
     inherited: true
     position: main
@@ -386,6 +401,7 @@ specifiers:
   - name: ProjectUserConfig
     group: Config
     type: flag
+    utility: 2
     required: [ Config ]
     inherited: true
     position: main
@@ -397,6 +413,7 @@ specifiers:
   - name: EditInlineNew
     group: Editor
     type: flag
+    utility: 3
     position: main
     antonyms: [ NotEditInlineNew ]
     related: [ uproperty.Instanced ]
@@ -408,6 +425,7 @@ specifiers:
   - name: NotEditInlineNew
     group: Editor
     type: flag
+    utility: 1
     position: main
     antonyms: [ EditInlineNew ]
     comment: |
@@ -416,6 +434,7 @@ specifiers:
   - name: DefaultToInstanced
     group: Editor
     type: flag
+    utility: 3
     position: main
     inherited: true
     related: [ uproperty.Instanced ]
@@ -431,6 +450,7 @@ specifiers:
   - name: Hidden
     group: Visibility
     type: flag
+    utility: 2
     position: main
     related: [ HideDropdown ]
     documentation:
@@ -440,6 +460,7 @@ specifiers:
   - name: HideDropdown
     group: Visibility
     type: flag
+    utility: 2
     position: main
     related: [ Hidden ]
     documentation:
@@ -526,6 +547,7 @@ specifiers:
   - name: Placeable
     group: Actor
     type: flag
+    utility: 3
     position: main
     antonyms: [ NotPlaceable ]
     inherited: true
@@ -540,6 +562,7 @@ specifiers:
   - name: NotPlaceable
     group: Actor
     type: flag
+    utility: 1
     position: main
     antonyms: [ Placeable ]
     related: [ Abstract, Transient ]
@@ -555,6 +578,7 @@ specifiers:
   - name: ComponentWrapperClass
     group: Actor
     type: flag
+    utility: 2
     position: main
     related: [ IgnoreCategoryKeywordsInSubclasses, ConversionRoot, ChildCanTick ]
     comment: |
@@ -567,6 +591,7 @@ specifiers:
   - name: ConversionRoot
     group: Display
     type: flag
+    utility: 2
     position: main
     related: [ ComponentWrapperClass ]
     comment:
@@ -594,6 +619,7 @@ specifiers:
   - name: Transient
     group: Serialization
     type: flag
+    utility: 3
     position: main
     inherited: true
     antonyms: [ NonTransient ]
@@ -613,6 +639,7 @@ specifiers:
   - name: Deprecated
     group: Serialization
     type: flag
+    utility: 2
     position: main
     inherited: true
     documentation:
@@ -626,6 +653,7 @@ specifiers:
   - name: MinimalAPI
     group: C++
     type: flag
+    utility: 3
     position: main
     documentation:
       text: Causes only the class's type information to be exported for use by other modules. The class can be cast to, but the functions of the class cannot be called (with the exception of inline methods). This improves compile times by not exporting everything for classes that do not need all of their functions accessible in other modules.
@@ -651,6 +679,7 @@ specifiers:
     group: C++
     type: string
     type-comment: comma-separated
+    utility: 2
     position: main
     documentation:
       text: All classes listed will be compiled before this class. The class names provided must indicate classes in the same (or a previous) package. Multiple dependency classes can be identified using a single DependsOn line delimited by commas, or can be specified using a separate DependsOn line for each class. This is important when a class uses a struct or enum declared in another class, as the compiler only knows what is in the classes it has already compiled.
@@ -659,6 +688,7 @@ specifiers:
   - name: Within
     group: C++
     type: string
+    utility: 2
     position: main
     comment: This is handy for making it clear that a class is designed to be owned by another. Maybe it uses `GetOuter` so it won't work when created within another class. Commonly used with `APlayerController`.
     samples:
@@ -712,6 +742,7 @@ specifiers:
   - name: DisplayName
     group: Display
     type: string
+    utility: 3
     position: meta
     documentation:
       text: The name of this node in a Blueprint Script will be replaced with the value provided here, instead of the code-generated name.
@@ -745,6 +776,7 @@ specifiers:
   - name: DisableNativeTick
     group: UI
     type: flag
+    utility: 2
     position: meta
     comment: Only used in one place in the engine, on `UUserWidget`.
     samples:
@@ -779,6 +811,7 @@ specifiers:
   - name: DisplayThumbnail
     group: Todo
     type: bool
+    utility: 1
     position: meta
     related: [ uproperty.displaythumbnail ]
     samples:
@@ -789,6 +822,7 @@ specifiers:
   - name: Experimental
     group: Todo
     type: flag
+    utility: 1
     position: main
   
   - name: IgnoreClassThumbnail
@@ -828,6 +862,7 @@ specifiers:
   - name: Intrinsic
     group: Internal and Deprecated
     type: flag
+    utility: 0
     position: main
     documentation:
       text: This indicates that the class was declared directly in C++, and has no boilerplate generated by Unreal Header Tool. Do not use this Specifier on new classes.
@@ -836,6 +871,7 @@ specifiers:
   - name: NoExport
     group: Internal and Deprecated
     type: flag
+    utility: 0
     position: main
     documentation:
       text: Indicates that this class's declaration should not be included in the automatically-generated C++ header file by the header generator. The C++ class declaration must be defined manually in a separate header file. Only valid for native classes. Do not use this for new classes.
@@ -844,12 +880,14 @@ specifiers:
   - name: MatchedSerializers
     group: Internal and Deprecated
     type: flag
+    utility: 0
     position: main
     comment: Seems to be used for very low-level internal classes.
   
   - name: UsesHierarchy
     group: Internal and Deprecated
     type: flag
+    utility: 0
     position: meta
     comment: The official documentation lists this for both `UCLASS` and `USTRUCT` but there are no instances of it being used in the codebase and **no code that seems to recognise it**. So I think it's maybe legacy or something someone forgot.
     documentation:
@@ -859,6 +897,7 @@ specifiers:
   - name: CustomConstructor
     group: Internal and Deprecated
     type: flag
+    utility: 0
     position: main
     comment: As of 5.3 has the comment "No longer used in the engine"
     documentation:
