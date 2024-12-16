@@ -1,3 +1,4 @@
+id: uclass
 specifiers:
 
 ###############################################################################
@@ -7,7 +8,7 @@ specifiers:
     group: Display
     type: flag
     position: main
-    related: [ uproperty.advanceddisplay, uproperty.simpledisplay ]
+    related: [ uproperty.AdvancedDisplay, uproperty.SimpleDisplay ]
     documentation:
       text: The AdvancedClassDisplay Specifier forces all properties of the class to show only in the advanced sections of any details panel where they appear. To override this on an individual property, use the SimpleDisplay specifier on that property.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -60,6 +61,8 @@ specifiers:
     type-comment: Space-separated list
     position: main
     antonyms: [ AutoCollapseCategories ]
+    comment: |
+      You can't just add this to the `UCLASS` on an AActor subclass and expect it to expand/contract categories in the editor for that actor. That'd be great but it doesn't do that.
     documentation:
       text: Specifies one or more categories that should be automatically expanded in the Unreal Editor Property window for Objects of this class. To auto-expand variables declared with no category, use the name of the class which declares the variable.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -90,8 +93,8 @@ specifiers:
     related: [ComponentWrapperClass]
     comment: |
       A child that subclasses a class with this meta tag will ignore the following specifiers in the parent\: `ShowCategories`, `HideCategories`, `AutoExpandCategories`, `AutoCollapseCategories` and `PrioritizeCategories`.
-  
-      Only used in one place in the codebase. `ComponentWrapperClass` is an odd alias for it.
+
+      As of 5.5, the only place in the engine source where this is used is in the `UCLASS` definition of `SceneComponent`.
     documentation:
       text: Used to make the first subclass of a class ignore all inherited ShowCategories and HideCategories Specifiers.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -111,10 +114,9 @@ specifiers:
     type: string
     position: meta
     related: [ ToolTip ]
-    comment:
-        |
-        The tooltip returned when passing true for `bShortTooltip` in `GetTooltTipText`. Can be used in conjunction with `ToolTip` or a code comment.
-        It is mainly used by the Class Picker dialog, and in various other places in the engine.
+    comment: |
+      The tooltip returned when passing true for `bShortTooltip` in `GetTooltTipText`. Can be used in conjunction with `ToolTip` or a code comment.
+      It is mainly used by the Class Picker dialog, and in various other places in the engine.
     samples:
       - |
         UCLASS(meta=(ShortTooltip="A layout panel for automatically laying child widgets out vertically"))
@@ -208,7 +210,37 @@ specifiers:
     position: main
     related: [ EditInlineNew ]
     inherited: true
-    comment: Not entirely sure what difference this makes or when to use it.
+    comment: |
+      Any Blueprint subclass of a class marked with `Const` has a few unique features:
+      - The values of Blueprint subclasses can be changed in the BP, but not at run-time.
+      - It has no event graphs, and cannot have event graphs added to it.
+      - Any Blueprint-defined functions cannot set values on properties, even properties defined in the Blueprint subclass.
+      - Local variables within functions _can_ have their values set.
+      - Any Blueprint-defined functions are automatically marked as const. Although the const flag can be un-checked (this seems like a bug?).
+      - It is possible to define and call Event Dispatchers (aka delegates) in the Blueprint subclass.
+      - C++ Properties marked with `BlueprintReadWrite` will be converted to `BlueprintReadOnly` in the Blueprint.
+      - Any BlueprintImplementableEvent functions must be `const` or there is a compilation error.
+      - Any BlueprintNativeEvent functions must be `const` or there is a compilation error.
+
+      This specifier is not frequently used in engine code.
+    samples:
+      - |
+        UCLASS(Const)
+        class UConstExample : public UObject
+        {
+        public:
+          GENERATED_BODY()
+        
+          /** Even though this is marked as BlueprintReadWrite, the UCLASS(Const) changes it to BlueprintReadOnly */
+          UPROPERTY(EditAnywhere, BlueprintReadWrite)
+          FString TextWithinExample = "Can't change this.";
+        
+          UFUNCTION(BlueprintImplementableEvent)
+          void MyBlueprintImplementableEvent() const;
+        
+          UFUNCTION(BlueprintNativeEvent)
+          void MyBlueprintNativeEvent() const;
+        };
     documentation:
       text: All properties and functions in this class are const and are exported as const. This Specifier is inherited by subclasses.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -267,7 +299,7 @@ specifiers:
   - name: ExposedAsyncProxy
     group: Blueprint
     type: string
-    type-comment: Class name without prefix
+    type-comment: Class name without 'U' prefix
     position: meta
     comment: |
       Values in the engine include AsyncTaskRef, AsyncAction, AsyncTask.
@@ -287,6 +319,16 @@ specifiers:
     comment: If this is present then the editor will not create an async node in the graph.
     related: [ ExposedAsyncProxy ]
 
+  - name: SparseClassDataTypes
+    group: Blueprint
+    type: string
+    type-comment: Space-separated struct names without 'F' prefix
+    position: main
+    comment: The engine does not contain examples of this but the documentation is great.
+    documentation:
+      text: The Sparse Class Data system saves memory by eliminating redundant data on commonly-used Actor types.
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/sparse-class-data-in-unreal-engine
+  
 
 ###############################################################################
 # Config
@@ -332,6 +374,14 @@ specifiers:
     required: [ Config ]
     inherited: true
     position: main
+    comment: |
+      Adding this seems to cause the .ini file to be saved in `Base`.
+
+      There is only one example of this in the engine source, AndroidSDKSettings.
+    samples:
+      - |
+        // Causes the settings to be saved in BaseBlah.ini
+        UCLASS(Config=Blah, GlobalUserConfig)
 
   - name: ProjectUserConfig
     group: Config
@@ -349,6 +399,7 @@ specifiers:
     type: flag
     position: main
     antonyms: [ NotEditInlineNew ]
+    related: [ uproperty.Instanced ]
     inherited: true
     documentation:
       text: Indicates that Objects of this class can be created from the Unreal Editor Property window, as opposed to being referenced from an existing Asset. The default behavior is that only references to existing Objects may be assigned through the Property window). This Specifier is propagated to all child classes; child classes can override this with the NotEditInlineNew Specifier.
@@ -359,13 +410,15 @@ specifiers:
     type: flag
     position: main
     antonyms: [ EditInlineNew ]
+    comment: |
+      Use this on subclasses of something marked `EditInlineNew` to remove the behaviour of `EditInlineNew`.
   
   - name: DefaultToInstanced
     group: Editor
     type: flag
     position: main
     inherited: true
-    related: [ uproperty.instanced ]
+    related: [ uproperty.Instanced ]
     documentation:
       text: All instances of this class are considered "instanced". Instanced classes (components) are duplicated upon construction. This Specifier is inherited by subclasses.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -400,7 +453,7 @@ specifiers:
     position: main
     inherited: true
     antonyms: [ HideFunctions ]
-    comment:
+    comment: |
       This makes more sense when you first understand `HideFunctions`. I think it works to re-expose functions that were previously hidden using `HideFunctions`.
     documentation:
       text: Shows all functions within the listed categories in a property viewer.
@@ -456,6 +509,7 @@ specifiers:
   - name: HideCategories
     group: Visibility
     type: string
+    type-comment: Comma-separated list of category names or variable names.
     position: main
     inherited: true
     antonyms: [ ShowCategories ]
@@ -473,8 +527,12 @@ specifiers:
     group: Actor
     type: flag
     position: main
+    antonyms: [ NotPlaceable ]
     inherited: true
-    comment: I'm pretty sure this is on all `AActor` subclasses by default. I guess you could specify its opposite `NotPlaceable` if you wanted a non-placeable actor. See `NotPlaceable` for use cases.
+    comment: |
+      All `AActor` subclasses can be placed into a level, even without this flag. The `Placeable` specifier exists in case you want to subclass something marked as `NotPlaceable` and change it to be placeable in the world.
+
+      See `NotPlaceable` for other use cases.
     documentation:
       text: Indicates that this class can be created in the Editor and placed into a level, UI scene, or Blueprint (depending on the class type). This flag is propagated to all child classes; child classes can override this flag using the NotPlaceable Specifier.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -484,9 +542,12 @@ specifiers:
     type: flag
     position: main
     antonyms: [ Placeable ]
+    related: [ Abstract, Transient ]
     inherited: true
     comment: |
-      "This is used in a lot of places in the engine: on test classes, debug actors, gizmos, actors that should only be spawned by other actors."
+      A class marked with `NotPlaceable` cannot be dragged into a map/level.
+
+      This is used in a lot of places in the engine: on test classes, debug actors, gizmos, actors that should only be spawned by other actors.
     documentation:
       text: Negates a Placeable Specifier inherited from a base class. Indicates that Objects of this class may not be placed into a Level, UI scene, or Blueprint in the Editor.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/class-specifiers
@@ -502,6 +563,14 @@ specifiers:
       Seems to be used on minimal-ish Actors that wrap components. For example on `ALight` that wraps `ULightComponent`, `ASkeletalMeshActor` that wraps `USkeletalMeshComponent`.
   
       Co-occurs with `ConversionRoot` and `ChildCanTick` a lot.
+
+  - name: ConversionRoot
+    group: Display
+    type: flag
+    position: main
+    related: [ ComponentWrapperClass ]
+    comment:
+      See ComponentWrapperClass for how this is used.
 
   - name: PrioritizeCategories
     group: Display
