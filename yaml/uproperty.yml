@@ -1,12 +1,15 @@
+id: uproperty
+
+specifiers:
 ###############################################################################
 # Editor - Visibility
 
-specifiers:
   - name: VisibleAnywhere
     group: Editor
     subgroup: Visibility
     position: main
     type: flag
+    utility: 3
     incompatible: [ VisibleDefaultsOnly, VisibleInstanceOnly, EditAnywhere, EditDefaultsOnly, EditInstanceOnly ]
     comment:
       Properties marked with `VisibleAnywhere` are visible in the both Details Panel of Blueprint assets and the Details Panel of Blueprint instances within maps.
@@ -25,6 +28,7 @@ specifiers:
     subgroup: Visibility
     position: main
     type: flag
+    utility: 3
     incompatible: [ VisibleAnywhere, VisibleInstanceOnly, EditAnywhere, EditDefaultsOnly, EditInstanceOnly ]
     comment: |
       \"Defaults\" in this context means that this property will be visible in Blueprint classes (e.g. the `BP_Cat` asset in your content browser), but not instances (e.g. `Cat` in your map).
@@ -45,6 +49,7 @@ specifiers:
     subgroup: Visibility
     position: main
     type: flag
+    utility: 3
     incompatible: [ VisibleAnywhere, VisibleDefaultsOnly, EditAnywhere, EditDefaultsOnly, EditInstanceOnly ]
     comment: |
       This property will only be visible in Blueprint instances, like those that exist in the map.
@@ -65,6 +70,7 @@ specifiers:
     subgroup: Visibility
     position: main
     type: flag
+    utility: 3
     incompatible: [ EditDefaultsOnly, EditInstanceOnly, VisibleAnywhere, VisibleDefaultsOnly, VisibleInstanceOnly ]
     related: [ EditDefaultsOnly ]
     comment: |
@@ -84,6 +90,7 @@ specifiers:
     subgroup: Visibility
     position: main
     type: flag
+    utility: 3
     comment: |
       You might want to make a property `EditInstanceOnly` if it does not make sense to have a default value in the Blueprint asset. For example a `ATrigger` actor could point to `ADoor` instances within a map and tell them to open when the trigger is activated. In this example it would not make sense to have `TArray<ADoor*>` be editable within the Blueprint asset, so you could use `EditInstanceOnly`.
   
@@ -101,6 +108,7 @@ specifiers:
     subgroup: Visibility
     position: main
     type: flag
+    utility: 3
     incompatible: [ EditAnywhere, VisibleAnywhere, VisibleDefaultsOnly, VisibleInstanceOnly ]
     related: [ EditAnywhere ]
     samples:
@@ -116,6 +124,7 @@ specifiers:
     subgroup: Visibility
     position: meta
     type: flag
+    utility: 1
     required: [ BlueprintAssignable ]
     comment: Not sure this is very useful for anything. Events are not really shown in a useful way in the details panel. The green + shape button that is shown on `UButton` is a UMG-specific editor customization so this does not relate to showing events in that way.
     documentation:
@@ -126,6 +135,7 @@ specifiers:
     subgroup: Visibility
     position: meta
     type: flag
+    utility: 1
     comment: |
       Useful when you want to avoid making users click to expand an struct, for example when it is the only thing inside an outer class.
 
@@ -158,6 +168,7 @@ specifiers:
     position: meta
     type: string
     type-comment: class
+    utility: 1
     related: [ ExcludeBaseStruct ]
     images: [ /uproperty/basestruct.webp ]
     comment: |
@@ -206,6 +217,7 @@ specifiers:
     subgroup: Picker
     position: meta
     type: flag
+    utility: 1
     related: [ BaseStruct ]
     images: [ /uproperty/excludebasestruct.webp ]
     comment: |
@@ -218,6 +230,7 @@ specifiers:
     group: Editor
     subgroup: Display
     type: string
+    utility: 3
     position: main
     comment: |
       Using `Category`, it's possible to group properties together into expandable folders. The pipe character `|` can be used to create sub-folders. For example `Category="Character Info|Health"` would create two folders\: `Character Info`, and within that, `Health`.
@@ -246,6 +259,7 @@ specifiers:
     subgroup: Display
     position: meta
     type: string
+    utility: 3
     comment: |
       Changes the text label used with the property. This is used both in the Details panel and for 
   
@@ -260,6 +274,7 @@ specifiers:
     subgroup: Display
     position: meta
     type: string
+    utility: 2
     comment: Show a tooltip with this text when mousing over the property.
     samples:
       - |
@@ -269,6 +284,7 @@ specifiers:
     group: Editor
     subgroup: Display
     type: flag
+    utility: 3
     position: main
     incompatible: [ SimpleDisplay ]
     antonyms: [ SimpleDisplay ]
@@ -293,6 +309,7 @@ specifiers:
     subgroup: Display
     position: main
     type: flag
+    utility: 1
     incompatible: [ AdvancedDisplay ]
     antonyms: [ AdvancedDisplay ]
     documentation:
@@ -301,9 +318,9 @@ specifiers:
   - name: EditInline
     group: Internal and Deprecated
     type: flag
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
+    utility: 3
     position: meta
-    related: [ Instanced, class.EditInlineNew ]
+    related: [ Instanced, uclass.EditInlineNew ]
     comment: |
       Using this shows the error "`EditInline` is deprecated. Remove it, or use `Instanced` instead."
     samples:
@@ -317,7 +334,7 @@ specifiers:
     group: Editor
     subgroup: Display
     type: flag
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
+    utility: 2
     position: meta
     related: [ EditInline, Instanced ]
     comment: Seems to be used for object references, whereas `ShowOnlyInnerProperties` is used for Structs? `EditInline` or `Instanced` seems to be co-occurrent.
@@ -325,14 +342,13 @@ specifiers:
     group: Editor
     subgroup: Display
     type: bool
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     position: meta
   - name: EditCondition
     group: Editor
     subgroup: Display
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: string
     type-comment: Conditional statement
+    utility: 3
     related: [ TransientToolProperty ]
     comment: |
       `EditCondition` can be used to change a property from read-only to writeable depending on another property.
@@ -366,14 +382,14 @@ specifiers:
   - name: HideEditConditionToggle
     group: Editor
     subgroup: Display
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: flag
+    utility: 2
     position: meta
   - name: EditConditionHides
     group: Editor
     subgroup: Display
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: flag
+    utility: 2
     position: meta
     required: [ EditCondition ]
     keywords: [editor]
@@ -404,8 +420,8 @@ specifiers:
   - name: InlineEditConditionToggle
     group: Editor
     subgroup: Display
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: flag
+    utility: 2
     position: meta
     keywords: [editor]
     antonyms: [ HideEditConditionToggle ]
@@ -430,6 +446,7 @@ specifiers:
     group: Editor
     subgroup: Undo and Redo
     position: main
+    utility: 1
     type: flag
     keywords: [editor]
     documentation:
@@ -441,6 +458,7 @@ specifiers:
     position: meta
     type: string
     type-comment: Property name
+    utility: 1
     related: [ DisplayPriority ]
     comment: |
       Multiple properties with DisplayAfter that refer to the same property will be displayed in the order they are defined.
@@ -463,6 +481,7 @@ specifiers:
     subgroup: Display
     position: meta
     type: integer
+    utility: 1
     related: [ DisplayAfter ]
     comment: |
       Changes the order in which properties are shown within a category. Properties with lower numbers are shown before those with higher numbers.
@@ -493,8 +512,9 @@ specifiers:
     subgroup: Display
     position: meta
     type: bool
+    utility: 1
     comment: Can also be used as metadata on `UCLASS()`.
-    related: [ uclass.displaythumbnail ]
+    related: [ uclass.DisplayThumbnail ]
     samples:
       - |
         UPROPERTY(EditAnywhere, meta=(DisplayThumbnail=false))
@@ -509,8 +529,8 @@ specifiers:
   - name: MaxPropertyDepth
     group: Editor
     subgroup: Display
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: integer
+    utility: 1
     position: meta
     comment: |
       You can use this to limit the depth to which nested properties are shown. It might be useful if you have structs within structs within structs to an extreme degree.
@@ -521,7 +541,6 @@ specifiers:
   - name: ForceRebuildProperty
     group: Editor
     subgroup: Misc
-    source: Engine/Source/Editor/PropertyEditor/Private/PropertyNode.cpp
     type: string
     position: meta
     comment: Seems to find a child property node with the specified string, and if found, force them to be rebuilt
@@ -530,7 +549,8 @@ specifiers:
     group: Editor
     position: main
     type: flag
-    related: [ uclass.editinlinenew, uclass.defaulttoinstanced ]
+    utility: 3
+    related: [ uclass.EditInlineNew, uclass.DefaultToInstanced ]
     documentation:
       text: Object (`UCLASS`) properties only. When an instance of this class is created, it will be given a unique copy of the Object assigned to this property in defaults. Used for instancing subobjects defined in class default properties. Implies `EditInline` and `Export`.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
@@ -567,6 +587,7 @@ specifiers:
     subgroup: General
     position: meta
     type: flag
+    utility: 2
     comment:
       This hides the little return arrow that is shown to reset a value back to the value defined in the parent Blueprint or C++ class.
   
@@ -584,10 +605,10 @@ specifiers:
   - name: ClampMin
     group: Data Decorators
     subgroup: Numeric
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
     type: number
     type-comment: float, int
+    utility: 3
     keywords: [number, editor]
     related: [UIMin, ClampMax]
     comment: |
@@ -604,10 +625,10 @@ specifiers:
   - name: ClampMax
     group: Data Decorators
     subgroup: Numeric
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
     type: number
     type-comment: float, int
+    utility: 3
     keywords: [number, editor]
     related: [UIMax, ClampMin]
     comment: |
@@ -624,14 +645,14 @@ specifiers:
   - name: UIMin
     group: Data Decorators
     subgroup: Numeric
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
+    type: number
+    type-comment: float, int
+    utility: 3
     comment: Setting `UIMin` stops the user being able to drag the property lower than the specified number. The user *can* however set the number lower than this value by typing it in. Most of the time it makes sense to use both `UIMin` and `ClampMin`.
     documentation:
       text: Used for float and integer properties. Specifies the lowest that the value slider should represent.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
-    type: number
-    type-comment: float, int
     samples:
       - |
         UPROPERTY(meta=(UIMin=0, UIMax=100))
@@ -642,10 +663,10 @@ specifiers:
   - name: UIMax
     group: Data Decorators
     subgroup: Numeric
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
     type: number
     type-comment: float, int
+    utility:
     documentation:
       text: Used for float and integer properties. Specifies the highest that the value slider should represent.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
@@ -660,6 +681,7 @@ specifiers:
     subgroup: Numeric
     position: meta
     type: bool
+    utility: 2
     comment: |
       Without this flag, when mousing over a property input box the cursor will change to show arrows, allowing the user to click and drag to change the value in the input box.
   
@@ -672,10 +694,10 @@ specifiers:
   - name: SliderExponent
     group: Data Decorators
     subgroup: Numeric
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
     type: number
     type-comment: float, int
+    utility: 2
     keywords: [number, editor]
     samples:
       - |
@@ -689,10 +711,10 @@ specifiers:
     group: Data Decorators
     subgroup: Numeric
     comment: Changes the amount that the number changes when dragging. This does not perform any validation, the user is still free to manually enter a number that is not a multiple of the value. To perform validation, use the `Multiple` tag.
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
     type: number
     type-comment: float, int
+    utility: 2
     keywords: [number, editor]
     related: [ Multiple ]
     images: [ /uproperty/delta.gif ]
@@ -707,6 +729,7 @@ specifiers:
     position: meta
     type: number
     type-comment: float, int
+    utility: 2
     related: [ Delta ]
     documentation:
       text: Used for numeric properties. Stipulates that the value must be a multiple of the metadata value.
@@ -720,10 +743,10 @@ specifiers:
     subgroup: Numeric
     comment: Sets a unit to be shown after the number. For all possible values see the `TEXT` entries in `FParseCandidates` inside [`UnitConversion.cpp`](https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Private/Math/UnitConversion.cpp#L20). Using an unknown value will result in a compile error. Many units have mutliple aliases, for example "Kilometers" and "km" will result in the same unit being used. Units are case-insensitive.
       `Units` also allows users to input in related units. Entering `100f` into a field with `Units="Celsius"` results in `37.77779 °C`.
-    source: /Engine/Source/Runtime/Core/Private/Math/UnitConversion.cpp
     images: [ /uproperty/units.jpg, /uproperty/units-conversion.gif ]
     position: meta
     type: string
+    utility: 2
     keywords: [ number, editor ]
     examples: [ Engine/Source/Editor/DetailCustomizations/Private/LocalLightComponentDetails.cpp#L42 ]
     samples:
@@ -741,10 +764,10 @@ specifiers:
   - name: ForceUnits
     group: Data Decorators
     subgroup: Numeric
-    source: Engine/Source/Editor/PropertyEditor/Private/UserInterface/PropertyEditor/SPropertyEditorNumeric.h
     position: meta
     comment: "`Units` seems to allow property editors to override the units used to display values. In comparison `ForceUnits` does not allow any kind of overriding. I would stick to `Units` to be honest."
     type: string
+    utility: 2
     related: [ Units ]
     keywords: [ number, editor ]
     examples: [ Engine/Source/Editor/DetailCustomizations/Private/LocalLightComponentDetails.cpp#L42 ]
@@ -754,6 +777,7 @@ specifiers:
     position: meta
     type: string
     type-comment: UPROPERTY-marked TArray
+    utility: 2
     comment: |
       Clamps an integer to be within the range of the specified `TArray`.
     examples: [Engine/Source/Runtime/Engine/Classes/Engine/SkeletalMesh.h#L96, Plugins/Experimental/MeshModelingToolset/Source/MeshModelingTools/Public/MeshAttributePaintTool.h#L129 ]
@@ -1649,6 +1673,39 @@ specifiers:
     group: Data Table
     type: bool
     position: meta
+    utility: 2
+    images: [ /uproperty/datatableimportoptional.webp ]
+    comment: |
+      When importing data to fill out a data table, by default all columns are required to exist in the CSV file. If an column does not exist in the CSV, an error is shown (see screenshot).
+
+      By marking a property with UPROPERTY(meta=(DataTableImportOptional)), it is not required that a column exist in CSVs with that name.
+
+      It can be useful if a property is deprecated.
+    samples:
+      - |
+        ---,Name
+        hi,"Hello World"
+        example,"New Example"
+      - |
+        USTRUCT()
+        struct FDataTableImportOptionalExampleRow : public FTableRowBase
+        {
+          GENERATED_BODY()
+        
+          // This must exist in the CSV
+          UPROPERTY(EditAnywhere)
+          FString Name;
+        
+          // This is not required
+          UPROPERTY(EditAnywhere, meta=(DataTableImportOptional=true))
+          FString NameOld;
+        
+          // This must exist in the CSV
+          UPROPERTY(EditAnywhere)
+          int32 Happiness;
+        };
+    documentation:
+      text: If the structure has specified the property as optional for import (gameplay code likely doing a custom fix-up or parse of that property), then avoid warning about it
   
   - name: RequiredAssetDataTags
     group: Data Table
@@ -1973,6 +2030,12 @@ specifiers:
     group: Config Files
     position: main
     type: flag
+    comment: |
+      Properties marked with `Config`
+      The location [](https://dev.epicgames.com/documentation/en-us/unreal-engine/configuration-files-in-unreal-engine)
+
+      Heavily related to UCLASS(config) that chooses where the config should be saved.
+    related: [ uclass.Config ]
     documentation:
       text: This property will be made configurable. The current value can be saved to the `.ini` file associated with the class and will be loaded when created. Cannot be given a value in default properties. Implies `BlueprintReadOnly`.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
@@ -1980,6 +2043,7 @@ specifiers:
     group: Config Files
     position: main
     type: flag
+    related: [ uclass.Config ]
     documentation:
       text: Works just like `Config` except that you cannot override it in a subclass. Cannot be given a value in default properties. Implies `BlueprintReadOnly`.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/property-specifiers
@@ -1987,7 +2051,9 @@ specifiers:
     group: Config Files
     position: meta
     type: flag
-    required: [ Config ]
+    required: [ Config, GlobalConfig ]
+    comment: |
+      In the engine only seems to be used in settings files, and is requires `Config` or `GlobalConfig`.
     documentation:
       text: Property is serialized to config and we should be able to set it anywhere along the config hierarchy.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
