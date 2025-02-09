@@ -1497,6 +1497,23 @@ specifiers:
     documentation:
       text: Specifies whether the property should be exposed on a Spawn Actor for the class type.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
+  - name: DeterminesOutputType 
+    group: Blueprint Logic
+    position: meta
+    type: string
+    comment: /
+      Marking a property with `DeterminesOutputType` allows the node to dynamically infer the output type based on the input type parameter.
+
+      This eliminates the need to cast the resulting object into the correct type / subclass 
+
+      For a more detailed explanation [see this article](https://benui.ca/unreal/blueprint-return-typed-arrays/)
+    samples:
+      - |
+        UFUNCTION(BlueprintCallable, meta=(DeterminesOutputType = "ClassType"))
+        TArray<AAnimal*> GetAnimalsByClass(TSubclassOf<AAnimal> ClassType) const;
+    documentation:
+      text: Metadata that flags function params that govern what type of object the function returns
+      source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_6
   
   
   ###############################################################################
