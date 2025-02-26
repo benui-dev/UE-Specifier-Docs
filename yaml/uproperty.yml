@@ -1429,6 +1429,8 @@ specifiers:
       It seems that without `DeprecationMessage`, there is no warning shown. So make sure you add one.
   
       In the Unreal codebase I've seen a lot of instances of renaming the variable with a prefix `DEPRECATED_` and using `DisplayName` to make it look the same to Blueprints.
+
+      As of 5.5-ish, marking a Blueprint visible property as deprecated shows a warning unless you define a `BlueprintGetter`.
     samples:
       - |
         // Simple
@@ -1440,6 +1442,7 @@ specifiers:
         FString DEPRECATED_PlantName;
     images: [ /uproperty/deprecatedproperty-simple.jpg, /uproperty/deprecatedproperty-complex.jpg ]
     required: [ DeprecationMessage ]
+    related: [ BlueprintGetter ]
     documentation:
       text: This property is deprecated, any blueprint references to it cause a compilation warning.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
@@ -2429,3 +2432,45 @@ specifiers:
         TMap<FGameplayTag, int32> Stats;
         UPROPERTY(EditAnywhere, meta=(ForceInlineRow))
         TMap<FGameplayTag, int32> StatsInlineRow;
+
+  - name: FunctionReference
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    comment: |
+      Allows a drop-down for selecting functions.
+
+      For info on how this works check out [Choosing Functions in Editor](https://benui.ca/unreal/choosing-function-in-editor/).
+    related: [ AllowFunctionLibraries, PrototypeFunction, DefaultBindingName ]
+    images: [ /uproperty/function-reference.webp ]
+    samples:
+      - |
+        UPROPERTY(EditAnywhere, meta=(FunctionReference, AllowFunctionLibraries, PrototypeFunction="/Script/Bruno.DiceFunctionLibrary.Prototype_DiceCheck", DefaultBindingName="DiceCheck"), DisplayName="Dice Check")
+        FMemberReference DiceCheck;
+
+  - name: AllowFunctionLibraries
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    required: [ FunctionReference ]
+    comment: |
+      Part of the definition for creating pickers for functions. See FunctionReference for full details.
+
+  - name: PrototypeFunction
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: string
+    required: [ FunctionReference ]
+    comment: |
+      Part of the definition for creating pickers for functions. See FunctionReference for full details.
+
+  - name: DefaultBindingName
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: string
+    comment: |
+      Part of the definition for creating pickers for functions. See FunctionReference for full details.
