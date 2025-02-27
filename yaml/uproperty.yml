@@ -2440,7 +2440,7 @@ specifiers:
     type: flag
     comment: |
       Allows a drop-down for selecting functions.
-
+      
       For info on how this works check out [Choosing Functions in Editor](https://benui.ca/unreal/choosing-function-in-editor/).
     related: [ AllowFunctionLibraries, PrototypeFunction, DefaultBindingName ]
     images: [ /uproperty/function-reference.webp ]
@@ -2465,6 +2465,8 @@ specifiers:
     type: string
     required: [ FunctionReference ]
     comment: |
+      Full path to the function to use to define the signature that should be matched.
+      
       Part of the definition for creating pickers for functions. See FunctionReference for full details.
 
   - name: DefaultBindingName
@@ -2472,5 +2474,28 @@ specifiers:
     subgroup: Picker
     position: meta
     type: string
+    required: [ FunctionReference ]
     comment: |
+      If the user creates a new function, this is what it will be called.
+      
       Part of the definition for creating pickers for functions. See FunctionReference for full details.
+
+  - name: PropertyReference
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    comment: |
+      Looks like it lets you pick a variable to point to.
+    related: [ AllowOnlyVisibleProperties ]
+    samples:
+      - |
+        UPROPERTY(EditAnywhere, meta=(PropertyReference, AllowOnlyVisibleProperties))
+        FMemberReference PointToAProperty;
+
+  - name: AllowOnlyVisibleProperties
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    required: [ PropertyReference ]
