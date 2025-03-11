@@ -1683,6 +1683,20 @@ specifiers:
         UWidgetAnimation* RevealWindow;
     links:
       - [ "https://benui.ca/unreal/ui-animations-from-cpp/" ]
+  - name: DesignerRebuild
+    group: UMG
+    position: meta
+    type: flag
+    utility: 2
+    keywords: [umg]
+    documentation:
+      text: This property if changed will rebuild the widget designer preview.  Use sparingly, try to update most properties by setting them in the SynchronizeProperties function.
+    comment: |
+      If you have a property that affects the appearance of your widget, and you want your widget appearance to refresh whenever it is changed, add `DesignerRebuild`.
+    samples:
+      - |
+        UPROPERTY(meta=(DesignerRebuild))
+        float Something;
   
   
   
