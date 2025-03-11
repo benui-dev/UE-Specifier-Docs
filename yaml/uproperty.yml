@@ -222,6 +222,16 @@ specifiers:
     images: [ /uproperty/excludebasestruct.webp ]
     comment: |
       Used in combination with `BaseStruct`, but with this flag the base struct cannot be chosen.
+  - name: StructTypeConst
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    utility: 1
+    related: [ BaseStruct ]
+    comment: |
+      Does not allow the user to change the instanced struct in the drop-down menu.
+      
 
   
   ###############################################################################
