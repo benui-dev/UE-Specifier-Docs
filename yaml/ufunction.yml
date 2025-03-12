@@ -74,10 +74,13 @@ specifiers:
   - name: ArrayParm
     group: Blueprint Logic
     type: string
+    type-comment: Parameter name
     position: meta
     comment: |
       This only seems to be used in `KismetArrayLibrary.h` where it's used with `CustomThunk`-marked functions.
+
       Note that this is "ArrayParm" and *not* "ArrayParam".
+    required: [ CustomThunk ]
     related: [ ArrayTypeDependentParams, CustomThunk ]
     documentation:
       text: Indicates that a BlueprintCallable function should use a Call Array Function node and that the listed parameters should be treated as wild card array properties.
@@ -86,7 +89,13 @@ specifiers:
   - name: ArrayTypeDependentParams
     group: Blueprint Logic
     type: string
+    type-comment: Comma-separated list of parameters
     position: meta
+    required: [ ArrayParm, CustomThunk ]
+    comment: |
+      This must be used with `ArrayParm` and `CustomThunk` to mark up any parameters whose type depends on the corresponding `ArrayParm`.
+
+      Check out how `KismetArrayLibrary.h` uses it to make generic Blueprint functinos.
     documentation:
       text: When ArrayParm is used, this specifier indicates one parameter which will determine the types of all parameters in the ArrayParm list.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/ufunctions-in-unreal-engine#functionspecifiers
@@ -94,7 +103,7 @@ specifiers:
   - name: AutoCreateRefTerm
     group: Blueprint Logic
     type: string
-    type-comment: Comma-separated list
+    type-comment: Comma-separated list of parameters
     utility: 2
     position: meta
     comment: |
@@ -106,6 +115,7 @@ specifiers:
       - |
         UFUNCTION(BlueprintCallable)
         void SomeColorWithoutRef(const FLinearColor& Color) {}
+
         UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm="Color"))
         void SomeColorWithRef(const FLinearColor& Color) {}
     images: [ /ufunction/autocreaterefterm.jpg ]

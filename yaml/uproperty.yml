@@ -167,7 +167,7 @@ specifiers:
     subgroup: Picker
     position: meta
     type: string
-    type-comment: class
+    type-comment: class path
     utility: 1
     related: [ ExcludeBaseStruct ]
     images: [ /uproperty/basestruct.webp ]
@@ -222,6 +222,16 @@ specifiers:
     images: [ /uproperty/excludebasestruct.webp ]
     comment: |
       Used in combination with `BaseStruct`, but with this flag the base struct cannot be chosen.
+  - name: StructTypeConst
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    utility: 1
+    related: [ BaseStruct ]
+    comment: |
+      Does not allow the user to change the instanced struct in the drop-down menu.
+      
 
   
   ###############################################################################
@@ -1429,6 +1439,8 @@ specifiers:
       It seems that without `DeprecationMessage`, there is no warning shown. So make sure you add one.
   
       In the Unreal codebase I've seen a lot of instances of renaming the variable with a prefix `DEPRECATED_` and using `DisplayName` to make it look the same to Blueprints.
+
+      As of 5.5-ish, marking a Blueprint visible property as deprecated shows a warning unless you define a `BlueprintGetter`.
     samples:
       - |
         // Simple
@@ -1440,6 +1452,7 @@ specifiers:
         FString DEPRECATED_PlantName;
     images: [ /uproperty/deprecatedproperty-simple.jpg, /uproperty/deprecatedproperty-complex.jpg ]
     required: [ DeprecationMessage ]
+    related: [ BlueprintGetter ]
     documentation:
       text: This property is deprecated, any blueprint references to it cause a compilation warning.
       source: https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/CoreUObject/UObject/UM_3
@@ -1670,6 +1683,20 @@ specifiers:
         UWidgetAnimation* RevealWindow;
     links:
       - [ "https://benui.ca/unreal/ui-animations-from-cpp/" ]
+  - name: DesignerRebuild
+    group: UMG
+    position: meta
+    type: flag
+    utility: 2
+    keywords: [umg]
+    documentation:
+      text: This property if changed will rebuild the widget designer preview.  Use sparingly, try to update most properties by setting them in the SynchronizeProperties function.
+    comment: |
+      If you have a property that affects the appearance of your widget, and you want your widget appearance to refresh whenever it is changed, add `DesignerRebuild`.
+    samples:
+      - |
+        UPROPERTY(meta=(DesignerRebuild))
+        float Something;
   
   
   
@@ -1714,6 +1741,7 @@ specifiers:
   - name: RequiredAssetDataTags
     group: Data Table
     type: string
+    type-comment: class path
     position: meta
     comment: |
       Only shows data table assets with the specified row structure class.
@@ -2429,3 +2457,75 @@ specifiers:
         TMap<FGameplayTag, int32> Stats;
         UPROPERTY(EditAnywhere, meta=(ForceInlineRow))
         TMap<FGameplayTag, int32> StatsInlineRow;
+
+  - name: FunctionReference
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    comment: |
+      Allows a drop-down for selecting functions.
+      
+      For info on how this works check out [Choosing Functions in Editor](https://benui.ca/unreal/choosing-function-in-editor/).
+    related: [ AllowFunctionLibraries, PrototypeFunction, DefaultBindingName ]
+    images: [ /uproperty/function-reference.webp ]
+    samples:
+      - |
+        UPROPERTY(EditAnywhere, meta=(FunctionReference, AllowFunctionLibraries, PrototypeFunction="/Script/Bruno.DiceFunctionLibrary.Prototype_DiceCheck", DefaultBindingName="DiceCheck"), DisplayName="Dice Check")
+        FMemberReference DiceCheck;
+
+  - name: AllowFunctionLibraries
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    required: [ FunctionReference ]
+    comment: |
+      When this flag is present, functions in Blueprint Function Libraries that match the signature will also be included in the dropdown list. Without this flag, only functions defined in the same class and its parents as this property will be included.
+
+      Part of the definition for creating pickers for functions. See FunctionReference for full details.
+
+  - name: PrototypeFunction
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: string
+    type-comment: class path
+    required: [ FunctionReference ]
+    comment: |
+      Full path to the function to use to define the signature that should be matched.
+
+      For example "/Script/MyProject.ClassName.FunctionName".
+      
+      Part of the definition for creating pickers for functions. See FunctionReference for full details.
+
+  - name: DefaultBindingName
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: string
+    required: [ FunctionReference ]
+    comment: |
+      If the user chooses Create Binding, the name of the newly-created function will be this text prefixed with 'On'.
+      
+      Part of the definition for creating pickers for functions. See FunctionReference for full details.
+
+  - name: PropertyReference
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    comment: |
+      Looks like it lets you pick a variable to point to.
+    related: [ AllowOnlyVisibleProperties ]
+    samples:
+      - |
+        UPROPERTY(EditAnywhere, meta=(PropertyReference, AllowOnlyVisibleProperties))
+        FMemberReference PointToAProperty;
+
+  - name: AllowOnlyVisibleProperties
+    group: Editor
+    subgroup: Picker
+    position: meta
+    type: flag
+    required: [ PropertyReference ]
